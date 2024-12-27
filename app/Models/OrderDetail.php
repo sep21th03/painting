@@ -9,16 +9,17 @@ class OrderDetail extends Model
 {
     use HasFactory;
     protected $table = "order_details";
+    public $timestamps = false;
 
-    protected $fillable = ['order_id', 'product_variant_id', 'quantity', 'price'];
+    protected $fillable = ['order_id', 'product_hex_id', 'size_id', 'quantity', 'price'];
 
     public function order()
     {
         return $this->belongsTo(Order::class);
     }
 
-    public function productVariant()
+    public function productHex()
     {
-        return $this->belongsTo(ProductVariant::class, 'product_variant_id');
+        return $this->belongsTo(ProductHex::class, 'product_hex_id');
     }
 }

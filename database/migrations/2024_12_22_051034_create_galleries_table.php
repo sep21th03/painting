@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('image_path'); // Đường dẫn hình ảnh
+            $table->foreignId('product_hex_id')->constrained('product_hex')->onDelete('cascade'); // Kết nối với bảng product_hex
             $table->timestamps();
-        });
+        });        
     }
 
     /**
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category');
+        Schema::dropIfExists('galleries');
     }
 };

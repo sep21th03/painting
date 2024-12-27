@@ -35,7 +35,13 @@ class CartController extends Controller
     public function updateMyCart(UpdateCartRequest $request)
     {
         $data = $request->validated();
-        $myCart = $this->cartService()->updateByUserId(Auth::user()->id, $data);
+        $myCart = $this->cartService()->updateQuantityByUserId(Auth::user()->id, $data);
+        return jsonResponse($myCart ? 'success' : 'error',  $myCart ? 'Cập nhật thành công!' : 'Có lỗi xảy ra, xin vui lòng tải lại trang và thử lại.', $myCart);
+    }
+    public function addByMyCart(UpdateCartRequest $request)
+    {
+        $data = $request->validated();
+        $myCart = $this->cartService()->addByUserId(Auth::user()->id, $data);
         return jsonResponse($myCart ? 'success' : 'error',  $myCart ? 'Cập nhật thành công!' : 'Có lỗi xảy ra, xin vui lòng tải lại trang và thử lại.', $myCart);
     }
 

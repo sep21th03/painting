@@ -15,7 +15,6 @@ return new class extends Migration
             $table->string('phone', 15);
             $table->string('address', 255)->nullable();
             $table->string('avatar', 255)->nullable();
-            $table->string('role')->default('1');
         });
     }
 

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->unsignedSmallInteger('payment_method'); 
             $table->tinyInteger('status')->default(Order::STATUS_WAITING); 
             $table->text('message')->nullable(); 
+            $table->decimal('shipping_fee', 10, 2)->default(0); 
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

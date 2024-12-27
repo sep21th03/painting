@@ -2,18 +2,18 @@
 
 namespace App\Services;
 
-use App\Models\Category;
+use App\Models\Set;
 
 class CategoryService extends BaseService
 {
     public function setModel()
     {
-        return new Category();
+        return new Set();
     }
 
     public function getAllCategories()
     {
-        return $this->model->all();
+        return Set::with('categories')->get();
     }
 
     public function getCategoryById($id){
@@ -41,5 +41,19 @@ class CategoryService extends BaseService
             return true;
         }
         return false;
+    }
+
+    public function addSetCategory($data)
+    {
+    $set = $this->model->find($data['id']); 
+    if (!$set) {
+        return false; 
+    }
+
+    $newCategory = $set->categories()->create([
+        'name' => $data['name'], 
+    ]);
+
+    return $newCategory; 
     }
 }

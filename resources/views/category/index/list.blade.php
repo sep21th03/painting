@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Danh sách hãng
+Danh sách danh mục
 @endsection
 @section('content')
 <style>
@@ -64,15 +64,12 @@ Danh sách hãng
         <h2 class="mb-0">Brands</h2>
       </div>
     </div>
-    <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
-      <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>Tất cả</span><span class="text-body-tertiary fw-semibold">({{ $total_categories }})</span></a></li>
-    </ul>
     <div id="categories" data-list='{"valueNames":["customer","email","total-orders","total-spent","city","last-seen","last-order"],"page":10,"pagination":true}'>
       <div class="mb-4">
         <div class="row g-3 justify-content-between">
           <div class="col-auto">
             <div class="search-box">
-              <form class="position-relative" id="searchForm"><input id="searchInput" class="form-control search-input search" type="search" placeholder="Tìm kiếm" aria-label="Search" />
+              <form class="position-relative" id="searchForm"><input id="searchInputBrand" class="form-control search-input search" type="search" placeholder="Tìm kiếm" aria-label="Search" />
                 <span class="fas fa-search search-box-icon"></span>
               </form>
             </div>
@@ -82,19 +79,19 @@ Danh sách hãng
       </div>
       <div class="mx-n4 mx-lg-n6 px-4 bg-body-emphasis border-top border-bottom border-translucent position-relative py-4">
         <div class="table-responsive mx-n1 px-1">
-          <table id="list_category" class="table table-sm fs-9 mb-0">
-            <thead>
-              <tr>
-                <th class="fs-8 text-start ps-0" style="width: 25%;">Tên loại sản phẩm</th>
-                <th class="fs-8 text-start ps-0" style="width: 25%; padding-left: 10px !important;">Ngày tạo</th>
-                <th class="fs-8 text-start pe-0" style="width: 25%;">Ngày cập nhật</th>
-                <th class="fs-8 text-start pe-0" style="width: 25%;"></th>
-              </tr>
-            </thead>
-            <tbody class="list text-center" id="customers-table-body">
-              <!-- Hãng -->
-            </tbody>
-          </table>
+        <table id="list_category" class="display">
+    <thead>
+        <tr>
+            <th style="width: 80%;">Tên danh mục</th>
+            <th style="width: 20%;">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Các hàng sẽ được thêm tự động từ DataTable -->
+    </tbody>
+</table>
+
+    </table>
         </div>
       </div>
     </div>

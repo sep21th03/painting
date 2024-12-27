@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\ProductHex;
+use App\Models\ProductSize;
+use App\Models\Order;
 
 class OrderSeeder extends Seeder
 {
@@ -19,14 +22,16 @@ class OrderSeeder extends Seeder
             $orderDetails = [];
             // Tạo chi tiết đơn hàng (ngẫu nhiên từ 1 đến 3 sản phẩm cho mỗi đơn hàng)
             foreach (range(1, rand(1, 3)) as $detailIndex) {
-                $productVariant = DB::table('product_variants')->inRandomOrder()->first(); // Lấy sản phẩm ngẫu nhiên
-                
-                // Kiểm tra xem sản phẩm có tồn tại không
-                if ($productVariant) {
+                $productHex = ProductHex::inRandomOrder()->first(); // Lấy sản phẩm ngẫu nhiên
+                $productSize = ProductSize::where('product_hex_id', $productHex->id)->inRandomOrder()->first(); // Lấy size ngẫu nhiên
+
+                // Kiểm tra xem sản phẩm và size có tồn tại không
+                if ($productHex && $productSize) {
                     $orderDetails[] = [
-                        'product_variant_id' => $productVariant->id, // Lấy id sản phẩm ngẫu nhiên
+                        'product_hex_id' => $productHex->id,
+                        'size_id' => $productSize->id,
                         'quantity' => rand(1, 5), // Số lượng ngẫu nhiên
-                        'price' => $productVariant->price, // Sử dụng giá từ sản phẩm variant
+                        'price' => $productSize->price, // Sử dụng giá từ size
                     ];
                 }
             }
@@ -53,10 +58,16 @@ class OrderSeeder extends Seeder
             foreach ($orderDetails as $detail) {
                 DB::table('order_details')->insert([
                     'order_id' => $orderId,
-                    'product_variant_id' => $detail['product_variant_id'], // Sử dụng product_variant_id
+                    'product_hex_id' => $detail['product_hex_id'],
+                    'size_id' => $detail['size_id'],
                     'quantity' => $detail['quantity'],
                     'price' => $detail['price'],
                 ]);
+
+                // Cập nhật tồn kho
+                $productSize = ProductSize::find($detail['size_id']);
+                $productSize->stock -= $detail['quantity'];
+                $productSize->save();
             }
         }
     }

@@ -24,15 +24,16 @@ class UpdateCartRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_variant_id' => 'required|numeric|exists:product_variants,id',
+            'product_hex_id' => 'required|numeric|exists:product_hex,id',
+            'size_id' => 'required|numeric|exists:product_sizes,id',
             'quantity' => [
                 'required',
                 'integer',
                 'min:0',
                 'max:100',
                 function ($attribute, $value, $fail) {
-                    $productVariant = \App\Models\ProductVariant::find($this->product_variant_id);
-                    if ($productVariant && $value > $productVariant->stock) {
+                    $productSize = \App\Models\ProductSize::find($this->size_id);
+                    if ($productSize && $value > $productSize->stock) {
                         $fail('Số lượng vượt quá số lượng sản phẩm trong kho');
                     }
                 },
@@ -43,8 +44,8 @@ class UpdateCartRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'product_variant_id.required' => 'Vui lòng chọn sản phẩm',
-            'product_variant_id.exists' => 'Sản phẩm không tồn tại',
+            'product_hex_id.required' => 'Vui lòng chọn sản phẩm',
+            'product_hex_id.exists' => 'Sản phẩm không tồn tại',
             'quantity.required' => 'Vui lòng nhập số lượng',
             'quantity.integer' => 'Số lượng phải là số',
             'quantity.min' => 'Số lượng phải lớn hơn hoặc bằng 1',

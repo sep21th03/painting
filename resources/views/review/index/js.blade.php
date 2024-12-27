@@ -1,11 +1,11 @@
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         if ($("#list_review").length) {
             $("#list_review").DataTable({
                 dom: 'rtp',
-                initComplete: function() {
+                initComplete: function () {
                     var api = this.api();
-                    $('#searchInput').on('input', function() {
+                    $('#searchInput').on('input', function () {
                         api.search(this.value).draw();
                     });
                 },
@@ -17,7 +17,7 @@
                         "Content-Type": "application/json",
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                     },
-                    error: function(jqXHR, textStatus, errorThrown) {
+                    error: function (jqXHR, textStatus, errorThrown) {
                         console.log("Error get data from ajax: " + textStatus);
                     },
                 },
@@ -25,30 +25,30 @@
 
                     {
                         data: "id",
-                        render: function(data, type, row) {
+                        render: function (data, type, row) {
                             return `<div class="form-check mb-0 fs-8">
                                     <input class="form-check-input" type="checkbox" data-bulk-select-row='${JSON.stringify(
-                                        row
-                                    )}' />
+                                row
+                            )}' />
                                 </div>`;
                         },
 
                     },
                     {
-                        data: "product.title",
-                        render: function(data, type, row) {
-                            return '<a href="{{ url('product - detail.html ') }}?id=' + row.product_id + '">' + data + '</a>';
+                        data: "product.name",
+                        render: function (data, type, row) {
+                            return '<a href="{{ url('product-detail.html ') }}?id=' + row.product_id + '">' + data + '</a>';
                         }
                     },
                     {
                         data: "user.name",
-                        render: function(data, type, row) {
+                        render: function (data, type, row) {
                             return data;
                         }
                     },
                     {
                         data: "rating",
-                        render: function(data, type, row) {
+                        render: function (data, type, row) {
                             let stars = '';
                             for (let i = 1; i <= 5; i++) {
                                 if (i <= data) {
@@ -62,7 +62,7 @@
                     },
                     {
                         data: "comment",
-                        render: function(data, type, row) {
+                        render: function (data, type, row) {
                             return `
             <div class="comment-text" style="max-height: 3em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
                 ${data}
@@ -72,13 +72,13 @@
                     },
                     {
                         data: "created_at",
-                        render: function(data, type, row) {
-                            return convertToVietnamTime(data);
+                        render: function (data, type, row) {
+                            return moment(data).fromNow();
                         }
                     },
                     {
                         data: "id",
-                        render: function(data, type, row) {
+                        render: function (data, type, row) {
                             return `
                             <div class="btn-reveal-trigger position-relative">
                                 <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window">
@@ -118,21 +118,40 @@
 
 
 
-    function convertToVietnamTime(dateString) {
+    function timeAgo(dateString) {
         const date = new Date(dateString);
-        const vietnamFormatter = new Intl.DateTimeFormat('vi-VN', {
-            timeZone: 'Asia/Ho_Chi_Minh',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        });
+        const now = new Date();
+        const seconds = Math.floor((now - date) / 1000);
 
-        return vietnamFormatter.format(date);
+        let interval = Math.floor(seconds / 31536000);
+        if (interval >= 1) {
+            return interval + ' năm trước';
+        }
+
+        interval = Math.floor(seconds / 2592000);
+        if (interval >= 1) {
+            return interval + ' tháng trước';
+        }
+
+        interval = Math.floor(seconds / 86400);
+        if (interval >= 1) {
+            return interval + ' ngày trước';
+        }
+
+        interval = Math.floor(seconds / 3600);
+        if (interval >= 1) {
+            return interval + ' giờ trước';
+        }
+
+        interval = Math.floor(seconds / 60);
+        if (interval >= 1) {
+            return interval + ' phút trước';
+        }
+
+        if (seconds < 10) return 'vừa xong';
+
+        return Math.floor(seconds) + ' giây trước';
     }
-
 
     function removeReview(productID) {
         Swal.fire({
@@ -156,7 +175,7 @@
                     data: {
                         id: productID
                     },
-                    success: function(response) {
+                    success: function (response) {
                         console.log(response);
                         Swal.fire({
                             icon: "success",
@@ -165,7 +184,7 @@
                             timer: 1500,
                             showConfirmButton: false,
                         }).then(() => {
-                            $("#list_product tr").each(function() {
+                            $("#list_product tr").each(function () {
                                 let trID = parseInt($(this).attr("id"));
                                 if (trID === productID) {
                                     $(this).remove();
@@ -173,7 +192,7 @@
                             });
                         });
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         console.error(error);
                         Swal.fire({
                             icon: "error",
@@ -186,4 +205,7 @@
             }
         });
     }
+
+
+
 </script>

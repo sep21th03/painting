@@ -14,13 +14,15 @@ return new class extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id'); 
-            $table->unsignedBigInteger('product_variant_id'); 
+            $table->unsignedBigInteger('product_hex_id'); 
+            $table->unsignedBigInteger('size_id'); 
             $table->integer('quantity');
             $table->unsignedBigInteger('price'); 
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->foreign('product_variant_id')->references('id')->on('product_variants')->onDelete('cascade');
+            $table->foreign('size_id')->references('id')->on('product_sizes')->onDelete('cascade');
+            $table->foreign('product_hex_id')->references('id')->on('product_hex')->onDelete('cascade');
         });
     }
 

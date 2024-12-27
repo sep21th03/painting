@@ -9,6 +9,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,9 @@ use App\Http\Controllers\OrderController;
 |
 */
 
-Route::get('/admin/login', [AdminController::class, 'login'])->name('auth.login')->middleware('guest');
+Route::get('/admin/login', function() {
+    return view('auth.login');
+})->name('auth.login')->middleware('guest');
 Route::post('/admin/login', [AdminController::class, 'postlogin'])->name('auth.login.post');
 
 // Route::middleware(['auth:sanctum'])->group(function () {
@@ -41,8 +44,11 @@ Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/', [DashboardController::class, 'manager_category'])->name('category.list');
         Route::get('/get', [CategoryController::class, 'index'])->name('category.index');
         Route::post('/add', [CategoryController::class, 'store'])->name('category.store');
+        Route::post('/addsetcategory', [CategoryController::class, 'addSetCategory'])->name('category.addsetcategory');
+        Route::post('/updatesetcategory', [CategoryController::class, 'updateSetCategory'])->name('category.updatesetcategory');
         Route::post('/edit', [CategoryController::class, 'update'])->name('category.update');
         Route::post('/delete', [CategoryController::class, 'destroy'])->name('category.destroy'); 
+        Route::post('/deletesetcategory', [CategoryController::class, 'deleteSetCategory'])->name('category.setcategory'); 
     });
     //Product
     Route::prefix('product')->group(function () {
@@ -51,16 +57,26 @@ Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/{id}', [DashboardController::class, 'detai_product'])->name('product.detail');
         Route::get('/add/product/', [DashboardController::class, 'add_product'])->name('product.add');
         Route::get('/get/{id}', [ProductController::class, 'show'])->name('product.show');
-        Route::post('/add/color/', [ProductController::class, 'addColor'])->name('product.addColor');
+        Route::post('/add/hex/', [ProductController::class, 'addHex'])->name('product.addHex');
+        Route::post('/add/size/', [ProductController::class, 'addSize'])->name('product.addSize');
         Route::post('/edit', [ProductController::class, 'update'])->name('product.update');
+        Route::post('/update/hex/', [ProductController::class, 'updateHex'])->name('product.updateHex');
         Route::post('/add', [ProductController::class, 'store'])->name('product.store');
         Route::post('/delete', [ProductController::class, 'destroy'])->name('product.destroy');
         Route::post('/delete/products', [ProductController::class, 'deleteProducts'])->name('product.deleteProducts');
-        Route::post('/delete/color', [ProductController::class, 'deleteProductColor'])->name('product.deleteProductColor');
+        Route::post('/delete/hex', [ProductController::class, 'deleteProductHex'])->name('product.deleteProductHex');
+        Route::post('/delete/size', [ProductController::class, 'deleteProductSize'])->name('product.deleteProductSize');
         Route::get('/get/category={query}', [ProductController::class, 'getProductsByCategory']);
+    });
+     //Cart
+     Route::prefix('cart')->group(function () {
+        Route::get('get', [CartController::class, 'getMyCart']);
+        Route::post('/add', [CartController::class, 'addMyCart']);
+        Route::post('/update', [CartController::class, 'updateMyCart']);
     });
     //Order
     Route::prefix('order')->group(function () {
+        Route::get('/detail/{id}', [OrderController::class,'getDetailOrder']);
         Route::get('/', [DashboardController::class, 'manager_order'])->name('order.list');
         Route::get('/{id}', [DashboardController::class, 'detail_order'])->name('order.detail');
         Route::post('update', [OrderController::class, 'updateStatus'])->name('order.update');

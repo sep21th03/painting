@@ -80,7 +80,7 @@ Danh sách sản phẩm
             <div class="mb-4">
                 <div class="d-flex flex-wrap gap-3">
                     <div class="search-box">
-                        <form class="position-relative"><input class="form-control search-input search" type="search"
+                        <form class="position-relative"><input id="searchInput" class="form-control search-input search" type="search"
                                 placeholder="Tìm kiếm" aria-label="Search" />
                             <span class="fas fa-search search-box-icon"></span>
                         </form>
@@ -133,9 +133,7 @@ Danh sách sản phẩm
                                 <th class="sort white-space-nowrap align-middle text-start ps-4" scope="col"
                                     style="width:350px;" data-sort="product">TÊN SẢN PHẨM</th>
                                 <th class="sort align-middle  text-center ps-4" scope="col" data-sort="category"
-                                    style="width:150px;">HÃNG</th>
-                                <th class="sort align-middle  text-center ps-4" scope="col" data-sort="category"
-                                    style="width:150px;">DUNG LƯỢNG</th>
+                                    style="width:150px;">DANH MỤC</th>
                                 <th class="text-center align-middle pe-0 ps-4" scope="col" style="width: 7%;">
                                 </th>
                             </tr>

@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Order extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $table = "orders";
 
     protected $guarded = ['id'];
-
     public const STATUS_WAITING = 0;
     public const STATUS_SUCCESS = 1;
     public const STATUS_CANCEL = 2;

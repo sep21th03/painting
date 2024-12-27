@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 class Product extends Model
 {
     use HasFactory;
@@ -12,30 +11,18 @@ class Product extends Model
     protected $table = 'products';
     protected $primaryKey = 'id';
     public $timestamps = false;
-    protected $fillable = [
-        'title',
-        'info',
-        'description',
-        'category_id',
-        'discount',
-    ];
+    protected $fillable = ['set_category_id', 'info', 'name', 'description', 'discount'];
 
-    public function specifications()
+
+    public function productHex()
     {
-        return $this->hasOne(ProductSpecification::class, 'product_id');
+        return $this->hasMany(ProductHex::class, 'product_id');
     }
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(SetCategory::class, 'set_category_id');
     }
-
-
-    public function variants()
-    {
-        return $this->hasMany(ProductVariant::class);
-    }
-    
     public function reviews()
     {
         return $this->hasMany(ProductReview::class, 'product_id');

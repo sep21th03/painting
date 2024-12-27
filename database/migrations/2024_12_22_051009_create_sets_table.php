@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_images', function (Blueprint $table) {
+        Schema::create('sets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_variant_id');
-            $table->string('image_url');
+            $table->string('name'); // Tên set (set 1, set 2,...)
             $table->timestamps();
-            $table->foreign('product_variant_id')->references('id')->on('product_variants')->onDelete('cascade');
-        });
+        });        
     }
 
     /**
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_images_tables');
+        Schema::dropIfExists('sets');
     }
 };

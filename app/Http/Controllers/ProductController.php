@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Services\ProductService;
 use App\Http\Requests\Admin\Product\DeleteProductRequest;
 use App\Http\Requests\Admin\Product\StoreProductRequest;
 use App\Http\Requests\Admin\Product\UpdateProductRequest;
-use App\Http\Requests\Admin\ProductColor\StoreProductColorRequest;
-use App\Http\Requests\Admin\ProductColor\DeleteProductColorRequest;
+use App\Http\Requests\Admin\ProductHex\StoreProductHexRequest;
+use App\Http\Requests\Admin\ProductHex\UpdateProductHexRequest;
+use App\Http\Requests\Admin\ProductHex\DeleteProductHexRequest;
+use App\Http\Requests\Admin\ProductSize\StoreProductSizeRequest;
+use App\Http\Requests\Admin\ProductSize\DeleteProductSizeRequest;
 use App\Http\Requests\Api\Product\StoreReviewRequest;
 
 class ProductController extends Controller
@@ -27,7 +29,6 @@ class ProductController extends Controller
     public function index()
     {
         $products = $this->productService->getAllProducts();
-
         return $products
             ? jsonResponse('success', 'Danh sách sản phẩm', $this->prepareProductsData($products))
             : jsonResponse('error', 'Không tìm thấy danh sách sản phẩm!');
@@ -40,72 +41,31 @@ class ProductController extends Controller
     private function prepareProductsData($products)
     {
         return $products->map(function ($product) {
+            // Chỉnh sửa lấy tên danh mục từ set_category
             return [
                 'id' => $product->id,
-                'category_id' => $product->category_id,
-                'category_name' => $product->category_id ? $product->category->name : null,
-                'title' => $product->title,
-                'description' => $product->description,
-                'discount' => $product->discount,
-                'info' => $product->info,
-                'specifications' => $this->prepareSpecificationsData($product->specifications),
-                'variants' => $this->prepareVariantsData($product->variants),
-            ];
-        });
-    }
-    /**
-     * Chuẩn bị dữ liệu thông số kỹ thuật của sản phẩm.
-     * @param $specifications
-     * @return array dữ liệu thông số kỹ thuật.
-     */
-    private function prepareSpecificationsData($specifications)
-    {
-        return [
-            'id' => $specifications->id,
-            'product_id' => $specifications->product_id,
-            'screen_size' => $specifications->screen_size,
-            'screen_type' => $specifications->screen_type,
-            'screen_resolution' => $specifications->screen_resolution,
-            'ram' => $specifications->ram,
-            'memory_card_slot' => $specifications->memory_card_slot,
-            'battery' => $specifications->battery,
-            'sim' => $specifications->sim,
-            'camera_front' => $specifications->camera_front,
-            'camera_rear' => $specifications->camera_rear,
-            'operating_system' => $specifications->operating_system,
-            'chip' => $specifications->chip,
-            'pin' => $specifications->pin,
-            'connectivity' => $specifications->connectivity,
-            'bluetooth' => $specifications->bluetooth,
-            'dimensions' => $specifications->dimensions,
-            'weight' => $specifications->weight,
-        ];
-    }
-    /**
-     * Chuẩn bị dữ liệu các biến thể sản phẩm.
-     * @param $variants
-     * @return array dữ liệu biến thể sản phẩm.
-     */
-    private function prepareVariantsData($variants)
-    {
-        return $variants->map(function ($variant) {
-            return [
-                'id' => $variant->id,
-                'product_id' => $variant->product_id,
-                'rom_id' => $variant->rom_id,
-                'color' => $variant->color,
-                'price' => $variant->price,
-                'availability' => $variant->availability,
-                'stock' => $variant->stock,
-                'rom' => [
-                    'id' => $variant->rom->id,
-                    'capacity' => $variant->rom->capacity,
-                ],
-                'images' => $variant->images->map(function ($image) {
+                'name' => $product->name,
+                'set_category_id' => $product->set_category_id,
+                'set_category_name' => 
+                ($product->categories && $product->categories->set ? $product->categories->set->name : '') 
+                . ' ' . 
+                ($product->categories ? $product->categories->name : ''),
+                'product_hex' => $product->productHex->map(function ($productHex) {
                     return [
-                        'id' => $image->id,
-                        'product_variant_id' => $image->product_variant_id,
-                        'image_url' => $image->image_url,
+                        'id' => $productHex->id,
+                        'code' => $productHex->hex_code, 
+                        'sizes' => $productHex->sizes->map(function ($size) {
+                            return [
+                                'size' => $size->size,
+                                'price' => $size->price,
+                                'stock' => $size->stock,
+                            ];
+                        }),
+                        'galleries' =>  $productHex->galleries->map(function ($gallery) {
+                            return [
+                                'image_path' => $gallery->image_path,
+                            ];
+                        }),
                     ];
                 }),
             ];
@@ -113,10 +73,10 @@ class ProductController extends Controller
     }
 
     public function store(StoreProductRequest $request)
-    {
+    {    
         $data = $request->validated();
-        $data['image'] = $request->file('image');
-        $result = $this->productService->store($data);
+        $galleryImages = $request->file('gallery');
+        $result = $this->productService->store($data, $galleryImages);
 
         return $result['status'] === 'success'
             ? jsonResponse('success', $result['message'])
@@ -133,10 +93,7 @@ class ProductController extends Controller
         $product = $this->productService->show($id);
 
         if ($product) {
-            $result = $product->toArray();
-            $result['category_name'] = $product->category_id ? $product->category->name : null;
-
-            return jsonResponse('success', 'Thông tin sản phẩm', $result);
+            return jsonResponse('success', 'Thông tin sản phẩm', $product);
         }
 
         return jsonResponse('error', 'Không tìm thấy sản phẩm!', []);
@@ -146,7 +103,6 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request)
     {
         $data = $request->validated();
-        $data['image'] = $request->file('image');
         $result = $this->productService->update($data);
 
         return $result['status'] === 'success'
@@ -167,11 +123,21 @@ class ProductController extends Controller
     }
 
 
-    public function addColor(StoreProductColorRequest $request)
+    public function addHex(StoreProductHexRequest $request)
     {
         $data = $request->validated();
-        $data['image'] = $request->file('image_url');
-        $result = $this->productService->addColor($data);
+        $data['imageHex'] = $request->file('imageHex');
+        $result = $this->productService->addHex($data);
+
+        return $result['status'] === 'success'
+            ? jsonResponse('success', $result['message'])
+            : jsonResponse('error', $result['message']);
+    }
+    public function updateHex(UpdateProductHexRequest $request)
+    {
+        $data = $request->validated();
+        $galleryImages = $request->file('gallery');
+        $result = $this->productService->updateHex($data, $galleryImages);
 
         return $result['status'] === 'success'
             ? jsonResponse('success', $result['message'])
@@ -188,17 +154,33 @@ class ProductController extends Controller
             : jsonResponse('error', 'Xóa thất bại', $result);
     }
 
-    // Xóa màu sản phẩm 
-    public function deleteProductColor(DeleteProductColorRequest $request)
+    // Xóa mã sản phẩm 
+    public function deleteProductHex(DeleteProductHexRequest $request)
     {
         $data = $request->validated();
-        $result = $this->productService->deleteColor($data['id']);
+        $result = $this->productService->deleteHex($data['id']);
         return $result['status'] === 'success'
             ? jsonResponse('success', $result['message'])
             : jsonResponse('error', $result['message']);
     }
+    public function addSize(StoreProductSizeRequest $request)
+    {
+        $data = $request->validated();
+        $result = $this->productService->addSize($data);
 
-
+        return $result['status'] === 'success'
+            ? jsonResponse('success', $result['message'])
+            : jsonResponse('error', $result['message']);
+    }
+    // Xóa size sản phẩm 
+    public function deleteProductSize(DeleteProductSizeRequest $request)
+    {
+        $data = $request->validated();
+        $result = $this->productService->deleteSize($data['id']);
+        return $result['status'] === 'success'
+            ? jsonResponse('success', $result['message'])
+            : jsonResponse('error', $result['message']);
+    }
     public function getProductsByCategory()
     {
         $categoryName = request()->query('category');
@@ -228,7 +210,7 @@ class ProductController extends Controller
     {
         $data = $request->validated();
         $result = $this->productService->storeReview($data);
-        return jsonResponse($result ? 'success' : 'error',  $result ? 'Đánh giá thành công!' : 'Đánh giá thất bại!', $result);
+        return jsonResponse($result ? 'success' : 'error', $result ? 'Đánh giá thành công!' : 'Đánh giá thất bại!', $result);
     }
     /**
      * Lấy danh sách các đánh giá sản phẩm.
@@ -242,7 +224,7 @@ class ProductController extends Controller
     public function getReviews(Request $request)
     {
         $result = $this->productService->getReviews($request);
-        return jsonResponse($result ? 'success' : 'error',  $result ? 'Lấy đánh giá thành công!' : 'Lấy đánh giá thất bại!', $result);
+        return jsonResponse($result ? 'success' : 'error', $result ? 'Lấy đánh giá thành công!' : 'Lấy đánh giá thất bại!', $result);
     }
     /**
      * Lấy danh sách đánh giá theo ID sản phẩm.

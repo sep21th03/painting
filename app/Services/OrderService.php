@@ -5,7 +5,8 @@ namespace App\Services;
 use App\Jobs\UpdateOrderStatusJob;
 use App\Models\Cart;
 use App\Models\Order;
-use App\Models\ProductVariant;
+use App\Models\ProductHex;
+use App\Models\ProductSize;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -35,25 +36,32 @@ class OrderService extends BaseService
         return [
             '$id' => $order->id,
             'code' => $order->code,
-            'name' => $order->user_name,
             'user' => $order->user,
             'phone' => $order->phone,
+            'address' => $order->address,
             'status_label' => Order::STATUS_LABEL[$order->status] ?? 'Đang chờ',
             'status' => $order->status,
             'payment_method' => Order::PAYMENT_LABEL[$order->payment_method] ?? 'Lỗi',
             'total_price' => $order->total_price,
             'note'  => $order->note,
             'message' => $order->message,
-            'created_at' => $order->created_at->format('H:i d/m/Y '),
+            'created_at' => $order->created_at ? $order->created_at->format('H:i d/m/Y ') : null,
             'order_details' => $order->orderDetails->map(function ($orderDetail) {
+                $product = $orderDetail->ProductHex->product;
+                $setCategory = $product->categories;
+                $setName = optional($setCategory->set)->name;
                 return [
                     'id' => $orderDetail->id,
-                    'product_name' => $orderDetail->productVariant->product->title . ' (Màu ' . $orderDetail->productVariant->color . ')',
+                    'product_id' => $orderDetail->ProductHex->product->id,
+                    'name' => $orderDetail->ProductHex->product->name,
+                    'hex_product' => $orderDetail->ProductHex->hex_code,
+                    'set' => $setName . ' ' . optional($setCategory)->name,
+                    'discount' => $orderDetail->ProductHex->product->discount,
                     'quantity' => $orderDetail->quantity,
-                    'price' => $orderDetail->price
+                    'price' => $orderDetail->price,
+                    'image' => $orderDetail->ProductHex->galleries->map(fn($gallery) => $gallery->image_path),
                 ];
             }),
-            'address' => $order->address
         ];
     }
     public function store($data)
@@ -77,19 +85,21 @@ class OrderService extends BaseService
             $order = parent::store($orderData);
             $order_details = [];
             foreach ($data['order_details'] as $item) {
-                $variant = ProductVariant::find($item['product_variant_id']);
-                if (!$variant) {
-                    throw new \Exception("Product variant not found: " . $item['product_variant_id']);
+                $hex = ProductHex::find($item['product_hex_id']);
+                $size = ProductSize::find($item['size_id']);
+                if (!$hex) {
+                    throw new \Exception("Không tìm thấy mã sản phẩm: " . $item['product_hex_id']);
                 }
-                if ($variant->stock < $item['quantity']) {
-                    throw new \Exception("Insufficient stock for product variant: " . $item['product_variant_id']);
+                if ($size->stock < $item['quantity']) {
+                    throw new \Exception("Sản phẩm trong kho không đủ!: " . $item['size_id']);
                 }
-                $variant->stock -= $item['quantity'];
-                $variant->save();
+                $size->stock -= $item['quantity'];
+                $hex->save();
 
                 $order_details[] = [
                     'order_id' => $order->id,
-                    'product_variant_id' => $item['product_variant_id'],
+                    'product_hex_id' => $item['product_hex_id'],
+                    'size_id' => $item['size_id'],
                     'quantity' => $item['quantity'],
                     'price' => $item['price']
                 ];
@@ -105,7 +115,7 @@ class OrderService extends BaseService
             return [
                 'code' => $order->code,
                 'total_price' => $order->total_price,
-                'created_at' => $order->created_at->format('H:i d/m/Y ')
+                'created_at' => $order->created_at ? $order->created_at->format('H:i d/m/Y ') : Carbon::now()->format('H:i d/m/Y')
             ];
         } catch (\Exception $e) {
             DB::rollBack();

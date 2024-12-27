@@ -1,75 +1,99 @@
-<div class="modal fade" id="addColorModal" tabindex="-1" aria-labelledby="addColorModalLabel" aria-hidden="true">
+<div class="modal fade" id="addHexModal" tabindex="-1" aria-labelledby="addHexModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addColorModalLabel">Thêm Màu Mới</h5>
+                <h5 class="modal-title" id="addHexModalLabel">Thêm Mã Mới</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addColorForm">
-                    <input type="text" class="form-control" id="addproductID" value="{{ $product->id }}" hidden>
-                    <input type="text" class="form-control" id="addromID" value="{{ isset($product->variants[0]) ? $product->variants[0]->rom_id : '' }}" hidden>
+                <form id="addHexForm">
+                    <input type="text" class="form-control" id="addhexproductID" value="{{ $product->id }}" hidden>
                     <div class="mb-3">
-                        <label for="colorName" class="form-label">Tên Màu</label>
-                        <input type="text" class="form-control" id="colorName" required>
+                        <label for="hexName" class="form-label">Tên Mã</label>
+                        <input type="text" class="form-control" id="hexName" required>
                     </div>
                     <div class="mb-3">
-                        <label for="colorPickerInput" class="form-label">Chọn Màu</label>
-                        <input type="text" id="colorPickerInput" class="form-control mb-3" value="#000000">
-                        <div id="colorPicker"></div>
+                        <label for="sizeHex" class="form-label">Tên Size</label>
+                        <input type="text" id="sizeHex" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="pricePhone" class="form-label">Giá tiền</label>
-                        <input type="text" class="form-control" id="pricePhone" required>
+                        <label for="priceHex" class="form-label">Giá tiền</label>
+                        <input type="text" class="form-control" id="priceHex" required>
                     </div>
                     <div class="mb-3">
-                        <label for="stockPhone" class="form-label">Số lượng</label>
-                        <input type="text" class="form-control" id="stockPhone" required>
+                        <label for="stockHex" class="form-label">Số lượng</label>
+                        <input type="text" class="form-control" id="stockHex" required>
                     </div>
                     <div class="mb-3">
-                        <label for="imageUpload" class="form-label">Chọn Ảnh</label>
-                        <input type="file" class="form-control" id="imageUpload" accept="image/*">
+                        <label for="imageHex" class="form-label">Chọn Ảnh</label>
+                        <input type="file" class="form-control" id="imageHex" name="imageHex[]" accept="image/*"
+                            multiple>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary" id="submitColor">Lưu</button>
+                <button type="button" class="btn btn-primary" id="submitHex">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addSizeModal" tabindex="-1" aria-labelledby="addSizeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addSizeModalLabel">Thêm Size Mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addSizeForm">
+                    <input type="text" class="form-control" id="addhexID" value="" hidden>
+                    <div class="mb-3">
+                        <label for="sizeName" class="form-label">Tên size</label>
+                        <input type="text" class="form-control" id="sizeName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="priceSize" class="form-label">Giá tiền</label>
+                        <input type="text" class="form-control" id="priceSize" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="stockSize" class="form-label">Số lượng</label>
+                        <input type="text" class="form-control" id="stockSize" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="submitSize">Lưu</button>
             </div>
         </div>
     </div>
 </div>
 <script>
-    $(document).ready(function() {
-        $("#submitColor").click(function() {
-            let color = $("#colorName").val();
-            let color_code = $("#colorPickerInput").val();
-            let price = parseInt(
-                $("#pricePhone").val().replace(/\./g, "").replace(" ₫", "")
+    $(document).ready(function () {
+        $("#submitHex").click(function () {
+            let nameHex = $("#hexName").val();
+            let sizeHex = $("#sizeHex").val();
+            let priceHex = parseInt(
+                $("#priceHex").val().replace(/[\.,₫\s]/g, "").replace(" ₫", "")
             );
-            let stock = $("#stockPhone").val();
-            let image_url = $("#imageUpload")[0].files[0];
-            let product_id = $("#addproductID").val();
-            let rom_id = $("#addromID").val();
-            let availability = stock > 0 ? 1 : 0;
+            let stockHex = $("#stockHex").val();
+            let product_id = $("#addhexproductID").val();
 
-            if (!image_url) {
-                swal("Cảnh báo!", "Vui lòng chọn ảnh!", "warning");
-                return;
-            }
+
 
             var formData = new FormData();
-            formData.append("color", color);
-            formData.append("color_code", color_code);
-            formData.append("price", price);
-            formData.append("stock", stock);
-            formData.append("image_url", image_url);
+            formData.append("nameHex", nameHex);
+            formData.append("sizeHex", sizeHex);
+            formData.append("priceHex", priceHex);
+            formData.append("stockHex", stockHex);
             formData.append("product_id", product_id);
-            formData.append("rom_id", rom_id);
-            formData.append("availability", availability);
-
+            const files = $("#imageHex")[0].files;
+            for (let i = 0; i < files.length; i++) {
+                formData.append("imageHex[]", files[i]);
+            }
             $.ajax({
-                url: "{{ route('product.addColor') }}",
+                url: "{{ route('product.addHex') }}",
                 type: "POST",
                 data: formData,
                 headers: {
@@ -77,7 +101,7 @@
                 },
                 processData: false,
                 contentType: false,
-                success: function(response) {
+                success: function (response) {
                     Swal.fire({
                         icon: "success",
                         title: "Thành công!",
@@ -85,13 +109,53 @@
                         timer: 1500,
                         showConfirmButton: false,
                     });
-                    $("#colorName").val("");
-                    $("#colorPickerInput").val("#000000");
-                    $("#pricePhone").val("");
-                    $("#stockPhone").val("");
-                    $("#imageUpload").val(null);
+                    location.reload();
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Lỗi!",
+                        text: error.message || "Có lỗi xảy ra, vui lòng thử lại!",
+                    });
+                },
+            });
+        });
+
+
+        $("#submitSize").click(function () {
+            let addhexID = $("#addhexID").val();
+            let sizeName = $("#sizeName").val();
+            let priceSize = parseInt(
+                $("#priceSize").val().replace(/[\.,₫\s]/g, "").replace(" ₫", "")
+            );
+            let stockSize = $("#stockSize").val();
+
+            var formData = new FormData();
+            formData.append("sizeName", sizeName);
+            formData.append("priceSize", priceSize);
+            formData.append("stockSize", stockSize);
+            formData.append("addhexID", addhexID);
+           
+            $.ajax({
+                url: "{{ route('product.addSize') }}",
+                type: "POST",
+                data: formData,
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Thành công!",
+                        text: "Thêm màu thành công!",
+                        timer: 1500,
+                        showConfirmButton: false,
+                    });
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
                     Swal.fire({
                         icon: "error",
                         title: "Lỗi!",

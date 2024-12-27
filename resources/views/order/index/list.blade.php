@@ -141,9 +141,7 @@ Danh sách đơn hàng
                                     </span>
                                 </td>
                                 <td class="date align-middle white-space-nowrap text-body-tertiary fs-8 ps-4 text-center">
-                                    <script>
-                                        document.write(formatTimeAgo("{{ $order['created_at'] }}"));
-                                    </script>
+                                    {{ \Carbon\Carbon::parse($order['created_at'])->diffForHumans() }}
                                 </td>
                                 <td class="date align-middle white-space-nowrap text-body-tertiary fs-8 ps-4 text-center">
                                     <div class="btn-reveal-trigger position-relative">

@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roms', function (Blueprint $table) {
+        Schema::create('setcategories', function (Blueprint $table) {
             $table->id();
-            $table->string('capacity');
+            $table->string('name'); // Tên danh mục (hoa lá, Halloween, ...)
+            $table->foreignId('set_id')->constrained()->onDelete('cascade'); // Mối quan hệ với bảng sets
             $table->timestamps();
-        });
+        });        
     }
 
     /**
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roms');
+        Schema::dropIfExists('setcategories');
     }
 };

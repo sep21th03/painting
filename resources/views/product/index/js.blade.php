@@ -1,12 +1,12 @@
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         let base_url = window.location.origin;
         if ($("#list_product").length) {
             $("#list_product").DataTable({
                 dom: 'rtpl',
-                initComplete: function() {
+                initComplete: function () {
                     var api = this.api();
-                    $('#searchInput').on('input', function() {
+                    $('#searchInput').on('input', function () {
                         api.search(this.value).draw();
                     });
                     var lengthDiv = $('#list_product_length');
@@ -31,78 +31,46 @@
                             "content"
                         ),
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         console.error("Error:", error);
                     },
                 },
                 columns: [{
-                        data: "id",
-                        render: function(data, type, row) {
-                            return `<div class="form-check mb-0 fs-8">
+                    data: "id",
+                    render: function (data, type, row) {
+                        return `<div class="form-check mb-0 fs-8">
                                     <input class="form-check-input" type="checkbox" data-bulk-select-row='${JSON.stringify(
-                                        row
-                                    )}' />
+                            row
+                        )}' />
                                 </div>`;
-                        },
                     },
-                    {
-                        data: null,
-                        render: function(data, type, row) {
-                            let html = "";
-                            if (row.variants && row.variants.length > 0) {
-                                row.variants.forEach((variant) => {
-                                    if (
-                                        variant.images &&
-                                        variant.images.length > 0
-                                    ) {
-                                        for (
-                                            let i = 0; i < Math.min(3, variant.images.length); i++
-                                        ) {
-                                            html += `
-                                            <td class="text-center">
-                                                <img src="${base_url}/${variant.images[i].image_url}" alt="${row.title}" style="width: 50px; height: auto;">
-                                            </td>
-                                        `;
-                                        }
-                                    } else {
-                                        html +=
-                                            '';
-                                    }
-                                });
-                            } else {
-                                html +=
-                                    '';
-                            }
-                            return html;
-                        },
+                },
+                {
+                    data: "",
+                    render: function (data, type, row) {
+                        const imagePath = row.product_hex && row.product_hex[0] && row.product_hex[0].galleries && row.product_hex[0].galleries[0]
+                            ? row.product_hex[0].galleries[0].image_path
+                            : 'default-image.png';
+                        return `<img src="${base_url}/${imagePath}" alt="Product Image" style="width: 50px; height: auto;">`;
                     },
-                    {
-                            data: "title",
-                            render: function(data, type, row) {
-                                const productId = row.id; 
-                                return `<a class="float-start fw-semibold line-clamp-3 mb-0" href="{{ route('product.detail', '') }}/${productId}">${data}</a>`;
-                            },
+                },
+                {
+                    data: "name",
+                    render: function (data, type, row) {
+                        const productId = row.id;
+                        return `<a class="float-start fw-semibold line-clamp-3 mb-0" href="{{ route('product.detail', '') }}/${productId}">${data}</a>`;
                     },
-                    {
-                        data: "category_name"
+                },
+                {
+                    data: "set_category_name",
+                    render: function (data) {
+                        return `<div class="text-center mb-0 fs-8">${data}</div>`;
                     },
-                    {
-                        data: null,
-                        render: function(data, type, row) {
-                            let html = "";
-                            if (row.variants && row.variants.length > 0) {
-                                html += `<span class="badge bg-primary">${row.variants[0].rom.capacity}</span>`;
-                            } else {
-                                html +=
-                                    '<span class="badge bg-secondary">Không có</span>';
-                            }
-                            return html;
-                        },
-                    },
-                    {
-                        data: "id",
-                        render: function(data) {
-                            return `
+                },
+                {
+                    data: "id",
+                    render: function (data) {
+                        return `
                             <div class="btn-reveal-trigger position-relative">
                                 <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window">
                                     <span class="fas fa-ellipsis-h fs-10"></span>
@@ -114,8 +82,8 @@
                                     <a class="dropdown-item text-danger" href="#!" onclick="removeProduct(${data})">Xóa</a>
                                 </div>
                             </div>`;
-                        },
                     },
+                },
                 ],
                 rowId: "id",
                 language: {
@@ -135,11 +103,11 @@
             });
         }
 
-        $("#addBtnProduct").click(function() {
+        $("#addBtnProduct").click(function () {
             window.location.href = "{{ route('product.add') }}";
         });
 
-        $("#checkbox-bulk-products-select").on("change", function() {
+        $("#checkbox-bulk-products-select").on("change", function () {
             let isChecked = $(this).is(":checked");
 
             $("#products-table-body input.form-check-input").prop(
@@ -148,7 +116,7 @@
             );
         });
 
-        $('#category-filter').on('change', function() {
+        $('#category-filter').on('change', function () {
             table.ajax.reload();
         });
 
@@ -176,7 +144,7 @@
                     data: {
                         id: productID
                     },
-                    success: function(response) {
+                    success: function (response) {
                         console.log(response);
                         Swal.fire({
                             icon: "success",
@@ -185,7 +153,7 @@
                             timer: 1500,
                             showConfirmButton: false,
                         }).then(() => {
-                            $("#list_product tr").each(function() {
+                            $("#list_product tr").each(function () {
                                 let trID = parseInt($(this).attr("id"));
                                 if (trID === productID) {
                                     $(this).remove();
@@ -193,7 +161,7 @@
                             });
                         });
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         console.error(error);
                         Swal.fire({
                             icon: "error",
@@ -210,7 +178,7 @@
     function deleteSelectedProducts() {
         let selectedProductIds = [];
 
-        $("input.form-check-input:checked").each(function() {
+        $("input.form-check-input:checked").each(function () {
             let row = $(this).data("bulk-select-row");
 
             if (row && row.id) {
@@ -240,7 +208,7 @@
                         data: {
                             ids: selectedProductIds
                         },
-                        success: function(response) {
+                        success: function (response) {
                             Swal.fire({
                                 icon: "success",
                                 title: "Xóa thành công",
@@ -253,7 +221,7 @@
                                 });
                             });
                         },
-                        error: function(xhr, status, error) {
+                        error: function (xhr, status, error) {
                             console.error(error);
                             Swal.fire({
                                 icon: "error",
@@ -274,107 +242,6 @@
         }
     }
 
-    function exportToExcel() {
-        const rows = [];
-        const table = document.getElementById('list_product');
-
-        const headers = ['Tên Sản Phẩm', 'Dung Lượng', 'Hãng'];
-        rows.push(headers);
-
-        const bodyRows = table.querySelectorAll('tbody tr');
-        bodyRows.forEach(row => {
-            const cells = row.querySelectorAll('td');
-            if (cells.length > 0) {
-                const name = cells[2].innerText;
-                const capacity = cells[4].innerText;
-                const category = cells[3].innerText;
-                rows.push([name, capacity, category]);
-            }
-        });
-
-        const ws = XLSX.utils.aoa_to_sheet(rows);
-        const workbook = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(workbook, ws, 'Products');
-
-        const excelFileName = 'Products_Data.xlsx';
-
-        XLSX.writeFile(workbook, excelFileName);
-
-    }
 
 
-    function exportProduct(productId) {
-        const base_url = window.location.origin;
-        fetch(`{{ route('product.show', '') }}/${productId}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-                }
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const headers = [
-                    'Tên Sản Phẩm', 'Dung Lượng', 'Hãng', 'Kích thước màn hình',
-                    'Công nghệ màn hình', 'Độ phân giải màn hình', 'Dung lượng RAM',
-                    'Khe cắm thẻ nhớ', 'Thẻ SIM', 'Hệ điều hành', 'Wi-Fi',
-                    'Bluetooth', 'Camera trước', 'Camera sau', 'Pin',
-                    'Công nghệ sạc', 'Chipset', 'Kích thước', 'Trọng lượng'
-                ];
-
-                const specifications = data.data.specifications || {};
-                const variant = data.data.variants[0] || {};
-                const rom = variant.rom || {};
-
-                const rowData = [
-                    data.data.title || '',
-                    rom.capacity || '',
-                    specifications.screen_size || '',
-                    specifications.screen_type || '',
-                    specifications.screen_resolution || '',
-                    specifications.ram || '',
-                    specifications.memory_card_slot || 'Không',
-                    specifications.sim || '',
-                    specifications.operating_system || '',
-                    specifications.connectivity || '',
-                    specifications.bluetooth || '',
-                    specifications.camera_front || '',
-                    specifications.camera_rear || '',
-                    specifications.battery || '',
-                    specifications.pin || '',
-                    specifications.chip || '',
-                    specifications.dimensions || '',
-                    specifications.weight || ''
-                ];
-
-                const ws = XLSX.utils.aoa_to_sheet([headers, rowData]);
-                const wb = XLSX.utils.book_new();
-                XLSX.utils.book_append_sheet(wb, ws, "Product Data");
-
-                const excelBuffer = XLSX.write(wb, {
-                    bookType: 'xlsx',
-                    type: 'array'
-                });
-                saveExcelFile(excelBuffer, `${data.data.title}.xlsx`);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred while exporting the product data.');
-            });
-    }
-
-    function saveExcelFile(buffer, fileName) {
-        const data = new Blob([buffer], {
-            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-        });
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(data);
-        link.download = fileName;
-        link.click();
-    }
 </script>

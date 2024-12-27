@@ -91,10 +91,10 @@ Danh sách hãng
                   <div class="form-check mb-0 fs-8"><input class="form-check-input" id="checkbox-bulk-reviews-select" type="checkbox" data-bulk-select='{"body":"table-latest-review-body"}' /></div>
                 </th>
                 <th class="white-space-nowrap align-middle" scope="col" style="width: 30%" data-sort="product">Sản phẩm</th>
-                <th class="align-middle text-start" scope="col" data-sort="customer" style="width: 20%">Khách hàng</th>
+                <th class="align-middle text-start" scope="col" data-sort="customer" style="width: 10%">Khách hàng</th>
                 <th class="align-middle text-start" scope="col" data-sort="rating" style="width: 10%">Đánh giá</th>
                 <th class="align-middle text-start" scope="col" style="width: 30%" data-sort="review">Bình luận</th>
-                <th class="text-start align-middle" scope="col" style="width: 10%" data-sort="time">Thời gian</th>
+                <th class="text-start align-middle" scope="col" style="width: 20%" data-sort="time">Thời gian</th>
                 <th class="text-start pe-0 align-middle" scope="col"></th>
               </tr>
             </thead>

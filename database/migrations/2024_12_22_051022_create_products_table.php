@@ -13,15 +13,13 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->decimal('price', 10, 2);
-            $table->decimal('discount', 5, 2)->nullable();
-            $table->text('info')->nullable();
+            $table->string('name'); // Tên sản phẩm
+            $table->text('info'); // Thông tin sản phẩm
+            $table->text('description'); // Mô tả sản phẩm
+            $table->integer('discount')->default(0); 
+            $table->foreignId('set_category_id')->constrained('setcategories')->onDelete('cascade'); // Kết nối với bảng setcategories
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade'); 
-        });
+        });        
     }
 
     /**
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('products');
     }
 };

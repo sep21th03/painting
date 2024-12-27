@@ -1,6 +1,6 @@
 <script type="module">
-     import CustomEditor from '{{ asset("vendors/ckeditor5.js") }}';
-    $(document).ready(function() {
+    import CustomEditor from '{{ asset("vendors/ckeditor5.js") }}';
+    $(document).ready(function () {
         let editor3Instance, editor4Instance;
         const customEditor = new CustomEditor();
 
@@ -26,50 +26,31 @@
         initializeEditors();
 
 
-        $("#addProduct").click(function() {
+        $("#addProduct").click(function (event) {
+            event.preventDefault(); // Ngăn gửi form mặc định
+
+            // Thu thập dữ liệu form
             let formValues = {
-                id: $("input[name='add_id']").val(),
-                title: $("input[name='add_title']").val(),
+                name: $("input[name='add_title']").val(),
                 info: editor4Instance.getData(),
                 description: editor3Instance.getData(),
-                category_id: $("select[name='add_category']").val(),
                 discount: $("input[name='add_discount']").val(),
-                specifications_id: $("input[name='add_specifications_id']").val(),
-                screen_size: $("input[name='add_screen_size']").val(),
-                screen_resolution: $("input[name='add_screen_resolution']").val(),
-                screen_type: $("input[name='add_screen_type']").val(),
-                ram: $("input[name='add_ram']").val(),
-                memory_card_slot: $("input[name='add_memory_card_slot']").val(),
-                camera_front: $("input[name='add_camera_front']").val(),
-                camera_rear: $("input[name='add_camera_rear']").val(),
-                sim: $("input[name='add_sim']").val(),
-                operating_system: $("input[name='add_operating_system']").val(),
-                connectivity: $("input[name='add_connectivity']").val(),
-                bluetooth: $("input[name='add_bluetooth']").val(),
-                battery: $("input[name='add_battery']").val(),
-                pin: $("input[name='add_pin']").val(),
-                chip: $("input[name='add_chip']").val(),
-                dimensions: $("input[name='add_dimensions']").val(),
-                weight: $("input[name='add_weight']").val(),
-                rom_id: parseInt($("select[name='add_rom_id']").val()),
-                color: $("input[name='add_color_name']").val(),
-                color_code: $("input[name='add_color_code']").val(),
+                setcategory_select: parseInt($("select[name='setcategory']").val()),
+                code: $("input[name='add_code']").val(),
+                sizeProduct: $("input[name='add_size']").val(),
                 stock: $("input[name='add_stock']").val(),
-                price: parseInt(
-                    $("input[name='add_price']")
-                    .val()
-                    .replace(/\./g, "")
-                    .replace(" ₫", "")
-                ),
-                variant_id: $("select[name='add_color']")
-                    .find("option:selected")
-                    .data("variant_id"),
-                availability: $("input[name='add_stock']").val() > 0 ? 1 : 0,
-                image: $("#file-add-product")[0].files[0],
+                price: $("input[name='add_price']").val(),
             };
+
             var formData = new FormData();
             for (const key in formValues) {
                 formData.append(key, formValues[key]);
+            }
+
+            // Thêm file ảnh
+            const files = $("#file-add-product")[0].files;
+            for (let i = 0; i < files.length; i++) {
+                formData.append("gallery[]", files[i]);
             }
 
             $.ajax({
@@ -81,109 +62,79 @@
                 },
                 processData: false,
                 contentType: false,
-                success: function(response) {
-                    console.log(response);
-                    Swal.fire({
-                        icon: "success",
-                        title: "Thành công!",
-                        text: "Thêm sản phẩm thành công!",
-                        timer: 1500,
-                        showConfirmButton: false,
-                    }).then(() => {
-                        location.reload();
-                    });
+                success: function (response) {
+                    try {
+                        let data = typeof response === "string" ? JSON.parse(response) : response; 
+
+                        if (data.status === "success") {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Thành công!",
+                                text: "Thêm sản phẩm thành công!",
+                                timer: 1500,
+                                showConfirmButton: false,
+                            }).then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Lỗi khi thêm sản phẩm",
+                                text: data.errors || "Dữ liệu không hợp lệ!",
+                            });
+                        }
+                    } catch (e) {
+                        console.error("Invalid JSON response:", response);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Lỗi!",
+                            text: "Có lỗi xảy ra khi xử lý phản hồi từ server!",
+                        });
+                    }
                 },
-                error: function(xhr, status, error) {
-                    console.error(error);
+                error: function (xhr, status, error) {
+                    console.error("AJAX Error:", error);
+                    let errorMessage = "Có lỗi xảy ra, vui lòng thử lại!";
+                    if (xhr.status === 422) {
+                        // Lỗi xác thực
+                        const errors = JSON.parse(xhr.responseText).errors;
+                        errorMessage = Object.values(errors).flat().join(", ");
+                    } else if (xhr.status === 500) {
+                        errorMessage = "Lỗi server, vui lòng liên hệ quản trị viên!";
+                    }
+
                     Swal.fire({
                         icon: "error",
                         title: "Lỗi!",
-                        text: error.message || "Có lỗi xảy ra, vui lòng thử lại!",
+                        text: errorMessage,
                     });
                 },
             });
         });
-    })
-
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const pickr = Pickr.create({
-            el: '#colorPicker',
-            theme: 'classic',
-            swatches: [
-                '#FF0000',
-                '#00FF00',
-                '#0000FF',
-                // Bạn có thể thêm nhiều màu ở đây
-            ],
-            components: {
-                preview: true,
-                opacity: true,
-                hue: true,
-                interaction: {
-                    hex: true,
-                    rgba: true,
-                    input: true,
-                    clear: true,
-                    save: true,
-                    close: true,
-                }
-            }
-        });
-
-        // Cập nhật giá trị input khi chọn màu
-        pickr.on('change', (color, instance) => {
-            const rgbaColor = color.toRGBA().toString();
-            const hexColor = color.toHEXA().toString();
-            document.getElementById('colorPickerInput').value = hexColor;
-        });
-
-        // Tính năng chọn màu từ màn hình
-        const eyeDropper = new EyeDropper();
-
-        const pickFromScreenButton = document.createElement('button');
-        pickFromScreenButton.innerText = 'Pick Color From Screen';
-        pickFromScreenButton.onclick = () => {
-            eyeDropper.open().then(result => {
-                const rgbaColor = `rgba(${result.sRGB[0]}, ${result.sRGB[1]}, ${result.sRGB[2]}, ${result.sRGB[3]})`;
-                const hexColor = `#${result.sRGB[0].toString(16).padStart(2, '0')}${result.sRGB[1].toString(16).padStart(2, '0')}${result.sRGB[2].toString(16).padStart(2, '0')}`;
-                pickr.setColor(hexColor);
-                document.getElementById('colorPickerInput').value = hexColor;
-                console.log('Màu đã chọn từ màn hình:', rgbaColor);
-            }).catch(err => {
-                console.error('Lỗi khi chọn màu:', err);
-            });
-        };
-        document.getElementById('colorPicker').appendChild(pickFromScreenButton);
     });
 
-    let dropZone = document.getElementById('drop-zone');
-    let fileInput = document.getElementById('file-add-product');
-    let productImage = document.getElementById('product-image');
 
-    // Ngăn chặn hành vi mặc định khi kéo file vào
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    let dropZone = document.getElementById("drop-zone");
+    let fileInput = document.getElementById("file-add-product");
+    let preview = document.getElementById("preview");
+
+    ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
         dropZone.addEventListener(eventName, preventDefaults, false);
-        document.body.addEventListener(eventName, preventDefaults, false);
     });
 
-    // Highlight drop zone khi kéo file vào
-    ['dragenter', 'dragover'].forEach(eventName => {
+    ["dragenter", "dragover"].forEach((eventName) => {
         dropZone.addEventListener(eventName, highlight, false);
     });
 
-    ['dragleave', 'drop'].forEach(eventName => {
+    ["dragleave", "drop"].forEach((eventName) => {
         dropZone.addEventListener(eventName, unhighlight, false);
     });
 
-    // Xử lý sự kiện thả file
-    dropZone.addEventListener('drop', handleDrop, false);
+    dropZone.addEventListener("drop", handleDrop, false);
 
-    // Xử lý sự kiện click vào drop zone
-    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener("click", () => fileInput.click());
 
-    // Xử lý sự kiện chọn file từ input
-    fileInput.addEventListener('change', handleFiles);
+    fileInput.addEventListener("change", handleFiles);
 
     function preventDefaults(e) {
         e.preventDefault();
@@ -191,11 +142,11 @@
     }
 
     function highlight(e) {
-        dropZone.classList.add('highlight');
+        dropZone.classList.add("highlight");
     }
 
     function unhighlight(e) {
-        dropZone.classList.remove('highlight');
+        dropZone.classList.remove("highlight");
     }
 
     function handleDrop(e) {
@@ -204,23 +155,64 @@
         handleFiles(files);
     }
 
-    function handleFiles(files) {
-        if (files instanceof FileList) {
-            ([...files]).forEach(uploadFile);
-        } else if (files.target && files.target.files) {
-            ([...files.target.files]).forEach(uploadFile);
+    function handleFiles(input) {
+        let files = input instanceof FileList ? input : input.target.files;
+        if (!files) {
+            return;
         }
+        Array.from(files).forEach(uploadFile);
     }
 
     function uploadFile(file) {
-        if (file.type.startsWith('image/')) {
+        if (file.type.startsWith("image/")) {
             let reader = new FileReader();
             reader.readAsDataURL(file);
-            reader.onloadend = function() {
-                productImage.src = reader.result;
-            }
+            reader.onloadend = function () {
+                let img = document.createElement("img");
+                img.src = reader.result;
+                img.onclick = () => openModal(img.src);
+                preview.appendChild(img);
+            };
         } else {
-            console.log('Vui lòng chọn file ảnh');
+            console.log("Vui lòng chọn file ảnh");
         }
     }
+
+    let modal = document.getElementById('image-modal');
+    let modalImg = document.getElementById('modal-image');
+    let closeBtn = document.getElementsByClassName("close-btn")[0];
+
+    // Đóng modal khi nhấn vào nút "X"
+    closeBtn.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // Xử lý sự kiện nhấn vào ảnh để phóng to
+    function openModal(imageSrc) {
+        modal.style.display = "block";
+        modalImg.src = imageSrc;
+    }
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const setSelect = document.getElementById('set-select');
+        const setcategorySelect = document.getElementById('setcategory-select');
+
+        function filterSetCategories() {
+            const selectedSetId = setSelect.value;
+
+            for (let option of setcategorySelect.options) {
+                if (option.getAttribute('data-set-id') === selectedSetId || selectedSetId === "") {
+                    option.style.display = 'block';
+                } else {
+                    option.style.display = 'none';
+                }
+            }
+        }
+
+        setSelect.addEventListener('change', filterSetCategories);
+
+        filterSetCategories();
+    });
+
 </script>

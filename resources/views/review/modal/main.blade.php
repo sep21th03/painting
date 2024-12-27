@@ -40,7 +40,7 @@
 
         document.getElementById("reviewUser").innerHTML = `
         <strong>Tên người dùng:</strong> ${rowData.user.name} <br>
-        <strong>Sản phẩm:</strong> <a href="{{ url('product-detail.html') }}?id=${rowData.product_id}">${rowData.product.title}</a> <br>
+        <strong>Sản phẩm:</strong> <a href="{{ url('product-detail.html') }}?id=${rowData.product_id}">${rowData.product.name}</a> <br>
         <strong>Đánh giá:</strong> ${rowData.rating}/5 <br>
         <strong>Bình luận:</strong> ${rowData.comment}
     `;

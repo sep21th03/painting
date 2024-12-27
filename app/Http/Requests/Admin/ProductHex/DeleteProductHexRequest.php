@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\ProductColor;
+namespace App\Http\Requests\Admin\ProductHex;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteProductColorRequest extends FormRequest
+class DeleteProductHexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

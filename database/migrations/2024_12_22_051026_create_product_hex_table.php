@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('product_hex', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('user_id');
-            $table->integer('rating');
-            $table->text('comment');
+            $table->string('hex_code'); // Mã sản phẩm (ví dụ: R300, R400)
+            $table->foreignId('product_id')->constrained()->onDelete('cascade'); // Kết nối với bảng products
             $table->timestamps();
-        });
+        });        
     }
 
     /**
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('product_hex');
     }
 };
