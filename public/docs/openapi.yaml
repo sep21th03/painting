@@ -1,29 +1,154 @@
 openapi: 3.0.3
 info:
-  title: Phone
-  description: ''
+  title: 'Bán TRANH'
+  description: 'API DOCS'
   version: 1.0.0
 servers:
   -
     url: 'http://localhost'
 paths:
-  /api/user/login:
-    post:
-      summary: ''
-      operationId: postApiUserLogin
+  /api/cart:
+    get:
+      summary: 'Lấy giỏ hàng của người dùng hiện tại.'
+      operationId: lyGiHngCaNgiDngHinTi
       description: ''
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 3
+                      product_name: 'Tranh treo tường tráng gương SET1 của REICHTUM - Decor phòng ngủ/ Chất vải canvas/ Độ bền cao'
+                      product_id: 1
+                      product_hex_id: 1
+                      code: R287
+                      set: 'SET 1 CÂY CỎ'
+                      quantity: 2
+                      discount: 10
+                      size: '40X60 CANVAS'
+                      current_price: 22540
+                      discounted_price: 20286
+                      images:
+                        - assets/img/products/btbhGacYF1_1735273573.webp
+                        - assets/img/products/fzPmcN7ma8_1735273573.webp
+                        - assets/img/products/pRLgncKt2K_1735273573.webp
+                      total_amount: 40572
+                  status: success
+                  message: 'Giỏ hàng'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 3
+                        product_name: 'Tranh treo tường tráng gương SET1 của REICHTUM - Decor phòng ngủ/ Chất vải canvas/ Độ bền cao'
+                        product_id: 1
+                        product_hex_id: 1
+                        code: R287
+                        set: 'SET 1 CÂY CỎ'
+                        quantity: 2
+                        discount: 10
+                        size: '40X60 CANVAS'
+                        current_price: 22540
+                        discounted_price: 20286
+                        images:
+                          - assets/img/products/btbhGacYF1_1735273573.webp
+                          - assets/img/products/fzPmcN7ma8_1735273573.webp
+                          - assets/img/products/pRLgncKt2K_1735273573.webp
+                        total_amount: 40572
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 3
+                        product_name:
+                          type: string
+                          example: 'Tranh treo tường tráng gương SET1 của REICHTUM - Decor phòng ngủ/ Chất vải canvas/ Độ bền cao'
+                        product_id:
+                          type: integer
+                          example: 1
+                        product_hex_id:
+                          type: integer
+                          example: 1
+                        code:
+                          type: string
+                          example: R287
+                        set:
+                          type: string
+                          example: 'SET 1 CÂY CỎ'
+                        quantity:
+                          type: integer
+                          example: 2
+                        discount:
+                          type: integer
+                          example: 10
+                        size:
+                          type: string
+                          example: '40X60 CANVAS'
+                        current_price:
+                          type: integer
+                          example: 22540
+                        discounted_price:
+                          type: integer
+                          example: 20286
+                        images:
+                          type: array
+                          example:
+                            - assets/img/products/btbhGacYF1_1735273573.webp
+                            - assets/img/products/fzPmcN7ma8_1735273573.webp
+                            - assets/img/products/pRLgncKt2K_1735273573.webp
+                          items:
+                            type: string
+                        total_amount:
+                          type: integer
+                          example: 40572
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Giỏ hàng'
+      tags:
+        - 'Cart Management'
+      security: []
+  /api/auth/google:
+    get:
+      summary: 'Create a new controller instance.'
+      operationId: createANewControllerInstance
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\" />\n        <meta http-equiv=\"refresh\" content=\"0;url='https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;response_type=code&amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN'\" />\n\n        <title>Redirecting to https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;response_type=code&amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN</title>\n    </head>\n    <body>\n        Redirecting to <a href=\"https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;response_type=code&amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN\">https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;response_type=code&amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN</a>.\n    </body>\n</html>"
       tags:
         - Endpoints
       security: []
-  /api/user/register:
-    post:
-      summary: ''
-      operationId: postApiUserRegister
+  /api/auth/google/callback:
+    get:
+      summary: 'Create a new controller instance.'
+      operationId: createANewControllerInstance
       description: ''
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
       tags:
         - Endpoints
       security: []
@@ -36,56 +161,6 @@ paths:
       responses: {  }
       tags:
         - Endpoints
-      security: []
-  /api/cart:
-    get:
-      summary: 'Lấy giỏ hàng của người dùng hiện tại.'
-      operationId: lyGiHngCaNgiDngHinTi
-      description: "Phương thức này sử dụng `cartService` để tìm giỏ hàng của người dùng dựa trên\nID của người dùng hiện tại được lấy từ `Auth::user()`."
-      parameters: []
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - Endpoints
-      security: []
-  /api/cart/update:
-    post:
-      summary: 'Cập nhật giỏ hàng của người dùng hiện tại.'
-      operationId: cpNhtGiHngCaNgiDngHinTi
-      description: "Phương thức này nhận yêu cầu cập nhật giỏ hàng từ người dùng, xác thực dữ liệu\nđầu vào bằng `UpdateCartRequest`, sau đó sử dụng `cartService` để cập nhật giỏ hàng\ndựa trên ID người dùng."
-      parameters: []
-      responses: {  }
-      tags:
-        - Endpoints
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                product_variant_id:
-                  type: number
-                  description: ''
-                  example: 5397659.0334192
-                quantity:
-                  type: integer
-                  description: 'Must be at least 0. Must not be greater than 100.'
-                  example: 15
-              required:
-                - product_variant_id
-                - quantity
       security: []
   /api/product-detail/review:
     post:
@@ -105,16 +180,19 @@ paths:
               properties:
                 product_id:
                   type: string
-                  description: ''
-                  example: facilis
+                  description: 'The <code>id</code> of an existing record in the products table.'
+                  example: et
+                  nullable: false
                 rating:
                   type: integer
                   description: 'Must be at least 1. Must not be greater than 5.'
-                  example: 3
+                  example: 1
+                  nullable: false
                 comment:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: zxefqijq
+                  example: yfwsigfqyv
+                  nullable: false
               required:
                 - product_id
                 - rating
@@ -169,15 +247,15 @@ paths:
         in: path
         name: id
         description: 'The ID of the detail.'
-        example: doloribus
+        example: quas
         required: true
         schema:
           type: string
   /api/order/store:
     post:
-      summary: 'Tạo đơn hàng mới.'
-      operationId: tonHngMi
-      description: "Phương thức này nhận yêu cầu từ người dùng, xác thực dữ liệu bằng `StoreOrderRequest`,\nsau đó sử dụng `orderService` để tạo đơn hàng mới."
+      summary: 'Store a new order in the database.'
+      operationId: storeANewOrderInTheDatabase
+      description: "This method handles the creation of an order, including the generation of the order code,\nstoring order details, updating product stock, and removing items from the cart.\nIt also dispatches a job to notify the user of the order status."
       parameters: []
       responses: {  }
       tags:
@@ -192,31 +270,38 @@ paths:
                 first_name:
                   type: string
                   description: ''
-                  example: ipsum
+                  example: et
+                  nullable: false
                 last_name:
                   type: string
                   description: ''
-                  example: officia
+                  example: commodi
+                  nullable: false
                 phone:
                   type: number
                   description: ''
-                  example: 22519.106
+                  example: 0.48989003
+                  nullable: false
                 address:
                   type: string
                   description: ''
-                  example: itaque
+                  example: omnis
+                  nullable: false
                 note:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 message:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 payment_method:
                   type: string
                   description: ''
-                  example: '0'
+                  example: '1'
+                  nullable: false
                   enum:
                     - '0'
                     - '1'
@@ -224,6 +309,7 @@ paths:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 order_details:
                   type: array
                   description: ''
@@ -235,28 +321,39 @@ paths:
                       id:
                         type: string
                         description: ''
-                        example: ut
-                      product_variant_id:
+                        example: numquam
+                        nullable: false
+                      product_hex_id:
                         type: string
-                        description: ''
-                        example: repudiandae
+                        description: 'The <code>id</code> of an existing record in the product_hex table.'
+                        example: asperiores
+                        nullable: false
+                      size_id:
+                        type: string
+                        description: 'The <code>id</code> of an existing record in the product_sizes table.'
+                        example: aliquam
+                        nullable: false
                       price:
                         type: number
                         description: ''
-                        example: 33191819.588423
+                        example: 20.03197353
+                        nullable: false
                       quantity:
                         type: integer
                         description: 'Must be at least 1.'
-                        example: 84
+                        example: 80
+                        nullable: false
                     required:
                       - id
-                      - product_variant_id
+                      - product_hex_id
+                      - size_id
                       - price
                       - quantity
                 total_price:
                   type: number
                   description: ''
-                  example: 1610.986
+                  example: 22679.068
+                  nullable: false
               required:
                 - first_name
                 - last_name
@@ -285,19 +382,23 @@ paths:
                 phone:
                   type: number
                   description: ''
-                  example: 0.763076691
+                  example: 12969.648
+                  nullable: false
                 address:
                   type: string
                   description: ''
-                  example: et
+                  example: esse
+                  nullable: false
                 notes:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 name:
                   type: string
                   description: ''
-                  example: rerum
+                  example: modi
+                  nullable: false
               required:
                 - phone
                 - address
@@ -308,7 +409,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the update.'
-        example: quae
+        example: fugiat
         required: true
         schema:
           type: string
@@ -327,7 +428,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the delete.'
-        example: vero
+        example: voluptate
         required: true
         schema:
           type: string
@@ -349,20 +450,133 @@ paths:
               properties:
                 order_id:
                   type: string
-                  description: ''
-                  example: a
+                  description: 'The <code>code</code> of an existing record in the orders table.'
+                  example: officiis
+                  nullable: false
                 amount:
                   type: integer
                   description: ''
-                  example: 1
+                  example: 8
+                  nullable: false
                 url_return:
                   type: string
                   description: 'Must be a valid URL.'
-                  example: 'https://nikolaus.net/laudantium-corrupti-ea-voluptates-omnis-debitis.html'
+                  example: 'http://eichmann.com/explicabo-aut-rerum-ut-omnis-ut-voluptatem-consectetur'
+                  nullable: false
               required:
                 - order_id
                 - amount
                 - url_return
+      security: []
+  /api/user-id:
+    get:
+      summary: ''
+      operationId: getApiUserId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/send-reset-link:
+    post:
+      summary: ''
+      operationId: postApiSendResetLink
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: orion.halvorson@example.org
+                  nullable: false
+              required:
+                - email
+      security: []
+  /api/reset-password:
+    post:
+      summary: ''
+      operationId: postApiResetPassword
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: edna85@example.net
+                  nullable: false
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters.'
+                  example: J1N_m6
+                  nullable: false
+                token:
+                  type: string
+                  description: ''
+                  example: dolores
+                  nullable: false
+                password_confirmation:
+                  type: string
+                  description: 'Must be at least 6 characters.'
+                  example: tglavfsmzmcycwepfhutxpvvujowhrfyefgwpmkiohnn
+                  nullable: false
+              required:
+                - email
+                - password
+                - token
+                - password_confirmation
       security: []
   /api/category:
     get:
@@ -381,34 +595,52 @@ paths:
                   data:
                     -
                       id: 1
-                      name: Apple
-                      created_at: '2024-10-04T12:17:52.000000Z'
-                      updated_at: '2024-10-04T12:17:52.000000Z'
+                      name: 'SET 1'
+                      created_at: null
+                      updated_at: null
+                      categories:
+                        -
+                          id: 1
+                          name: 'HOA LÁ'
+                          set_id: 1
+                          created_at: null
+                          updated_at: null
+                        -
+                          id: 2
+                          name: 'CÂY CỎ'
+                          set_id: 1
+                          created_at: null
+                          updated_at: null
                     -
                       id: 2
-                      name: XiaoMi
-                      created_at: '2024-10-04T12:18:01.000000Z'
-                      updated_at: '2024-10-04T12:18:01.000000Z'
+                      name: 'SET 2'
+                      created_at: null
+                      updated_at: null
+                      categories:
+                        -
+                          id: 3
+                          name: HALLOWEN
+                          set_id: 2
+                          created_at: null
+                          updated_at: null
+                        -
+                          id: 4
+                          name: NOEL
+                          set_id: 2
+                          created_at: null
+                          updated_at: null
                     -
                       id: 3
-                      name: Huawei
-                      created_at: '2024-10-04T12:18:07.000000Z'
-                      updated_at: '2024-10-04T12:18:07.000000Z'
-                    -
-                      id: 4
-                      name: Nokia
-                      created_at: '2024-10-04T12:18:18.000000Z'
-                      updated_at: '2024-10-04T12:18:18.000000Z'
-                    -
-                      id: 5
-                      name: Samsung
-                      created_at: '2024-10-04T12:18:23.000000Z'
-                      updated_at: '2024-10-04T12:18:23.000000Z'
-                    -
-                      id: 6
-                      name: Pixel
-                      created_at: '2024-10-04T12:18:39.000000Z'
-                      updated_at: '2024-10-04T12:18:39.000000Z'
+                      name: 'SET 3'
+                      created_at: null
+                      updated_at: null
+                      categories:
+                        -
+                          id: 5
+                          name: 'HOA LÁ'
+                          set_id: 3
+                          created_at: null
+                          updated_at: null
                   status: success
                   message: 'Danh sách hãng'
                 properties:
@@ -417,34 +649,52 @@ paths:
                     example:
                       -
                         id: 1
-                        name: Apple
-                        created_at: '2024-10-04T12:17:52.000000Z'
-                        updated_at: '2024-10-04T12:17:52.000000Z'
+                        name: 'SET 1'
+                        created_at: null
+                        updated_at: null
+                        categories:
+                          -
+                            id: 1
+                            name: 'HOA LÁ'
+                            set_id: 1
+                            created_at: null
+                            updated_at: null
+                          -
+                            id: 2
+                            name: 'CÂY CỎ'
+                            set_id: 1
+                            created_at: null
+                            updated_at: null
                       -
                         id: 2
-                        name: XiaoMi
-                        created_at: '2024-10-04T12:18:01.000000Z'
-                        updated_at: '2024-10-04T12:18:01.000000Z'
+                        name: 'SET 2'
+                        created_at: null
+                        updated_at: null
+                        categories:
+                          -
+                            id: 3
+                            name: HALLOWEN
+                            set_id: 2
+                            created_at: null
+                            updated_at: null
+                          -
+                            id: 4
+                            name: NOEL
+                            set_id: 2
+                            created_at: null
+                            updated_at: null
                       -
                         id: 3
-                        name: Huawei
-                        created_at: '2024-10-04T12:18:07.000000Z'
-                        updated_at: '2024-10-04T12:18:07.000000Z'
-                      -
-                        id: 4
-                        name: Nokia
-                        created_at: '2024-10-04T12:18:18.000000Z'
-                        updated_at: '2024-10-04T12:18:18.000000Z'
-                      -
-                        id: 5
-                        name: Samsung
-                        created_at: '2024-10-04T12:18:23.000000Z'
-                        updated_at: '2024-10-04T12:18:23.000000Z'
-                      -
-                        id: 6
-                        name: Pixel
-                        created_at: '2024-10-04T12:18:39.000000Z'
-                        updated_at: '2024-10-04T12:18:39.000000Z'
+                        name: 'SET 3'
+                        created_at: null
+                        updated_at: null
+                        categories:
+                          -
+                            id: 5
+                            name: 'HOA LÁ'
+                            set_id: 3
+                            created_at: null
+                            updated_at: null
                     items:
                       type: object
                       properties:
@@ -453,13 +703,46 @@ paths:
                           example: 1
                         name:
                           type: string
-                          example: Apple
+                          example: 'SET 1'
                         created_at:
                           type: string
-                          example: '2024-10-04T12:17:52.000000Z'
+                          example: null
                         updated_at:
                           type: string
-                          example: '2024-10-04T12:17:52.000000Z'
+                          example: null
+                        categories:
+                          type: array
+                          example:
+                            -
+                              id: 1
+                              name: 'HOA LÁ'
+                              set_id: 1
+                              created_at: null
+                              updated_at: null
+                            -
+                              id: 2
+                              name: 'CÂY CỎ'
+                              set_id: 1
+                              created_at: null
+                              updated_at: null
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              name:
+                                type: string
+                                example: 'HOA LÁ'
+                              set_id:
+                                type: integer
+                                example: 1
+                              created_at:
+                                type: string
+                                example: null
+                              updated_at:
+                                type: string
+                                example: null
                   status:
                     type: string
                     example: success
@@ -485,185 +768,581 @@ paths:
                 example:
                   data:
                     -
-                      id: 2
-                      category_id: 1
-                      category_name: Apple
-                      title: 'iPhone 11 64GB Chính hãng'
-                      description: null
-                      discount: '10.00'
-                      info: null
-                      specifications:
-                        id: 2
-                        product_id: 2
-                        screen_size: '6.1 inches'
-                        screen_type: 'IPS LCD'
-                        screen_resolution: '1792 x 828 pixel'
-                        ram: null
-                        memory_card_slot: null
-                        battery: null
-                        sim: null
-                        camera_front: null
-                        camera_rear: null
-                        operating_system: null
-                        chip: null
-                        pin: null
-                        connectivity: null
-                        bluetooth: null
-                        dimensions: null
-                        weight: null
-                      variants:
+                      id: 1
+                      name: 'Tranh treo tường tráng gương SET1 của REICHTUM - Decor phòng ngủ/ Chất vải canvas/ Độ bền cao'
+                      set_category_id: 2
+                      set_category_name: 'SET 1 CÂY CỎ'
+                      product_hex:
                         -
                           id: 1
-                          product_id: 2
-                          rom_id: 2
-                          color: Trắng
-                          price: '7490000.00'
-                          availability: 0
-                          stock: 0
-                          rom:
-                            id: 2
-                            capacity: '64 GB'
-                          images:
+                          code: R287
+                          sizes:
                             -
-                              id: 1
-                              product_variant_id: 1
-                              image_url: assets/img/products/fM0FKmGS3a_1728045310.webp
+                              size: '40X60 CANVAS'
+                              price: '22540.00'
+                              stock: 5
+                          galleries:
+                            -
+                              image_path: assets/img/products/btbhGacYF1_1735273573.webp
+                            -
+                              image_path: assets/img/products/fzPmcN7ma8_1735273573.webp
+                            -
+                              image_path: assets/img/products/pRLgncKt2K_1735273573.webp
                         -
-                          id: 2
-                          product_id: 2
-                          rom_id: 2
-                          color: Đỏ
-                          price: '7490000.00'
-                          availability: 1
-                          stock: 7
-                          rom:
-                            id: 2
-                            capacity: '64 GB'
-                          images:
+                          id: 3
+                          code: R30
+                          sizes:
                             -
-                              id: 2
-                              product_variant_id: 2
-                              image_url: assets/img/products/tjhjgEcsO0_1728046277.webp
-                        -
-                          id: 7
-                          product_id: 2
-                          rom_id: 2
-                          color: Tím
-                          price: '7490000.00'
-                          availability: 1
-                          stock: 6
-                          rom:
-                            id: 2
-                            capacity: '64 GB'
-                          images:
+                              size: '30X40 TRÁNG GƯƠNG'
+                              price: '540000.00'
+                              stock: 5
+                          galleries:
                             -
-                              id: 7
-                              product_variant_id: 7
-                              image_url: assets/img/products/TTdau3yC2S_1728046798.webp
+                              image_path: assets/img/products/sHPNDvmVRE_1735273588.webp
+                            -
+                              image_path: assets/img/products/DvnBqvdPYI_1735273588.webp
                     -
-                      id: 8
-                      category_id: 1
-                      category_name: Apple
-                      title: 'iPhone 13 128GB'
-                      description: null
-                      discount: '10.00'
-                      info: "<p>M&aacute;y mới 100% , ch&iacute;nh h&atilde;ng Apple Việt Nam.<br />\r\nCellphoneS hiện l&agrave; đại l&yacute; b&aacute;n lẻ uỷ quyền iPhone ch&iacute;nh h&atilde;ng VN/A của Apple Việt Nam</p>\r\n\r\n<p>Hộp, S&aacute;ch hướng dẫn, C&acirc;y lấy sim, C&aacute;p Lightning - Type C</p>\r\n\r\n<p>1 ĐỔI 1 trong 30 ng&agrave;y nếu c&oacute; lỗi phần cứng nh&agrave; sản xuất. Bảo h&agrave;nh 12 th&aacute;ng tại trung t&acirc;m bảo h&agrave;nh ch&iacute;nh h&atilde;ng Apple:</p>"
-                      specifications:
-                        id: 8
-                        product_id: 8
-                        screen_size: null
-                        screen_type: null
-                        screen_resolution: null
-                        ram: null
-                        memory_card_slot: null
-                        battery: null
-                        sim: null
-                        camera_front: null
-                        camera_rear: null
-                        operating_system: null
-                        chip: null
-                        pin: null
-                        connectivity: null
-                        bluetooth: null
-                        dimensions: null
-                        weight: null
-                      variants:
+                      id: 7
+                      name: 'Tranh treo tường canvas cao cấp SET1 của REICHTUM - Phòng khách/ Nhà ngủ/ Decor/ Chất vải canvas'
+                      set_category_id: 5
+                      set_category_name: 'SET 3 HOA LÁ'
+                      product_hex:
+                        -
+                          id: 12
+                          code: R381
+                          sizes:
+                            -
+                              size: '60X80 CANVAS'
+                              price: '1800000.00'
+                              stock: -4
+                          galleries:
+                            -
+                              image_path: assets/img/products/2zZ6PbzlBX_1735207194.webp
+                            -
+                              image_path: assets/img/products/RbQcxj7C7D_1735207194.webp
                         -
                           id: 13
-                          product_id: 8
-                          rom_id: 3
-                          color: Trắng
-                          price: '13790000.00'
-                          availability: 0
-                          stock: 0
-                          rom:
-                            id: 3
-                            capacity: '128 GB'
-                          images:
+                          code: R382
+                          sizes:
                             -
-                              id: 13
-                              product_variant_id: 13
-                              image_url: assets/img/products/ZAIeDakxCr_1728047099.webp
+                              size: '60X80 CANVAS'
+                              price: '500000.00'
+                              stock: -3
+                          galleries:
+                            -
+                              image_path: assets/img/products/sJFCY4Vd8Z_1735207348.webp
+                            -
+                              image_path: assets/img/products/T7QLZmwpZz_1735207348.webp
+                    -
+                      id: 8
+                      name: 'Et sunt nisi.'
+                      set_category_id: 1
+                      set_category_name: 'SET 1 HOA LÁ'
+                      product_hex:
                         -
                           id: 14
-                          product_id: 8
-                          rom_id: 3
-                          color: Đỏ
-                          price: '13790000.00'
-                          availability: 1
-                          stock: 6
-                          rom:
-                            id: 3
-                            capacity: '128 GB'
-                          images:
+                          code: VN1KDS
+                          sizes:
                             -
-                              id: 14
-                              product_variant_id: 14
-                              image_url: assets/img/products/hAy7x5hf9Z_1728047175.webp
+                              size: L
+                              price: '172.54'
+                              stock: 93
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
                     -
-                      id: 9
-                      category_id: 5
-                      category_name: Samsung
-                      title: 'Samsung Galaxy S24 Ultra 12GB 256GB'
-                      description: null
-                      discount: '10.00'
-                      info: null
-                      specifications:
-                        id: 9
-                        product_id: 9
-                        screen_size: null
-                        screen_type: null
-                        screen_resolution: null
-                        ram: null
-                        memory_card_slot: null
-                        battery: null
-                        sim: null
-                        camera_front: null
-                        camera_rear: null
-                        operating_system: null
-                        chip: null
-                        pin: null
-                        connectivity: null
-                        bluetooth: null
-                        dimensions: null
-                        weight: null
-                      variants:
+                      id: 10
+                      name: 'Reprehenderit eum est.'
+                      set_category_id: 1
+                      set_category_name: 'SET 1 HOA LÁ'
+                      product_hex:
                         -
                           id: 15
-                          product_id: 9
-                          rom_id: 4
-                          color: Đen
-                          price: '27990000.00'
-                          availability: 1
-                          stock: 3
-                          rom:
-                            id: 4
-                            capacity: '256 GB'
-                          images:
+                          code: 1U5BTD
+                          sizes:
                             -
-                              id: 15
-                              product_variant_id: 15
-                              image_url: assets/img/products/IxYSeC6SA8_1728047292.webp
+                              size: XL
+                              price: '668.98'
+                              stock: 52
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 11
+                      name: 'Asperiores cupiditate ea in.'
+                      set_category_id: 1
+                      set_category_name: 'SET 1 HOA LÁ'
+                      product_hex:
+                        -
+                          id: 16
+                          code: 6TNMIO
+                          sizes:
+                            -
+                              size: L
+                              price: '195.82'
+                              stock: 23
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 13
+                      name: 'Occaecati asperiores eveniet iure.'
+                      set_category_id: 5
+                      set_category_name: 'SET 3 HOA LÁ'
+                      product_hex:
+                        -
+                          id: 17
+                          code: KVRW62
+                          sizes:
+                            -
+                              size: M
+                              price: '717.89'
+                              stock: 30
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 15
+                      name: 'Ea blanditiis ut hic.'
+                      set_category_id: 4
+                      set_category_name: 'SET 2 NOEL'
+                      product_hex:
+                        -
+                          id: 18
+                          code: P9RMVJ
+                          sizes:
+                            -
+                              size: M
+                              price: '389.91'
+                              stock: 63
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 20
+                      name: 'Itaque deserunt cupiditate distinctio.'
+                      set_category_id: 1
+                      set_category_name: 'SET 1 HOA LÁ'
+                      product_hex:
+                        -
+                          id: 19
+                          code: JUHKOO
+                          sizes:
+                            -
+                              size: M
+                              price: '437.30'
+                              stock: 79
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 22
+                      name: 'Eius quos beatae.'
+                      set_category_id: 3
+                      set_category_name: 'SET 2 HALLOWEN'
+                      product_hex:
+                        -
+                          id: 20
+                          code: U6GFCT
+                          sizes:
+                            -
+                              size: S
+                              price: '354.60'
+                              stock: 55
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 23
+                      name: 'At accusantium eveniet.'
+                      set_category_id: 1
+                      set_category_name: 'SET 1 HOA LÁ'
+                      product_hex:
+                        -
+                          id: 21
+                          code: Y6IPVH
+                          sizes:
+                            -
+                              size: XL
+                              price: '630.95'
+                              stock: 78
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 24
+                      name: 'Facilis asperiores numquam iusto.'
+                      set_category_id: 1
+                      set_category_name: 'SET 1 HOA LÁ'
+                      product_hex:
+                        -
+                          id: 22
+                          code: PR9GDZ
+                          sizes:
+                            -
+                              size: M
+                              price: '384.83'
+                              stock: 52
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 27
+                      name: 'Enim ut facere ratione.'
+                      set_category_id: 1
+                      set_category_name: 'SET 1 HOA LÁ'
+                      product_hex:
+                        -
+                          id: 23
+                          code: H06NGK
+                          sizes:
+                            -
+                              size: S
+                              price: '614.85'
+                              stock: 92
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 28
+                      name: 'Ducimus adipisci minus ipsa.'
+                      set_category_id: 2
+                      set_category_name: 'SET 1 CÂY CỎ'
+                      product_hex:
+                        -
+                          id: 24
+                          code: EVEUVM
+                          sizes:
+                            -
+                              size: '40 X 60'
+                              price: '8148277.03'
+                              stock: 87
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 29
+                      name: 'Cupiditate minima qui.'
+                      set_category_id: 3
+                      set_category_name: 'SET 2 HALLOWEN'
+                      product_hex:
+                        -
+                          id: 25
+                          code: Q3V7BO
+                          sizes:
+                            -
+                              size: '40 X 60'
+                              price: '6664667.03'
+                              stock: 34
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 30
+                      name: 'Totam iure labore sint.'
+                      set_category_id: 2
+                      set_category_name: 'SET 1 CÂY CỎ'
+                      product_hex:
+                        -
+                          id: 26
+                          code: RTSSIU
+                          sizes:
+                            -
+                              size: '30 X 40'
+                              price: '2462592.93'
+                              stock: 73
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 31
+                      name: 'Aliquam iure ut qui repudiandae.'
+                      set_category_id: 3
+                      set_category_name: 'SET 2 HALLOWEN'
+                      product_hex:
+                        -
+                          id: 27
+                          code: DQ0BXU
+                          sizes:
+                            -
+                              size: '60 X 80'
+                              price: '2044729.02'
+                              stock: 76
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 32
+                      name: 'Nostrum neque qui laudantium.'
+                      set_category_id: 3
+                      set_category_name: 'SET 2 HALLOWEN'
+                      product_hex:
+                        -
+                          id: 28
+                          code: UOPKWH
+                          sizes:
+                            -
+                              size: '60 X 80'
+                              price: '531509.78'
+                              stock: 72
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 33
+                      name: 'Quaerat doloribus dicta.'
+                      set_category_id: 2
+                      set_category_name: 'SET 1 CÂY CỎ'
+                      product_hex:
+                        -
+                          id: 29
+                          code: 8WPWSO
+                          sizes:
+                            -
+                              size: '40 X 60'
+                              price: '3881939.46'
+                              stock: 41
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 34
+                      name: 'Deleniti corrupti atque consequuntur.'
+                      set_category_id: 1
+                      set_category_name: 'SET 1 HOA LÁ'
+                      product_hex:
+                        -
+                          id: 30
+                          code: KTC7OZ
+                          sizes:
+                            -
+                              size: '60 X 80'
+                              price: '6427627.19'
+                              stock: 56
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 35
+                      name: 'Soluta nulla et.'
+                      set_category_id: 2
+                      set_category_name: 'SET 1 CÂY CỎ'
+                      product_hex:
+                        -
+                          id: 31
+                          code: FPBI2S
+                          sizes:
+                            -
+                              size: '40 X 60'
+                              price: '2068554.51'
+                              stock: 10
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 36
+                      name: 'Consequatur quam odio ea.'
+                      set_category_id: 4
+                      set_category_name: 'SET 2 NOEL'
+                      product_hex:
+                        -
+                          id: 32
+                          code: JUYFLS
+                          sizes:
+                            -
+                              size: '30 X 40'
+                              price: '7297432.95'
+                              stock: 90
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 37
+                      name: 'Et ea aut modi.'
+                      set_category_id: 5
+                      set_category_name: 'SET 3 HOA LÁ'
+                      product_hex:
+                        -
+                          id: 33
+                          code: 2ZWBS5
+                          sizes:
+                            -
+                              size: '20 x 30'
+                              price: '2096592.74'
+                              stock: 77
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 38
+                      name: 'Sed quia culpa consequatur eos.'
+                      set_category_id: 4
+                      set_category_name: 'SET 2 NOEL'
+                      product_hex:
+                        -
+                          id: 34
+                          code: KLUAED
+                          sizes:
+                            -
+                              size: '40 X 60'
+                              price: '8180436.58'
+                              stock: 28
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 39
+                      name: 'Pariatur itaque quod.'
+                      set_category_id: 2
+                      set_category_name: 'SET 1 CÂY CỎ'
+                      product_hex:
+                        -
+                          id: 35
+                          code: 7F5ETR
+                          sizes:
+                            -
+                              size: '60 X 80'
+                              price: '3688672.20'
+                              stock: 83
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 40
+                      name: 'Voluptatum commodi repudiandae.'
+                      set_category_id: 4
+                      set_category_name: 'SET 2 NOEL'
+                      product_hex:
+                        -
+                          id: 36
+                          code: NGD7FI
+                          sizes:
+                            -
+                              size: '40 X 60'
+                              price: '7841217.52'
+                              stock: 93
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 41
+                      name: 'Asperiores optio sit.'
+                      set_category_id: 3
+                      set_category_name: 'SET 2 HALLOWEN'
+                      product_hex:
+                        -
+                          id: 37
+                          code: LTGANF
+                          sizes:
+                            -
+                              size: '40 X 60'
+                              price: '4887630.05'
+                              stock: 20
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 42
+                      name: 'Qui fugiat non quibusdam.'
+                      set_category_id: 4
+                      set_category_name: 'SET 2 NOEL'
+                      product_hex:
+                        -
+                          id: 38
+                          code: MKWPGF
+                          sizes:
+                            -
+                              size: '20 x 30'
+                              price: '5691719.49'
+                              stock: 56
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 43
+                      name: 'Cum quibusdam voluptas.'
+                      set_category_id: 2
+                      set_category_name: 'SET 1 CÂY CỎ'
+                      product_hex:
+                        -
+                          id: 39
+                          code: PRJAUE
+                          sizes:
+                            -
+                              size: '20 x 30'
+                              price: '3619395.44'
+                              stock: 37
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 44
+                      name: 'Rem sequi nesciunt iste.'
+                      set_category_id: 3
+                      set_category_name: 'SET 2 HALLOWEN'
+                      product_hex:
+                        -
+                          id: 40
+                          code: YQAVRO
+                          sizes:
+                            -
+                              size: '60 X 80'
+                              price: '4366933.08'
+                              stock: 24
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 45
+                      name: 'Voluptas quae eos vel.'
+                      set_category_id: 1
+                      set_category_name: 'SET 1 HOA LÁ'
+                      product_hex:
+                        -
+                          id: 41
+                          code: NP3MFU
+                          sizes:
+                            -
+                              size: '60 X 80'
+                              price: '2043451.23'
+                              stock: 79
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 46
+                      name: 'Quibusdam nesciunt.'
+                      set_category_id: 2
+                      set_category_name: 'SET 1 CÂY CỎ'
+                      product_hex:
+                        -
+                          id: 42
+                          code: N29BJW
+                          sizes:
+                            -
+                              size: '20 x 30'
+                              price: '376619.54'
+                              stock: 29
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
+                    -
+                      id: 47
+                      name: 'Neque consequatur quia in.'
+                      set_category_id: 3
+                      set_category_name: 'SET 2 HALLOWEN'
+                      product_hex:
+                        -
+                          id: 43
+                          code: WBYRGZ
+                          sizes:
+                            -
+                              size: '40 X 60'
+                              price: '7590687.37'
+                              stock: 82
+                          galleries:
+                            -
+                              image_path: assets/img/products/template_img.jpg
                   status: success
                   message: 'Danh sách sản phẩm'
                 properties:
@@ -671,369 +1350,670 @@ paths:
                     type: array
                     example:
                       -
-                        id: 2
-                        category_id: 1
-                        category_name: Apple
-                        title: 'iPhone 11 64GB Chính hãng'
-                        description: null
-                        discount: '10.00'
-                        info: null
-                        specifications:
-                          id: 2
-                          product_id: 2
-                          screen_size: '6.1 inches'
-                          screen_type: 'IPS LCD'
-                          screen_resolution: '1792 x 828 pixel'
-                          ram: null
-                          memory_card_slot: null
-                          battery: null
-                          sim: null
-                          camera_front: null
-                          camera_rear: null
-                          operating_system: null
-                          chip: null
-                          pin: null
-                          connectivity: null
-                          bluetooth: null
-                          dimensions: null
-                          weight: null
-                        variants:
+                        id: 1
+                        name: 'Tranh treo tường tráng gương SET1 của REICHTUM - Decor phòng ngủ/ Chất vải canvas/ Độ bền cao'
+                        set_category_id: 2
+                        set_category_name: 'SET 1 CÂY CỎ'
+                        product_hex:
                           -
                             id: 1
-                            product_id: 2
-                            rom_id: 2
-                            color: Trắng
-                            price: '7490000.00'
-                            availability: 0
-                            stock: 0
-                            rom:
-                              id: 2
-                              capacity: '64 GB'
-                            images:
+                            code: R287
+                            sizes:
                               -
-                                id: 1
-                                product_variant_id: 1
-                                image_url: assets/img/products/fM0FKmGS3a_1728045310.webp
+                                size: '40X60 CANVAS'
+                                price: '22540.00'
+                                stock: 5
+                            galleries:
+                              -
+                                image_path: assets/img/products/btbhGacYF1_1735273573.webp
+                              -
+                                image_path: assets/img/products/fzPmcN7ma8_1735273573.webp
+                              -
+                                image_path: assets/img/products/pRLgncKt2K_1735273573.webp
                           -
-                            id: 2
-                            product_id: 2
-                            rom_id: 2
-                            color: Đỏ
-                            price: '7490000.00'
-                            availability: 1
-                            stock: 7
-                            rom:
-                              id: 2
-                              capacity: '64 GB'
-                            images:
+                            id: 3
+                            code: R30
+                            sizes:
                               -
-                                id: 2
-                                product_variant_id: 2
-                                image_url: assets/img/products/tjhjgEcsO0_1728046277.webp
-                          -
-                            id: 7
-                            product_id: 2
-                            rom_id: 2
-                            color: Tím
-                            price: '7490000.00'
-                            availability: 1
-                            stock: 6
-                            rom:
-                              id: 2
-                              capacity: '64 GB'
-                            images:
+                                size: '30X40 TRÁNG GƯƠNG'
+                                price: '540000.00'
+                                stock: 5
+                            galleries:
                               -
-                                id: 7
-                                product_variant_id: 7
-                                image_url: assets/img/products/TTdau3yC2S_1728046798.webp
+                                image_path: assets/img/products/sHPNDvmVRE_1735273588.webp
+                              -
+                                image_path: assets/img/products/DvnBqvdPYI_1735273588.webp
                       -
-                        id: 8
-                        category_id: 1
-                        category_name: Apple
-                        title: 'iPhone 13 128GB'
-                        description: null
-                        discount: '10.00'
-                        info: "<p>M&aacute;y mới 100% , ch&iacute;nh h&atilde;ng Apple Việt Nam.<br />\r\nCellphoneS hiện l&agrave; đại l&yacute; b&aacute;n lẻ uỷ quyền iPhone ch&iacute;nh h&atilde;ng VN/A của Apple Việt Nam</p>\r\n\r\n<p>Hộp, S&aacute;ch hướng dẫn, C&acirc;y lấy sim, C&aacute;p Lightning - Type C</p>\r\n\r\n<p>1 ĐỔI 1 trong 30 ng&agrave;y nếu c&oacute; lỗi phần cứng nh&agrave; sản xuất. Bảo h&agrave;nh 12 th&aacute;ng tại trung t&acirc;m bảo h&agrave;nh ch&iacute;nh h&atilde;ng Apple:</p>"
-                        specifications:
-                          id: 8
-                          product_id: 8
-                          screen_size: null
-                          screen_type: null
-                          screen_resolution: null
-                          ram: null
-                          memory_card_slot: null
-                          battery: null
-                          sim: null
-                          camera_front: null
-                          camera_rear: null
-                          operating_system: null
-                          chip: null
-                          pin: null
-                          connectivity: null
-                          bluetooth: null
-                          dimensions: null
-                          weight: null
-                        variants:
+                        id: 7
+                        name: 'Tranh treo tường canvas cao cấp SET1 của REICHTUM - Phòng khách/ Nhà ngủ/ Decor/ Chất vải canvas'
+                        set_category_id: 5
+                        set_category_name: 'SET 3 HOA LÁ'
+                        product_hex:
+                          -
+                            id: 12
+                            code: R381
+                            sizes:
+                              -
+                                size: '60X80 CANVAS'
+                                price: '1800000.00'
+                                stock: -4
+                            galleries:
+                              -
+                                image_path: assets/img/products/2zZ6PbzlBX_1735207194.webp
+                              -
+                                image_path: assets/img/products/RbQcxj7C7D_1735207194.webp
                           -
                             id: 13
-                            product_id: 8
-                            rom_id: 3
-                            color: Trắng
-                            price: '13790000.00'
-                            availability: 0
-                            stock: 0
-                            rom:
-                              id: 3
-                              capacity: '128 GB'
-                            images:
+                            code: R382
+                            sizes:
                               -
-                                id: 13
-                                product_variant_id: 13
-                                image_url: assets/img/products/ZAIeDakxCr_1728047099.webp
+                                size: '60X80 CANVAS'
+                                price: '500000.00'
+                                stock: -3
+                            galleries:
+                              -
+                                image_path: assets/img/products/sJFCY4Vd8Z_1735207348.webp
+                              -
+                                image_path: assets/img/products/T7QLZmwpZz_1735207348.webp
+                      -
+                        id: 8
+                        name: 'Et sunt nisi.'
+                        set_category_id: 1
+                        set_category_name: 'SET 1 HOA LÁ'
+                        product_hex:
                           -
                             id: 14
-                            product_id: 8
-                            rom_id: 3
-                            color: Đỏ
-                            price: '13790000.00'
-                            availability: 1
-                            stock: 6
-                            rom:
-                              id: 3
-                              capacity: '128 GB'
-                            images:
+                            code: VN1KDS
+                            sizes:
                               -
-                                id: 14
-                                product_variant_id: 14
-                                image_url: assets/img/products/hAy7x5hf9Z_1728047175.webp
+                                size: L
+                                price: '172.54'
+                                stock: 93
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
                       -
-                        id: 9
-                        category_id: 5
-                        category_name: Samsung
-                        title: 'Samsung Galaxy S24 Ultra 12GB 256GB'
-                        description: null
-                        discount: '10.00'
-                        info: null
-                        specifications:
-                          id: 9
-                          product_id: 9
-                          screen_size: null
-                          screen_type: null
-                          screen_resolution: null
-                          ram: null
-                          memory_card_slot: null
-                          battery: null
-                          sim: null
-                          camera_front: null
-                          camera_rear: null
-                          operating_system: null
-                          chip: null
-                          pin: null
-                          connectivity: null
-                          bluetooth: null
-                          dimensions: null
-                          weight: null
-                        variants:
+                        id: 10
+                        name: 'Reprehenderit eum est.'
+                        set_category_id: 1
+                        set_category_name: 'SET 1 HOA LÁ'
+                        product_hex:
                           -
                             id: 15
-                            product_id: 9
-                            rom_id: 4
-                            color: Đen
-                            price: '27990000.00'
-                            availability: 1
-                            stock: 3
-                            rom:
-                              id: 4
-                              capacity: '256 GB'
-                            images:
+                            code: 1U5BTD
+                            sizes:
                               -
-                                id: 15
-                                product_variant_id: 15
-                                image_url: assets/img/products/IxYSeC6SA8_1728047292.webp
+                                size: XL
+                                price: '668.98'
+                                stock: 52
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 11
+                        name: 'Asperiores cupiditate ea in.'
+                        set_category_id: 1
+                        set_category_name: 'SET 1 HOA LÁ'
+                        product_hex:
+                          -
+                            id: 16
+                            code: 6TNMIO
+                            sizes:
+                              -
+                                size: L
+                                price: '195.82'
+                                stock: 23
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 13
+                        name: 'Occaecati asperiores eveniet iure.'
+                        set_category_id: 5
+                        set_category_name: 'SET 3 HOA LÁ'
+                        product_hex:
+                          -
+                            id: 17
+                            code: KVRW62
+                            sizes:
+                              -
+                                size: M
+                                price: '717.89'
+                                stock: 30
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 15
+                        name: 'Ea blanditiis ut hic.'
+                        set_category_id: 4
+                        set_category_name: 'SET 2 NOEL'
+                        product_hex:
+                          -
+                            id: 18
+                            code: P9RMVJ
+                            sizes:
+                              -
+                                size: M
+                                price: '389.91'
+                                stock: 63
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 20
+                        name: 'Itaque deserunt cupiditate distinctio.'
+                        set_category_id: 1
+                        set_category_name: 'SET 1 HOA LÁ'
+                        product_hex:
+                          -
+                            id: 19
+                            code: JUHKOO
+                            sizes:
+                              -
+                                size: M
+                                price: '437.30'
+                                stock: 79
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 22
+                        name: 'Eius quos beatae.'
+                        set_category_id: 3
+                        set_category_name: 'SET 2 HALLOWEN'
+                        product_hex:
+                          -
+                            id: 20
+                            code: U6GFCT
+                            sizes:
+                              -
+                                size: S
+                                price: '354.60'
+                                stock: 55
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 23
+                        name: 'At accusantium eveniet.'
+                        set_category_id: 1
+                        set_category_name: 'SET 1 HOA LÁ'
+                        product_hex:
+                          -
+                            id: 21
+                            code: Y6IPVH
+                            sizes:
+                              -
+                                size: XL
+                                price: '630.95'
+                                stock: 78
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 24
+                        name: 'Facilis asperiores numquam iusto.'
+                        set_category_id: 1
+                        set_category_name: 'SET 1 HOA LÁ'
+                        product_hex:
+                          -
+                            id: 22
+                            code: PR9GDZ
+                            sizes:
+                              -
+                                size: M
+                                price: '384.83'
+                                stock: 52
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 27
+                        name: 'Enim ut facere ratione.'
+                        set_category_id: 1
+                        set_category_name: 'SET 1 HOA LÁ'
+                        product_hex:
+                          -
+                            id: 23
+                            code: H06NGK
+                            sizes:
+                              -
+                                size: S
+                                price: '614.85'
+                                stock: 92
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 28
+                        name: 'Ducimus adipisci minus ipsa.'
+                        set_category_id: 2
+                        set_category_name: 'SET 1 CÂY CỎ'
+                        product_hex:
+                          -
+                            id: 24
+                            code: EVEUVM
+                            sizes:
+                              -
+                                size: '40 X 60'
+                                price: '8148277.03'
+                                stock: 87
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 29
+                        name: 'Cupiditate minima qui.'
+                        set_category_id: 3
+                        set_category_name: 'SET 2 HALLOWEN'
+                        product_hex:
+                          -
+                            id: 25
+                            code: Q3V7BO
+                            sizes:
+                              -
+                                size: '40 X 60'
+                                price: '6664667.03'
+                                stock: 34
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 30
+                        name: 'Totam iure labore sint.'
+                        set_category_id: 2
+                        set_category_name: 'SET 1 CÂY CỎ'
+                        product_hex:
+                          -
+                            id: 26
+                            code: RTSSIU
+                            sizes:
+                              -
+                                size: '30 X 40'
+                                price: '2462592.93'
+                                stock: 73
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 31
+                        name: 'Aliquam iure ut qui repudiandae.'
+                        set_category_id: 3
+                        set_category_name: 'SET 2 HALLOWEN'
+                        product_hex:
+                          -
+                            id: 27
+                            code: DQ0BXU
+                            sizes:
+                              -
+                                size: '60 X 80'
+                                price: '2044729.02'
+                                stock: 76
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 32
+                        name: 'Nostrum neque qui laudantium.'
+                        set_category_id: 3
+                        set_category_name: 'SET 2 HALLOWEN'
+                        product_hex:
+                          -
+                            id: 28
+                            code: UOPKWH
+                            sizes:
+                              -
+                                size: '60 X 80'
+                                price: '531509.78'
+                                stock: 72
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 33
+                        name: 'Quaerat doloribus dicta.'
+                        set_category_id: 2
+                        set_category_name: 'SET 1 CÂY CỎ'
+                        product_hex:
+                          -
+                            id: 29
+                            code: 8WPWSO
+                            sizes:
+                              -
+                                size: '40 X 60'
+                                price: '3881939.46'
+                                stock: 41
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 34
+                        name: 'Deleniti corrupti atque consequuntur.'
+                        set_category_id: 1
+                        set_category_name: 'SET 1 HOA LÁ'
+                        product_hex:
+                          -
+                            id: 30
+                            code: KTC7OZ
+                            sizes:
+                              -
+                                size: '60 X 80'
+                                price: '6427627.19'
+                                stock: 56
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 35
+                        name: 'Soluta nulla et.'
+                        set_category_id: 2
+                        set_category_name: 'SET 1 CÂY CỎ'
+                        product_hex:
+                          -
+                            id: 31
+                            code: FPBI2S
+                            sizes:
+                              -
+                                size: '40 X 60'
+                                price: '2068554.51'
+                                stock: 10
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 36
+                        name: 'Consequatur quam odio ea.'
+                        set_category_id: 4
+                        set_category_name: 'SET 2 NOEL'
+                        product_hex:
+                          -
+                            id: 32
+                            code: JUYFLS
+                            sizes:
+                              -
+                                size: '30 X 40'
+                                price: '7297432.95'
+                                stock: 90
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 37
+                        name: 'Et ea aut modi.'
+                        set_category_id: 5
+                        set_category_name: 'SET 3 HOA LÁ'
+                        product_hex:
+                          -
+                            id: 33
+                            code: 2ZWBS5
+                            sizes:
+                              -
+                                size: '20 x 30'
+                                price: '2096592.74'
+                                stock: 77
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 38
+                        name: 'Sed quia culpa consequatur eos.'
+                        set_category_id: 4
+                        set_category_name: 'SET 2 NOEL'
+                        product_hex:
+                          -
+                            id: 34
+                            code: KLUAED
+                            sizes:
+                              -
+                                size: '40 X 60'
+                                price: '8180436.58'
+                                stock: 28
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 39
+                        name: 'Pariatur itaque quod.'
+                        set_category_id: 2
+                        set_category_name: 'SET 1 CÂY CỎ'
+                        product_hex:
+                          -
+                            id: 35
+                            code: 7F5ETR
+                            sizes:
+                              -
+                                size: '60 X 80'
+                                price: '3688672.20'
+                                stock: 83
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 40
+                        name: 'Voluptatum commodi repudiandae.'
+                        set_category_id: 4
+                        set_category_name: 'SET 2 NOEL'
+                        product_hex:
+                          -
+                            id: 36
+                            code: NGD7FI
+                            sizes:
+                              -
+                                size: '40 X 60'
+                                price: '7841217.52'
+                                stock: 93
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 41
+                        name: 'Asperiores optio sit.'
+                        set_category_id: 3
+                        set_category_name: 'SET 2 HALLOWEN'
+                        product_hex:
+                          -
+                            id: 37
+                            code: LTGANF
+                            sizes:
+                              -
+                                size: '40 X 60'
+                                price: '4887630.05'
+                                stock: 20
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 42
+                        name: 'Qui fugiat non quibusdam.'
+                        set_category_id: 4
+                        set_category_name: 'SET 2 NOEL'
+                        product_hex:
+                          -
+                            id: 38
+                            code: MKWPGF
+                            sizes:
+                              -
+                                size: '20 x 30'
+                                price: '5691719.49'
+                                stock: 56
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 43
+                        name: 'Cum quibusdam voluptas.'
+                        set_category_id: 2
+                        set_category_name: 'SET 1 CÂY CỎ'
+                        product_hex:
+                          -
+                            id: 39
+                            code: PRJAUE
+                            sizes:
+                              -
+                                size: '20 x 30'
+                                price: '3619395.44'
+                                stock: 37
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 44
+                        name: 'Rem sequi nesciunt iste.'
+                        set_category_id: 3
+                        set_category_name: 'SET 2 HALLOWEN'
+                        product_hex:
+                          -
+                            id: 40
+                            code: YQAVRO
+                            sizes:
+                              -
+                                size: '60 X 80'
+                                price: '4366933.08'
+                                stock: 24
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 45
+                        name: 'Voluptas quae eos vel.'
+                        set_category_id: 1
+                        set_category_name: 'SET 1 HOA LÁ'
+                        product_hex:
+                          -
+                            id: 41
+                            code: NP3MFU
+                            sizes:
+                              -
+                                size: '60 X 80'
+                                price: '2043451.23'
+                                stock: 79
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 46
+                        name: 'Quibusdam nesciunt.'
+                        set_category_id: 2
+                        set_category_name: 'SET 1 CÂY CỎ'
+                        product_hex:
+                          -
+                            id: 42
+                            code: N29BJW
+                            sizes:
+                              -
+                                size: '20 x 30'
+                                price: '376619.54'
+                                stock: 29
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
+                      -
+                        id: 47
+                        name: 'Neque consequatur quia in.'
+                        set_category_id: 3
+                        set_category_name: 'SET 2 HALLOWEN'
+                        product_hex:
+                          -
+                            id: 43
+                            code: WBYRGZ
+                            sizes:
+                              -
+                                size: '40 X 60'
+                                price: '7590687.37'
+                                stock: 82
+                            galleries:
+                              -
+                                image_path: assets/img/products/template_img.jpg
                     items:
                       type: object
                       properties:
                         id:
                           type: integer
-                          example: 2
-                        category_id:
-                          type: integer
                           example: 1
-                        category_name:
+                        name:
                           type: string
-                          example: Apple
-                        title:
+                          example: 'Tranh treo tường tráng gương SET1 của REICHTUM - Decor phòng ngủ/ Chất vải canvas/ Độ bền cao'
+                        set_category_id:
+                          type: integer
+                          example: 2
+                        set_category_name:
                           type: string
-                          example: 'iPhone 11 64GB Chính hãng'
-                        description:
-                          type: string
-                          example: null
-                        discount:
-                          type: string
-                          example: '10.00'
-                        info:
-                          type: string
-                          example: null
-                        specifications:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                              example: 2
-                            product_id:
-                              type: integer
-                              example: 2
-                            screen_size:
-                              type: string
-                              example: '6.1 inches'
-                            screen_type:
-                              type: string
-                              example: 'IPS LCD'
-                            screen_resolution:
-                              type: string
-                              example: '1792 x 828 pixel'
-                            ram:
-                              type: string
-                              example: null
-                            memory_card_slot:
-                              type: string
-                              example: null
-                            battery:
-                              type: string
-                              example: null
-                            sim:
-                              type: string
-                              example: null
-                            camera_front:
-                              type: string
-                              example: null
-                            camera_rear:
-                              type: string
-                              example: null
-                            operating_system:
-                              type: string
-                              example: null
-                            chip:
-                              type: string
-                              example: null
-                            pin:
-                              type: string
-                              example: null
-                            connectivity:
-                              type: string
-                              example: null
-                            bluetooth:
-                              type: string
-                              example: null
-                            dimensions:
-                              type: string
-                              example: null
-                            weight:
-                              type: string
-                              example: null
-                        variants:
+                          example: 'SET 1 CÂY CỎ'
+                        product_hex:
                           type: array
                           example:
                             -
                               id: 1
-                              product_id: 2
-                              rom_id: 2
-                              color: Trắng
-                              price: '7490000.00'
-                              availability: 0
-                              stock: 0
-                              rom:
-                                id: 2
-                                capacity: '64 GB'
-                              images:
+                              code: R287
+                              sizes:
                                 -
-                                  id: 1
-                                  product_variant_id: 1
-                                  image_url: assets/img/products/fM0FKmGS3a_1728045310.webp
+                                  size: '40X60 CANVAS'
+                                  price: '22540.00'
+                                  stock: 5
+                              galleries:
+                                -
+                                  image_path: assets/img/products/btbhGacYF1_1735273573.webp
+                                -
+                                  image_path: assets/img/products/fzPmcN7ma8_1735273573.webp
+                                -
+                                  image_path: assets/img/products/pRLgncKt2K_1735273573.webp
                             -
-                              id: 2
-                              product_id: 2
-                              rom_id: 2
-                              color: Đỏ
-                              price: '7490000.00'
-                              availability: 1
-                              stock: 7
-                              rom:
-                                id: 2
-                                capacity: '64 GB'
-                              images:
+                              id: 3
+                              code: R30
+                              sizes:
                                 -
-                                  id: 2
-                                  product_variant_id: 2
-                                  image_url: assets/img/products/tjhjgEcsO0_1728046277.webp
-                            -
-                              id: 7
-                              product_id: 2
-                              rom_id: 2
-                              color: Tím
-                              price: '7490000.00'
-                              availability: 1
-                              stock: 6
-                              rom:
-                                id: 2
-                                capacity: '64 GB'
-                              images:
+                                  size: '30X40 TRÁNG GƯƠNG'
+                                  price: '540000.00'
+                                  stock: 5
+                              galleries:
                                 -
-                                  id: 7
-                                  product_variant_id: 7
-                                  image_url: assets/img/products/TTdau3yC2S_1728046798.webp
+                                  image_path: assets/img/products/sHPNDvmVRE_1735273588.webp
+                                -
+                                  image_path: assets/img/products/DvnBqvdPYI_1735273588.webp
                           items:
                             type: object
                             properties:
                               id:
                                 type: integer
                                 example: 1
-                              product_id:
-                                type: integer
-                                example: 2
-                              rom_id:
-                                type: integer
-                                example: 2
-                              color:
+                              code:
                                 type: string
-                                example: Trắng
-                              price:
-                                type: string
-                                example: '7490000.00'
-                              availability:
-                                type: integer
-                                example: 0
-                              stock:
-                                type: integer
-                                example: 0
-                              rom:
-                                type: object
-                                properties:
-                                  id:
-                                    type: integer
-                                    example: 2
-                                  capacity:
-                                    type: string
-                                    example: '64 GB'
-                              images:
+                                example: R287
+                              sizes:
                                 type: array
                                 example:
                                   -
-                                    id: 1
-                                    product_variant_id: 1
-                                    image_url: assets/img/products/fM0FKmGS3a_1728045310.webp
+                                    size: '40X60 CANVAS'
+                                    price: '22540.00'
+                                    stock: 5
                                 items:
                                   type: object
                                   properties:
-                                    id:
-                                      type: integer
-                                      example: 1
-                                    product_variant_id:
-                                      type: integer
-                                      example: 1
-                                    image_url:
+                                    size:
                                       type: string
-                                      example: assets/img/products/fM0FKmGS3a_1728045310.webp
+                                      example: '40X60 CANVAS'
+                                    price:
+                                      type: string
+                                      example: '22540.00'
+                                    stock:
+                                      type: integer
+                                      example: 5
+                              galleries:
+                                type: array
+                                example:
+                                  -
+                                    image_path: assets/img/products/btbhGacYF1_1735273573.webp
+                                  -
+                                    image_path: assets/img/products/fzPmcN7ma8_1735273573.webp
+                                  -
+                                    image_path: assets/img/products/pRLgncKt2K_1735273573.webp
+                                items:
+                                  type: object
+                                  properties:
+                                    image_path:
+                                      type: string
+                                      example: assets/img/products/btbhGacYF1_1735273573.webp
                   status:
                     type: string
                     example: success
@@ -1070,7 +2050,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the product detail.'
-        example: minus
+        example: molestiae
         required: true
         schema:
           type: string
@@ -1081,131 +2061,18 @@ paths:
       description: "Phương thức này nhận yêu cầu và chuyển nó đến `ProductService` để lấy danh sách\nđánh giá sản phẩm từ cơ sở dữ liệu."
       parameters: []
       responses:
-        200:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  data:
-                    -
-                      id: 1
-                      product_id: 2
-                      user_id: 4
-                      rating: 5
-                      comment: 'Sản phẩm rất tuyệt vời, mình rất hài lòng!'
-                      created_at: '2024-10-11T08:39:03.000000Z'
-                      updated_at: '2024-10-11T08:39:03.000000Z'
-                      product:
-                        id: 2
-                        title: 'iPhone 11 64GB Chính hãng'
-                      user:
-                        id: 4
-                        name: Sep21th03
-                        avt_url: 'https://ui-avatars.com/api/?name=Admin&background=random'
-                    -
-                      id: 2
-                      product_id: 2
-                      user_id: 4
-                      rating: 5
-                      comment: 'Sản phẩm rất tuyệt vời, mình rất hài lòng!'
-                      created_at: '2024-10-11T08:49:20.000000Z'
-                      updated_at: '2024-10-11T08:49:20.000000Z'
-                      product:
-                        id: 2
-                        title: 'iPhone 11 64GB Chính hãng'
-                      user:
-                        id: 4
-                        name: Sep21th03
-                        avt_url: 'https://ui-avatars.com/api/?name=Admin&background=random'
-                  status: success
-                  message: 'Lấy đánh giá thành công!'
+                  message: 'Server Error'
                 properties:
-                  data:
-                    type: array
-                    example:
-                      -
-                        id: 1
-                        product_id: 2
-                        user_id: 4
-                        rating: 5
-                        comment: 'Sản phẩm rất tuyệt vời, mình rất hài lòng!'
-                        created_at: '2024-10-11T08:39:03.000000Z'
-                        updated_at: '2024-10-11T08:39:03.000000Z'
-                        product:
-                          id: 2
-                          title: 'iPhone 11 64GB Chính hãng'
-                        user:
-                          id: 4
-                          name: Sep21th03
-                          avt_url: 'https://ui-avatars.com/api/?name=Admin&background=random'
-                      -
-                        id: 2
-                        product_id: 2
-                        user_id: 4
-                        rating: 5
-                        comment: 'Sản phẩm rất tuyệt vời, mình rất hài lòng!'
-                        created_at: '2024-10-11T08:49:20.000000Z'
-                        updated_at: '2024-10-11T08:49:20.000000Z'
-                        product:
-                          id: 2
-                          title: 'iPhone 11 64GB Chính hãng'
-                        user:
-                          id: 4
-                          name: Sep21th03
-                          avt_url: 'https://ui-avatars.com/api/?name=Admin&background=random'
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                          example: 1
-                        product_id:
-                          type: integer
-                          example: 2
-                        user_id:
-                          type: integer
-                          example: 4
-                        rating:
-                          type: integer
-                          example: 5
-                        comment:
-                          type: string
-                          example: 'Sản phẩm rất tuyệt vời, mình rất hài lòng!'
-                        created_at:
-                          type: string
-                          example: '2024-10-11T08:39:03.000000Z'
-                        updated_at:
-                          type: string
-                          example: '2024-10-11T08:39:03.000000Z'
-                        product:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                              example: 2
-                            title:
-                              type: string
-                              example: 'iPhone 11 64GB Chính hãng'
-                        user:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                              example: 4
-                            name:
-                              type: string
-                              example: Sep21th03
-                            avt_url:
-                              type: string
-                              example: 'https://ui-avatars.com/api/?name=Admin&background=random'
-                  status:
-                    type: string
-                    example: success
                   message:
                     type: string
-                    example: 'Lấy đánh giá thành công!'
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -1244,7 +2111,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the review.'
-        example: maxime
+        example: accusamus
         required: true
         schema:
           type: string
@@ -1264,121 +2131,20 @@ paths:
                 example:
                   data:
                     -
-                      id: 2
-                      product_id: 2
-                      user_id: 4
-                      rating: 5
-                      comment: 'Sản phẩm rất tuyệt vời, mình rất hài lòng!'
-                      created_at: '2024-10-11T08:49:20.000000Z'
-                      updated_at: '2024-10-11T08:49:20.000000Z'
-                      product:
-                        id: 2
-                        title: 'iPhone 11 64GB Chính hãng'
-                        variants:
-                          -
-                            id: 1
-                            product_id: 2
-                            rom_id: 2
-                            color: Trắng
-                            color_code: '#FAF9F2'
-                            stock: 0
-                            availability: 0
-                            price: '7490000.00'
-                            created_at: null
-                            updated_at: null
-                            images:
-                              -
-                                id: 1
-                                product_variant_id: 1
-                                image_url: assets/img/products/fM0FKmGS3a_1728045310.webp
-                                created_at: null
-                                updated_at: null
-                          -
-                            id: 2
-                            product_id: 2
-                            rom_id: 2
-                            color: Đỏ
-                            color_code: '#b4052a'
-                            stock: 7
-                            availability: 1
-                            price: '7490000.00'
-                            created_at: null
-                            updated_at: null
-                            images: []
-                          -
-                            id: 7
-                            product_id: 2
-                            rom_id: 2
-                            color: Tím
-                            color_code: '#000000'
-                            stock: 6
-                            availability: 1
-                            price: '7490000.00'
-                            created_at: null
-                            updated_at: null
-                            images: []
-                      user:
-                        id: 4
-                        name: Sep21th03
-                        avt_url: 'https://ui-avatars.com/api/?name=Admin&background=random'
-                    -
                       id: 1
-                      product_id: 2
-                      user_id: 4
+                      product_id: 1
+                      user_id: 1
                       rating: 5
-                      comment: 'Sản phẩm rất tuyệt vời, mình rất hài lòng!'
-                      created_at: '2024-10-11T08:39:03.000000Z'
-                      updated_at: '2024-10-11T08:39:03.000000Z'
+                      comment: aaaaaa
+                      created_at: '2024-12-19 17:11:57'
+                      updated_at: null
                       product:
-                        id: 2
-                        title: 'iPhone 11 64GB Chính hãng'
-                        variants:
-                          -
-                            id: 1
-                            product_id: 2
-                            rom_id: 2
-                            color: Trắng
-                            color_code: '#FAF9F2'
-                            stock: 0
-                            availability: 0
-                            price: '7490000.00'
-                            created_at: null
-                            updated_at: null
-                            images:
-                              -
-                                id: 1
-                                product_variant_id: 1
-                                image_url: assets/img/products/fM0FKmGS3a_1728045310.webp
-                                created_at: null
-                                updated_at: null
-                          -
-                            id: 2
-                            product_id: 2
-                            rom_id: 2
-                            color: Đỏ
-                            color_code: '#b4052a'
-                            stock: 7
-                            availability: 1
-                            price: '7490000.00'
-                            created_at: null
-                            updated_at: null
-                            images: []
-                          -
-                            id: 7
-                            product_id: 2
-                            rom_id: 2
-                            color: Tím
-                            color_code: '#000000'
-                            stock: 6
-                            availability: 1
-                            price: '7490000.00'
-                            created_at: null
-                            updated_at: null
-                            images: []
+                        id: 1
+                        name: 'Tranh treo tường tráng gương SET1 của REICHTUM - Decor phòng ngủ/ Chất vải canvas/ Độ bền cao'
                       user:
-                        id: 4
-                        name: Sep21th03
-                        avt_url: 'https://ui-avatars.com/api/?name=Admin&background=random'
+                        id: 1
+                        name: admin
+                        avt_url: null
                   status: success
                   message: 'Lấy đánh giá thành công!'
                 properties:
@@ -1386,251 +2152,65 @@ paths:
                     type: array
                     example:
                       -
-                        id: 2
-                        product_id: 2
-                        user_id: 4
-                        rating: 5
-                        comment: 'Sản phẩm rất tuyệt vời, mình rất hài lòng!'
-                        created_at: '2024-10-11T08:49:20.000000Z'
-                        updated_at: '2024-10-11T08:49:20.000000Z'
-                        product:
-                          id: 2
-                          title: 'iPhone 11 64GB Chính hãng'
-                          variants:
-                            -
-                              id: 1
-                              product_id: 2
-                              rom_id: 2
-                              color: Trắng
-                              color_code: '#FAF9F2'
-                              stock: 0
-                              availability: 0
-                              price: '7490000.00'
-                              created_at: null
-                              updated_at: null
-                              images:
-                                -
-                                  id: 1
-                                  product_variant_id: 1
-                                  image_url: assets/img/products/fM0FKmGS3a_1728045310.webp
-                                  created_at: null
-                                  updated_at: null
-                            -
-                              id: 2
-                              product_id: 2
-                              rom_id: 2
-                              color: Đỏ
-                              color_code: '#b4052a'
-                              stock: 7
-                              availability: 1
-                              price: '7490000.00'
-                              created_at: null
-                              updated_at: null
-                              images: []
-                            -
-                              id: 7
-                              product_id: 2
-                              rom_id: 2
-                              color: Tím
-                              color_code: '#000000'
-                              stock: 6
-                              availability: 1
-                              price: '7490000.00'
-                              created_at: null
-                              updated_at: null
-                              images: []
-                        user:
-                          id: 4
-                          name: Sep21th03
-                          avt_url: 'https://ui-avatars.com/api/?name=Admin&background=random'
-                      -
                         id: 1
-                        product_id: 2
-                        user_id: 4
+                        product_id: 1
+                        user_id: 1
                         rating: 5
-                        comment: 'Sản phẩm rất tuyệt vời, mình rất hài lòng!'
-                        created_at: '2024-10-11T08:39:03.000000Z'
-                        updated_at: '2024-10-11T08:39:03.000000Z'
+                        comment: aaaaaa
+                        created_at: '2024-12-19 17:11:57'
+                        updated_at: null
                         product:
-                          id: 2
-                          title: 'iPhone 11 64GB Chính hãng'
-                          variants:
-                            -
-                              id: 1
-                              product_id: 2
-                              rom_id: 2
-                              color: Trắng
-                              color_code: '#FAF9F2'
-                              stock: 0
-                              availability: 0
-                              price: '7490000.00'
-                              created_at: null
-                              updated_at: null
-                              images:
-                                -
-                                  id: 1
-                                  product_variant_id: 1
-                                  image_url: assets/img/products/fM0FKmGS3a_1728045310.webp
-                                  created_at: null
-                                  updated_at: null
-                            -
-                              id: 2
-                              product_id: 2
-                              rom_id: 2
-                              color: Đỏ
-                              color_code: '#b4052a'
-                              stock: 7
-                              availability: 1
-                              price: '7490000.00'
-                              created_at: null
-                              updated_at: null
-                              images: []
-                            -
-                              id: 7
-                              product_id: 2
-                              rom_id: 2
-                              color: Tím
-                              color_code: '#000000'
-                              stock: 6
-                              availability: 1
-                              price: '7490000.00'
-                              created_at: null
-                              updated_at: null
-                              images: []
+                          id: 1
+                          name: 'Tranh treo tường tráng gương SET1 của REICHTUM - Decor phòng ngủ/ Chất vải canvas/ Độ bền cao'
                         user:
-                          id: 4
-                          name: Sep21th03
-                          avt_url: 'https://ui-avatars.com/api/?name=Admin&background=random'
+                          id: 1
+                          name: admin
+                          avt_url: null
                     items:
                       type: object
                       properties:
                         id:
                           type: integer
-                          example: 2
+                          example: 1
                         product_id:
                           type: integer
-                          example: 2
+                          example: 1
                         user_id:
                           type: integer
-                          example: 4
+                          example: 1
                         rating:
                           type: integer
                           example: 5
                         comment:
                           type: string
-                          example: 'Sản phẩm rất tuyệt vời, mình rất hài lòng!'
+                          example: aaaaaa
                         created_at:
                           type: string
-                          example: '2024-10-11T08:49:20.000000Z'
+                          example: '2024-12-19 17:11:57'
                         updated_at:
                           type: string
-                          example: '2024-10-11T08:49:20.000000Z'
+                          example: null
                         product:
                           type: object
                           properties:
                             id:
                               type: integer
-                              example: 2
-                            title:
+                              example: 1
+                            name:
                               type: string
-                              example: 'iPhone 11 64GB Chính hãng'
-                            variants:
-                              type: array
-                              example:
-                                -
-                                  id: 1
-                                  product_id: 2
-                                  rom_id: 2
-                                  color: Trắng
-                                  color_code: '#FAF9F2'
-                                  stock: 0
-                                  availability: 0
-                                  price: '7490000.00'
-                                  created_at: null
-                                  updated_at: null
-                                  images:
-                                    -
-                                      id: 1
-                                      product_variant_id: 1
-                                      image_url: assets/img/products/fM0FKmGS3a_1728045310.webp
-                                      created_at: null
-                                      updated_at: null
-                                -
-                                  id: 2
-                                  product_id: 2
-                                  rom_id: 2
-                                  color: Đỏ
-                                  color_code: '#b4052a'
-                                  stock: 7
-                                  availability: 1
-                                  price: '7490000.00'
-                                  created_at: null
-                                  updated_at: null
-                                  images: []
-                                -
-                                  id: 7
-                                  product_id: 2
-                                  rom_id: 2
-                                  color: Tím
-                                  color_code: '#000000'
-                                  stock: 6
-                                  availability: 1
-                                  price: '7490000.00'
-                                  created_at: null
-                                  updated_at: null
-                                  images: []
-                              items:
-                                type: object
-                                properties:
-                                  id:
-                                    type: integer
-                                    example: 1
-                                  product_id:
-                                    type: integer
-                                    example: 2
-                                  rom_id:
-                                    type: integer
-                                    example: 2
-                                  color:
-                                    type: string
-                                    example: Trắng
-                                  color_code:
-                                    type: string
-                                    example: '#FAF9F2'
-                                  stock:
-                                    type: integer
-                                    example: 0
-                                  availability:
-                                    type: integer
-                                    example: 0
-                                  price:
-                                    type: string
-                                    example: '7490000.00'
-                                  created_at:
-                                    type: string
-                                    example: null
-                                  updated_at:
-                                    type: string
-                                    example: null
-                                  images:
-                                    type: array
-                                    example:
-                                      - { id: 1, product_variant_id: 1, image_url: assets/img/products/fM0FKmGS3a_1728045310.webp, created_at: null, updated_at: null }
-                                    items:
-                                      type: object
-                                      properties: { id: { type: integer, example: 1 }, product_variant_id: { type: integer, example: 1 }, image_url: { type: string, example: assets/img/products/fM0FKmGS3a_1728045310.webp }, created_at: { type: string, example: null }, updated_at: { type: string, example: null } }
+                              example: 'Tranh treo tường tráng gương SET1 của REICHTUM - Decor phòng ngủ/ Chất vải canvas/ Độ bền cao'
                         user:
                           type: object
                           properties:
                             id:
                               type: integer
-                              example: 4
+                              example: 1
                             name:
                               type: string
-                              example: Sep21th03
+                              example: admin
                             avt_url:
                               type: string
-                              example: 'https://ui-avatars.com/api/?name=Admin&background=random'
+                              example: null
                   status:
                     type: string
                     example: success
@@ -1651,6 +2231,9 @@ paths:
         - Endpoints
       security: []
 tags:
+  -
+    name: 'Cart Management'
+    description: ''
   -
     name: Endpoints
     description: ''

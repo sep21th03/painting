@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('cart', [CartController::class, 'getMyCart']);
     Route::post('cart/update', [CartController::class, 'updateMyCart']);
+    Route::post('cart/add', [CartController::class, 'addMyCart']);
 
     Route::post('product-detail/review', [ProductController::class, 'storeProductReview']);
 

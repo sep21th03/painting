@@ -4,10 +4,10 @@ use Knuckles\Scribe\Extracting\Strategies;
 
 return [
     // The HTML <title> for the generated documentation. If this is empty, Scribe will infer it from config('app.name').
-    'title' => null,
+    'title' => 'Bán TRANH',
 
     // A short description of your API. Will be included in the docs webpage, Postman collection and OpenAPI spec.
-    'description' => '',
+    'description' => 'API DOCS',
 
     // The base URL displayed in the docs. If this is empty, Scribe will use the value of config('app.url') at generation time.
     // If you're using `laravel` type, you can set this to a dynamic string, like '{{ config("app.tenant_url") }}' to get a dynamic base URL.

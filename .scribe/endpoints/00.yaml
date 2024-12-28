@@ -3,14 +3,14 @@ description: ''
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: api/user/login
+      - GET
+    uri: api/auth/google
     metadata:
       groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Create a new controller instance.'
       description: ''
       authenticated: false
       custom: []
@@ -24,7 +24,32 @@ endpoints:
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 302
+        content: |-
+          <!DOCTYPE html>
+          <html>
+              <head>
+                  <meta charset="UTF-8" />
+                  <meta http-equiv="refresh" content="0;url='https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;response_type=code&amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN'" />
+
+                  <title>Redirecting to https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;response_type=code&amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN</title>
+              </head>
+              <body>
+                  Redirecting to <a href="https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;response_type=code&amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN">https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;response_type=code&amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN</a>.
+              </body>
+          </html>
+        headers:
+          cache-control: 'no-cache, private'
+          location: 'https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&response_type=code&state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN'
+          content-type: 'text/html; charset=utf-8'
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IkZHSGtscmxlL3g5RGxtL1NZaFZ6YWc9PSIsInZhbHVlIjoiR1pyVnM3dVV0N1M1QU1KZkxFSlgrZERmRXdHV1FZZDBPNWM5MFRMSkRHLzhlNnFKOEd0SVFHNmIxc2I2OE41djdVS2h2aHhrUUt0L3JUT1kvYlJFVFZLb3NmV0Z0RDNRdUlUUzZsbWhaSG9QaWxHYlpON0JwczZ5Qk5GMTVuTGkiLCJtYWMiOiIxMmZlYjYzMTJjNzNiYWE3MDdhNzAxNjNkMzI5NDQ5MjBkZmY4YzhmNTIzZTI0ODFlNzc2NjBkNzBiYjAwMTgxIiwidGFnIjoiIn0%3D; expires=Sat, 28 Dec 2024 07:52:35 GMT; Max-Age=7200; path=/; samesite=lax; paint_session=eyJpdiI6IlVwbVlZWlJhRFU2SGdkYldQQ3p6R0E9PSIsInZhbHVlIjoid2hHdWhSeXBTQTBnRGlvNVI4aUxBZ2dNZG9kRFpPblFSblg2MzgxZzd6MTNaS052bFcrbHFoVVpsMFVrWDRlUldqOC9IUnJ0dGN4elA5Mzc3VG1EWlI3dDF2Sk5ydisxaXFHM1B3aCs3Rll2R1pGRWZ2ZWVqK2JIMHlaaFFQT1oiLCJtYWMiOiIxNWNkMDQwMmRhYmE0YmI1YmEyMGZhMWMwZDg5OWE2ZWYwMzdhZTcxMmI3MWY5ZDRlY2E4MDI4OTVmZThiNTBjIiwidGFnIjoiIn0%3D; expires=Sat, 28 Dec 2024 07:52:35 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -33,14 +58,14 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - POST
-    uri: api/user/register
+      - GET
+    uri: api/auth/google/callback
     metadata:
       groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Create a new controller instance.'
       description: ''
       authenticated: false
       custom: []
@@ -54,7 +79,19 @@ endpoints:
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: ''
+        headers:
+          content-type: 'text/html; charset=UTF-8'
+          cache-control: 'no-cache, private'
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '58'
+          access-control-allow-origin: '*'
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IkFYMU1LbjQ2WWdCTkRHRFdOd2dtTWc9PSIsInZhbHVlIjoibkdZdWd3T1VqQ016dFd5dUY4RVROblpVY3FxMVh0TmVRMzVyV08yM3dUVVE1VU96Q3ZzNFVobU0ybjZOSkI3SDFhaHVqKy9ud2VBNlV4VTR4aUZ6R2JnNHpqRzhTKzFRbk1qb1ZIbkdqd3RZTUVTcmNYVmFLTnhqbDdMUzB3THMiLCJtYWMiOiJiNjJmYjYwZGY1NWRhY2NlNzdhM2Q2YzgzYzI4NmQ5NTc5MzExOWMzNDllMWJlMWUwYzgzMWM2MTRhMzNiNmI4IiwidGFnIjoiIn0%3D; expires=Sat, 28 Dec 2024 07:52:35 GMT; Max-Age=7200; path=/; samesite=lax; paint_session=eyJpdiI6InFXbE9VNk1YdmdEalV4a0JoanR6YXc9PSIsInZhbHVlIjoiOWZJdDU5RFJvTVpKWW9wazhoQm5DNDFIbTE1YTRydSt3WTdWOUFmRkYxdytiWDE3RHBMcGVoaWVXYm94MjBVVnhuVm9lMnZxK3dBcm9RYW5XMXdvbGV0QkpnenY1cmZJbnpGT1dEcUxYVUpjMmx2RDVEeFVKNC9UNFZCaVA0NFciLCJtYWMiOiIwYTBkZWM3NmEyMjc0NDIzMGUyZTJiZDMwMTUyZWQzYWUyYWM4NDA1ODllOTcwNTY4ZmQ3ODBhZGVhNTk3NGNkIiwidGFnIjoiIn0%3D; expires=Sat, 28 Dec 2024 07:52:35 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -93,100 +130,6 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - GET
-    uri: api/cart
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Lấy giỏ hàng của người dùng hiện tại.'
-      description: |-
-        Phương thức này sử dụng `cartService` để tìm giỏ hàng của người dùng dựa trên
-        ID của người dùng hiện tại được lấy từ `Auth::user()`.
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/cart/update
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Cập nhật giỏ hàng của người dùng hiện tại.'
-      description: |-
-        Phương thức này nhận yêu cầu cập nhật giỏ hàng từ người dùng, xác thực dữ liệu
-        đầu vào bằng `UpdateCartRequest`, sau đó sử dụng `cartService` để cập nhật giỏ hàng
-        dựa trên ID người dùng.
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      product_variant_id:
-        name: product_variant_id
-        description: ''
-        required: true
-        example: 5397659.0334192
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      quantity:
-        name: quantity
-        description: 'Must be at least 0. Must not be greater than 100.'
-        required: true
-        example: 15
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-    cleanBodyParameters:
-      product_variant_id: 5397659.0334192
-      quantity: 15
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
       - POST
     uri: api/product-detail/review
     metadata:
@@ -211,35 +154,38 @@ endpoints:
     bodyParameters:
       product_id:
         name: product_id
-        description: ''
+        description: 'The <code>id</code> of an existing record in the products table.'
         required: true
-        example: facilis
+        example: et
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       rating:
         name: rating
         description: 'Must be at least 1. Must not be greater than 5.'
         required: true
-        example: 3
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       comment:
         name: comment
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: zxefqijq
+        example: yfwsigfqyv
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      product_id: facilis
-      rating: 3
-      comment: zxefqijq
+      product_id: et
+      rating: 1
+      comment: yfwsigfqyv
     fileParameters: []
     responses: []
     responseFields: []
@@ -308,13 +254,14 @@ endpoints:
         name: id
         description: 'The ID of the detail.'
         required: true
-        example: doloribus
+        example: quas
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: doloribus
+      id: quas
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -345,10 +292,11 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Tạo đơn hàng mới.'
+      title: 'Store a new order in the database.'
       description: |-
-        Phương thức này nhận yêu cầu từ người dùng, xác thực dữ liệu bằng `StoreOrderRequest`,
-        sau đó sử dụng `orderService` để tạo đơn hàng mới.
+        This method handles the creation of an order, including the generation of the order code,
+        storing order details, updating product stock, and removing items from the cart.
+        It also dispatches a job to notify the user of the order status.
       authenticated: false
       custom: []
     headers:
@@ -363,37 +311,41 @@ endpoints:
         name: first_name
         description: ''
         required: true
-        example: ipsum
+        example: et
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       last_name:
         name: last_name
         description: ''
         required: true
-        example: officia
+        example: commodi
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       phone:
         name: phone
         description: ''
         required: true
-        example: 22519.106
+        example: 0.48989003
         type: number
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       address:
         name: address
         description: ''
         required: true
-        example: itaque
+        example: omnis
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       note:
         name: note
@@ -403,6 +355,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       message:
         name: message
@@ -412,17 +365,19 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       payment_method:
         name: payment_method
         description: ''
         required: true
-        example: '0'
+        example: '1'
         type: string
         enumValues:
           - '0'
           - '1'
         exampleWasSpecified: false
+        nullable: false
         custom: []
       shipping_fee:
         name: shipping_fee
@@ -432,6 +387,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       order_details:
         name: order_details
@@ -442,65 +398,82 @@ endpoints:
         type: 'object[]'
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       total_price:
         name: total_price
         description: ''
         required: true
-        example: 1610.986
+        example: 22679.068
         type: number
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       'order_details[].id':
         name: 'order_details[].id'
         description: ''
         required: true
-        example: ut
+        example: numquam
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
-      'order_details[].product_variant_id':
-        name: 'order_details[].product_variant_id'
-        description: ''
+      'order_details[].product_hex_id':
+        name: 'order_details[].product_hex_id'
+        description: 'The <code>id</code> of an existing record in the product_hex table.'
         required: true
-        example: repudiandae
+        example: asperiores
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'order_details[].size_id':
+        name: 'order_details[].size_id'
+        description: 'The <code>id</code> of an existing record in the product_sizes table.'
+        required: true
+        example: aliquam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
         custom: []
       'order_details[].price':
         name: 'order_details[].price'
         description: ''
         required: true
-        example: 33191819.588423
+        example: 20.03197353
         type: number
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       'order_details[].quantity':
         name: 'order_details[].quantity'
         description: 'Must be at least 1.'
         required: true
-        example: 84
+        example: 80
         type: integer
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      first_name: ipsum
-      last_name: officia
-      phone: 22519.106
-      address: itaque
-      payment_method: '0'
+      first_name: et
+      last_name: commodi
+      phone: 0.48989003
+      address: omnis
+      payment_method: '1'
       order_details:
         -
-          id: ut
-          product_variant_id: repudiandae
-          price: 33191819.588423
-          quantity: 84
-      total_price: 1610.986
+          id: numquam
+          product_hex_id: asperiores
+          size_id: aliquam
+          price: 20.03197353
+          quantity: 80
+      total_price: 22679.068
     fileParameters: []
     responses: []
     responseFields: []
@@ -532,13 +505,14 @@ endpoints:
         name: id
         description: 'The ID of the update.'
         required: true
-        example: quae
+        example: fugiat
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: quae
+      id: fugiat
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -546,19 +520,21 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: 0.763076691
+        example: 12969.648
         type: number
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       address:
         name: address
         description: ''
         required: true
-        example: et
+        example: esse
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       notes:
         name: notes
@@ -568,20 +544,22 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       name:
         name: name
         description: ''
         required: true
-        example: rerum
+        example: modi
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      phone: 0.763076691
-      address: et
-      name: rerum
+      phone: 12969.648
+      address: esse
+      name: modi
     fileParameters: []
     responses: []
     responseFields: []
@@ -611,13 +589,14 @@ endpoints:
         name: id
         description: 'The ID of the delete.'
         required: true
-        example: vero
+        example: voluptate
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: vero
+      id: voluptate
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -655,35 +634,231 @@ endpoints:
     bodyParameters:
       order_id:
         name: order_id
-        description: ''
+        description: 'The <code>code</code> of an existing record in the orders table.'
         required: true
-        example: a
+        example: officiis
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       amount:
         name: amount
         description: ''
         required: true
-        example: 1
+        example: 8
         type: integer
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       url_return:
         name: url_return
         description: 'Must be a valid URL.'
         required: true
-        example: 'https://nikolaus.net/laudantium-corrupti-ea-voluptates-omnis-debitis.html'
+        example: 'http://eichmann.com/explicabo-aut-rerum-ut-omnis-ut-voluptatem-consectetur'
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      order_id: a
-      amount: 1
-      url_return: 'https://nikolaus.net/laudantium-corrupti-ea-voluptates-omnis-debitis.html'
+      order_id: officiis
+      amount: 8
+      url_return: 'http://eichmann.com/explicabo-aut-rerum-ut-omnis-ut-voluptatem-consectetur'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user-id
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/send-reset-link
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: orion.halvorson@example.org
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: orion.halvorson@example.org
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/reset-password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: edna85@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 6 characters.'
+        required: true
+        example: J1N_m6
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      token:
+        name: token
+        description: ''
+        required: true
+        example: dolores
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Must be at least 6 characters.'
+        required: true
+        example: tglavfsmzmcycwepfhutxpvvujowhrfyefgwpmkiohnn
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: edna85@example.net
+      password: J1N_m6
+      token: dolores
+      password_confirmation: tglavfsmzmcycwepfhutxpvvujowhrfyefgwpmkiohnn
     fileParameters: []
     responses: []
     responseFields: []
@@ -721,12 +896,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":1,"name":"Apple","created_at":"2024-10-04T12:17:52.000000Z","updated_at":"2024-10-04T12:17:52.000000Z"},{"id":2,"name":"XiaoMi","created_at":"2024-10-04T12:18:01.000000Z","updated_at":"2024-10-04T12:18:01.000000Z"},{"id":3,"name":"Huawei","created_at":"2024-10-04T12:18:07.000000Z","updated_at":"2024-10-04T12:18:07.000000Z"},{"id":4,"name":"Nokia","created_at":"2024-10-04T12:18:18.000000Z","updated_at":"2024-10-04T12:18:18.000000Z"},{"id":5,"name":"Samsung","created_at":"2024-10-04T12:18:23.000000Z","updated_at":"2024-10-04T12:18:23.000000Z"},{"id":6,"name":"Pixel","created_at":"2024-10-04T12:18:39.000000Z","updated_at":"2024-10-04T12:18:39.000000Z"}],"status":"success","message":"Danh s\u00e1ch h\u00e3ng"}'
+        content: '{"data":[{"id":1,"name":"SET 1","created_at":null,"updated_at":null,"categories":[{"id":1,"name":"HOA L\u00c1","set_id":1,"created_at":null,"updated_at":null},{"id":2,"name":"C\u00c2Y C\u1ece","set_id":1,"created_at":null,"updated_at":null}]},{"id":2,"name":"SET 2","created_at":null,"updated_at":null,"categories":[{"id":3,"name":"HALLOWEN","set_id":2,"created_at":null,"updated_at":null},{"id":4,"name":"NOEL","set_id":2,"created_at":null,"updated_at":null}]},{"id":3,"name":"SET 3","created_at":null,"updated_at":null,"categories":[{"id":5,"name":"HOA L\u00c1","set_id":3,"created_at":null,"updated_at":null}]}],"status":"success","message":"Danh s\u00e1ch h\u00e3ng"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '59'
+          x-ratelimit-remaining: '57'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -762,12 +937,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":2,"category_id":1,"category_name":"Apple","title":"iPhone 11 64GB Ch\u00ednh h\u00e3ng","description":null,"discount":"10.00","info":null,"specifications":{"id":2,"product_id":2,"screen_size":"6.1 inches","screen_type":"IPS LCD","screen_resolution":"1792 x 828 pixel","ram":null,"memory_card_slot":null,"battery":null,"sim":null,"camera_front":null,"camera_rear":null,"operating_system":null,"chip":null,"pin":null,"connectivity":null,"bluetooth":null,"dimensions":null,"weight":null},"variants":[{"id":1,"product_id":2,"rom_id":2,"color":"Tr\u1eafng","price":"7490000.00","availability":0,"stock":0,"rom":{"id":2,"capacity":"64 GB"},"images":[{"id":1,"product_variant_id":1,"image_url":"assets\/img\/products\/fM0FKmGS3a_1728045310.webp"}]},{"id":2,"product_id":2,"rom_id":2,"color":"\u0110\u1ecf","price":"7490000.00","availability":1,"stock":7,"rom":{"id":2,"capacity":"64 GB"},"images":[{"id":2,"product_variant_id":2,"image_url":"assets\/img\/products\/tjhjgEcsO0_1728046277.webp"}]},{"id":7,"product_id":2,"rom_id":2,"color":"T\u00edm","price":"7490000.00","availability":1,"stock":6,"rom":{"id":2,"capacity":"64 GB"},"images":[{"id":7,"product_variant_id":7,"image_url":"assets\/img\/products\/TTdau3yC2S_1728046798.webp"}]}]},{"id":8,"category_id":1,"category_name":"Apple","title":"iPhone 13 128GB","description":null,"discount":"10.00","info":"<p>M&aacute;y m\u1edbi 100% , ch&iacute;nh h&atilde;ng Apple Vi\u1ec7t Nam.<br \/>\r\nCellphoneS hi\u1ec7n l&agrave; \u0111\u1ea1i l&yacute; b&aacute;n l\u1ebb u\u1ef7 quy\u1ec1n iPhone ch&iacute;nh h&atilde;ng VN\/A c\u1ee7a Apple Vi\u1ec7t Nam<\/p>\r\n\r\n<p>H\u1ed9p, S&aacute;ch h\u01b0\u1edbng d\u1eabn, C&acirc;y l\u1ea5y sim, C&aacute;p Lightning - Type C<\/p>\r\n\r\n<p>1 \u0110\u1ed4I 1 trong 30 ng&agrave;y n\u1ebfu c&oacute; l\u1ed7i ph\u1ea7n c\u1ee9ng nh&agrave; s\u1ea3n xu\u1ea5t. B\u1ea3o h&agrave;nh 12 th&aacute;ng t\u1ea1i trung t&acirc;m b\u1ea3o h&agrave;nh ch&iacute;nh h&atilde;ng Apple:<\/p>","specifications":{"id":8,"product_id":8,"screen_size":null,"screen_type":null,"screen_resolution":null,"ram":null,"memory_card_slot":null,"battery":null,"sim":null,"camera_front":null,"camera_rear":null,"operating_system":null,"chip":null,"pin":null,"connectivity":null,"bluetooth":null,"dimensions":null,"weight":null},"variants":[{"id":13,"product_id":8,"rom_id":3,"color":"Tr\u1eafng","price":"13790000.00","availability":0,"stock":0,"rom":{"id":3,"capacity":"128 GB"},"images":[{"id":13,"product_variant_id":13,"image_url":"assets\/img\/products\/ZAIeDakxCr_1728047099.webp"}]},{"id":14,"product_id":8,"rom_id":3,"color":"\u0110\u1ecf","price":"13790000.00","availability":1,"stock":6,"rom":{"id":3,"capacity":"128 GB"},"images":[{"id":14,"product_variant_id":14,"image_url":"assets\/img\/products\/hAy7x5hf9Z_1728047175.webp"}]}]},{"id":9,"category_id":5,"category_name":"Samsung","title":"Samsung Galaxy S24 Ultra 12GB 256GB","description":null,"discount":"10.00","info":null,"specifications":{"id":9,"product_id":9,"screen_size":null,"screen_type":null,"screen_resolution":null,"ram":null,"memory_card_slot":null,"battery":null,"sim":null,"camera_front":null,"camera_rear":null,"operating_system":null,"chip":null,"pin":null,"connectivity":null,"bluetooth":null,"dimensions":null,"weight":null},"variants":[{"id":15,"product_id":9,"rom_id":4,"color":"\u0110en","price":"27990000.00","availability":1,"stock":3,"rom":{"id":4,"capacity":"256 GB"},"images":[{"id":15,"product_variant_id":15,"image_url":"assets\/img\/products\/IxYSeC6SA8_1728047292.webp"}]}]}],"status":"success","message":"Danh s\u00e1ch s\u1ea3n ph\u1ea9m"}'
+        content: '{"data":[{"id":1,"name":"Tranh treo t\u01b0\u1eddng tr\u00e1ng g\u01b0\u01a1ng SET1 c\u1ee7a REICHTUM - Decor ph\u00f2ng ng\u1ee7\/ Ch\u1ea5t v\u1ea3i canvas\/ \u0110\u1ed9 b\u1ec1n cao","set_category_id":2,"set_category_name":"SET 1 C\u00c2Y C\u1ece","product_hex":[{"id":1,"code":"R287","sizes":[{"size":"40X60 CANVAS","price":"22540.00","stock":5}],"galleries":[{"image_path":"assets\/img\/products\/btbhGacYF1_1735273573.webp"},{"image_path":"assets\/img\/products\/fzPmcN7ma8_1735273573.webp"},{"image_path":"assets\/img\/products\/pRLgncKt2K_1735273573.webp"}]},{"id":3,"code":"R30","sizes":[{"size":"30X40 TR\u00c1NG G\u01af\u01a0NG","price":"540000.00","stock":5}],"galleries":[{"image_path":"assets\/img\/products\/sHPNDvmVRE_1735273588.webp"},{"image_path":"assets\/img\/products\/DvnBqvdPYI_1735273588.webp"}]}]},{"id":7,"name":"Tranh treo t\u01b0\u1eddng canvas cao c\u1ea5p SET1 c\u1ee7a REICHTUM - Ph\u00f2ng kh\u00e1ch\/ Nh\u00e0 ng\u1ee7\/ Decor\/ Ch\u1ea5t v\u1ea3i canvas","set_category_id":5,"set_category_name":"SET 3 HOA L\u00c1","product_hex":[{"id":12,"code":"R381","sizes":[{"size":"60X80 CANVAS","price":"1800000.00","stock":-4}],"galleries":[{"image_path":"assets\/img\/products\/2zZ6PbzlBX_1735207194.webp"},{"image_path":"assets\/img\/products\/RbQcxj7C7D_1735207194.webp"}]},{"id":13,"code":"R382","sizes":[{"size":"60X80 CANVAS","price":"500000.00","stock":-3}],"galleries":[{"image_path":"assets\/img\/products\/sJFCY4Vd8Z_1735207348.webp"},{"image_path":"assets\/img\/products\/T7QLZmwpZz_1735207348.webp"}]}]},{"id":8,"name":"Et sunt nisi.","set_category_id":1,"set_category_name":"SET 1 HOA L\u00c1","product_hex":[{"id":14,"code":"VN1KDS","sizes":[{"size":"L","price":"172.54","stock":93}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":10,"name":"Reprehenderit eum est.","set_category_id":1,"set_category_name":"SET 1 HOA L\u00c1","product_hex":[{"id":15,"code":"1U5BTD","sizes":[{"size":"XL","price":"668.98","stock":52}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":11,"name":"Asperiores cupiditate ea in.","set_category_id":1,"set_category_name":"SET 1 HOA L\u00c1","product_hex":[{"id":16,"code":"6TNMIO","sizes":[{"size":"L","price":"195.82","stock":23}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":13,"name":"Occaecati asperiores eveniet iure.","set_category_id":5,"set_category_name":"SET 3 HOA L\u00c1","product_hex":[{"id":17,"code":"KVRW62","sizes":[{"size":"M","price":"717.89","stock":30}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":15,"name":"Ea blanditiis ut hic.","set_category_id":4,"set_category_name":"SET 2 NOEL","product_hex":[{"id":18,"code":"P9RMVJ","sizes":[{"size":"M","price":"389.91","stock":63}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":20,"name":"Itaque deserunt cupiditate distinctio.","set_category_id":1,"set_category_name":"SET 1 HOA L\u00c1","product_hex":[{"id":19,"code":"JUHKOO","sizes":[{"size":"M","price":"437.30","stock":79}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":22,"name":"Eius quos beatae.","set_category_id":3,"set_category_name":"SET 2 HALLOWEN","product_hex":[{"id":20,"code":"U6GFCT","sizes":[{"size":"S","price":"354.60","stock":55}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":23,"name":"At accusantium eveniet.","set_category_id":1,"set_category_name":"SET 1 HOA L\u00c1","product_hex":[{"id":21,"code":"Y6IPVH","sizes":[{"size":"XL","price":"630.95","stock":78}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":24,"name":"Facilis asperiores numquam iusto.","set_category_id":1,"set_category_name":"SET 1 HOA L\u00c1","product_hex":[{"id":22,"code":"PR9GDZ","sizes":[{"size":"M","price":"384.83","stock":52}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":27,"name":"Enim ut facere ratione.","set_category_id":1,"set_category_name":"SET 1 HOA L\u00c1","product_hex":[{"id":23,"code":"H06NGK","sizes":[{"size":"S","price":"614.85","stock":92}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":28,"name":"Ducimus adipisci minus ipsa.","set_category_id":2,"set_category_name":"SET 1 C\u00c2Y C\u1ece","product_hex":[{"id":24,"code":"EVEUVM","sizes":[{"size":"40 X 60","price":"8148277.03","stock":87}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":29,"name":"Cupiditate minima qui.","set_category_id":3,"set_category_name":"SET 2 HALLOWEN","product_hex":[{"id":25,"code":"Q3V7BO","sizes":[{"size":"40 X 60","price":"6664667.03","stock":34}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":30,"name":"Totam iure labore sint.","set_category_id":2,"set_category_name":"SET 1 C\u00c2Y C\u1ece","product_hex":[{"id":26,"code":"RTSSIU","sizes":[{"size":"30 X 40","price":"2462592.93","stock":73}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":31,"name":"Aliquam iure ut qui repudiandae.","set_category_id":3,"set_category_name":"SET 2 HALLOWEN","product_hex":[{"id":27,"code":"DQ0BXU","sizes":[{"size":"60 X 80","price":"2044729.02","stock":76}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":32,"name":"Nostrum neque qui laudantium.","set_category_id":3,"set_category_name":"SET 2 HALLOWEN","product_hex":[{"id":28,"code":"UOPKWH","sizes":[{"size":"60 X 80","price":"531509.78","stock":72}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":33,"name":"Quaerat doloribus dicta.","set_category_id":2,"set_category_name":"SET 1 C\u00c2Y C\u1ece","product_hex":[{"id":29,"code":"8WPWSO","sizes":[{"size":"40 X 60","price":"3881939.46","stock":41}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":34,"name":"Deleniti corrupti atque consequuntur.","set_category_id":1,"set_category_name":"SET 1 HOA L\u00c1","product_hex":[{"id":30,"code":"KTC7OZ","sizes":[{"size":"60 X 80","price":"6427627.19","stock":56}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":35,"name":"Soluta nulla et.","set_category_id":2,"set_category_name":"SET 1 C\u00c2Y C\u1ece","product_hex":[{"id":31,"code":"FPBI2S","sizes":[{"size":"40 X 60","price":"2068554.51","stock":10}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":36,"name":"Consequatur quam odio ea.","set_category_id":4,"set_category_name":"SET 2 NOEL","product_hex":[{"id":32,"code":"JUYFLS","sizes":[{"size":"30 X 40","price":"7297432.95","stock":90}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":37,"name":"Et ea aut modi.","set_category_id":5,"set_category_name":"SET 3 HOA L\u00c1","product_hex":[{"id":33,"code":"2ZWBS5","sizes":[{"size":"20 x 30","price":"2096592.74","stock":77}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":38,"name":"Sed quia culpa consequatur eos.","set_category_id":4,"set_category_name":"SET 2 NOEL","product_hex":[{"id":34,"code":"KLUAED","sizes":[{"size":"40 X 60","price":"8180436.58","stock":28}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":39,"name":"Pariatur itaque quod.","set_category_id":2,"set_category_name":"SET 1 C\u00c2Y C\u1ece","product_hex":[{"id":35,"code":"7F5ETR","sizes":[{"size":"60 X 80","price":"3688672.20","stock":83}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":40,"name":"Voluptatum commodi repudiandae.","set_category_id":4,"set_category_name":"SET 2 NOEL","product_hex":[{"id":36,"code":"NGD7FI","sizes":[{"size":"40 X 60","price":"7841217.52","stock":93}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":41,"name":"Asperiores optio sit.","set_category_id":3,"set_category_name":"SET 2 HALLOWEN","product_hex":[{"id":37,"code":"LTGANF","sizes":[{"size":"40 X 60","price":"4887630.05","stock":20}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":42,"name":"Qui fugiat non quibusdam.","set_category_id":4,"set_category_name":"SET 2 NOEL","product_hex":[{"id":38,"code":"MKWPGF","sizes":[{"size":"20 x 30","price":"5691719.49","stock":56}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":43,"name":"Cum quibusdam voluptas.","set_category_id":2,"set_category_name":"SET 1 C\u00c2Y C\u1ece","product_hex":[{"id":39,"code":"PRJAUE","sizes":[{"size":"20 x 30","price":"3619395.44","stock":37}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":44,"name":"Rem sequi nesciunt iste.","set_category_id":3,"set_category_name":"SET 2 HALLOWEN","product_hex":[{"id":40,"code":"YQAVRO","sizes":[{"size":"60 X 80","price":"4366933.08","stock":24}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":45,"name":"Voluptas quae eos vel.","set_category_id":1,"set_category_name":"SET 1 HOA L\u00c1","product_hex":[{"id":41,"code":"NP3MFU","sizes":[{"size":"60 X 80","price":"2043451.23","stock":79}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":46,"name":"Quibusdam nesciunt.","set_category_id":2,"set_category_name":"SET 1 C\u00c2Y C\u1ece","product_hex":[{"id":42,"code":"N29BJW","sizes":[{"size":"20 x 30","price":"376619.54","stock":29}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]},{"id":47,"name":"Neque consequatur quia in.","set_category_id":3,"set_category_name":"SET 2 HALLOWEN","product_hex":[{"id":43,"code":"WBYRGZ","sizes":[{"size":"40 X 60","price":"7590687.37","stock":82}],"galleries":[{"image_path":"assets\/img\/products\/template_img.jpg"}]}]}],"status":"success","message":"Danh s\u00e1ch s\u1ea3n ph\u1ea9m"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '58'
+          x-ratelimit-remaining: '56'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -798,13 +973,14 @@ endpoints:
         name: id
         description: 'The ID of the product detail.'
         required: true
-        example: minus
+        example: molestiae
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: minus
+      id: molestiae
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -821,7 +997,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '57'
+          x-ratelimit-remaining: '55'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -858,13 +1034,16 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: '{"data":[{"id":1,"product_id":2,"user_id":4,"rating":5,"comment":"S\u1ea3n ph\u1ea9m r\u1ea5t tuy\u1ec7t v\u1eddi, m\u00ecnh r\u1ea5t h\u00e0i l\u00f2ng!","created_at":"2024-10-11T08:39:03.000000Z","updated_at":"2024-10-11T08:39:03.000000Z","product":{"id":2,"title":"iPhone 11 64GB Ch\u00ednh h\u00e3ng"},"user":{"id":4,"name":"Sep21th03","avt_url":"https:\/\/ui-avatars.com\/api\/?name=Admin&background=random"}},{"id":2,"product_id":2,"user_id":4,"rating":5,"comment":"S\u1ea3n ph\u1ea9m r\u1ea5t tuy\u1ec7t v\u1eddi, m\u00ecnh r\u1ea5t h\u00e0i l\u00f2ng!","created_at":"2024-10-11T08:49:20.000000Z","updated_at":"2024-10-11T08:49:20.000000Z","product":{"id":2,"title":"iPhone 11 64GB Ch\u00ednh h\u00e3ng"},"user":{"id":4,"name":"Sep21th03","avt_url":"https:\/\/ui-avatars.com\/api\/?name=Admin&background=random"}}],"status":"success","message":"L\u1ea5y \u0111\u00e1nh gi\u00e1 th\u00e0nh c\u00f4ng!"}'
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
+          x-ratelimit-remaining: '54'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -897,13 +1076,14 @@ endpoints:
         name: id
         description: 'The ID of the review.'
         required: true
-        example: maxime
+        example: accusamus
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: maxime
+      id: accusamus
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -917,7 +1097,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '55'
+          x-ratelimit-remaining: '53'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -953,12 +1133,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":2,"product_id":2,"user_id":4,"rating":5,"comment":"S\u1ea3n ph\u1ea9m r\u1ea5t tuy\u1ec7t v\u1eddi, m\u00ecnh r\u1ea5t h\u00e0i l\u00f2ng!","created_at":"2024-10-11T08:49:20.000000Z","updated_at":"2024-10-11T08:49:20.000000Z","product":{"id":2,"title":"iPhone 11 64GB Ch\u00ednh h\u00e3ng","variants":[{"id":1,"product_id":2,"rom_id":2,"color":"Tr\u1eafng","color_code":"#FAF9F2","stock":0,"availability":0,"price":"7490000.00","created_at":null,"updated_at":null,"images":[{"id":1,"product_variant_id":1,"image_url":"assets\/img\/products\/fM0FKmGS3a_1728045310.webp","created_at":null,"updated_at":null}]},{"id":2,"product_id":2,"rom_id":2,"color":"\u0110\u1ecf","color_code":"#b4052a","stock":7,"availability":1,"price":"7490000.00","created_at":null,"updated_at":null,"images":[]},{"id":7,"product_id":2,"rom_id":2,"color":"T\u00edm","color_code":"#000000","stock":6,"availability":1,"price":"7490000.00","created_at":null,"updated_at":null,"images":[]}]},"user":{"id":4,"name":"Sep21th03","avt_url":"https:\/\/ui-avatars.com\/api\/?name=Admin&background=random"}},{"id":1,"product_id":2,"user_id":4,"rating":5,"comment":"S\u1ea3n ph\u1ea9m r\u1ea5t tuy\u1ec7t v\u1eddi, m\u00ecnh r\u1ea5t h\u00e0i l\u00f2ng!","created_at":"2024-10-11T08:39:03.000000Z","updated_at":"2024-10-11T08:39:03.000000Z","product":{"id":2,"title":"iPhone 11 64GB Ch\u00ednh h\u00e3ng","variants":[{"id":1,"product_id":2,"rom_id":2,"color":"Tr\u1eafng","color_code":"#FAF9F2","stock":0,"availability":0,"price":"7490000.00","created_at":null,"updated_at":null,"images":[{"id":1,"product_variant_id":1,"image_url":"assets\/img\/products\/fM0FKmGS3a_1728045310.webp","created_at":null,"updated_at":null}]},{"id":2,"product_id":2,"rom_id":2,"color":"\u0110\u1ecf","color_code":"#b4052a","stock":7,"availability":1,"price":"7490000.00","created_at":null,"updated_at":null,"images":[]},{"id":7,"product_id":2,"rom_id":2,"color":"T\u00edm","color_code":"#000000","stock":6,"availability":1,"price":"7490000.00","created_at":null,"updated_at":null,"images":[]}]},"user":{"id":4,"name":"Sep21th03","avt_url":"https:\/\/ui-avatars.com\/api\/?name=Admin&background=random"}}],"status":"success","message":"L\u1ea5y \u0111\u00e1nh gi\u00e1 th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":[{"id":1,"product_id":1,"user_id":1,"rating":5,"comment":"aaaaaa","created_at":"2024-12-19 17:11:57","updated_at":null,"product":{"id":1,"name":"Tranh treo t\u01b0\u1eddng tr\u00e1ng g\u01b0\u01a1ng SET1 c\u1ee7a REICHTUM - Decor ph\u00f2ng ng\u1ee7\/ Ch\u1ea5t v\u1ea3i canvas\/ \u0110\u1ed9 b\u1ec1n cao"},"user":{"id":1,"name":"admin","avt_url":null}}],"status":"success","message":"L\u1ea5y \u0111\u00e1nh gi\u00e1 th\u00e0nh c\u00f4ng!"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '54'
+          x-ratelimit-remaining: '52'
           access-control-allow-origin: '*'
         description: null
         custom: []

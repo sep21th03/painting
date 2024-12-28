@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Phone Documentation</title>
+    <title>Bán TRANH</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
@@ -30,11 +30,11 @@
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
-    <script src="../docs/js/tryitout-4.37.2.js"></script>
+    <script src="../docs/js/tryitout-4.38.0.js"></script>
 
-    <script src="../docs/js/theme-default-4.37.2.js"></script>
+    <script src="../docs/js/theme-default-4.38.0.js"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous"></head>
+</head>
 
 <body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
 
@@ -45,12 +45,12 @@
     </span>
 </a>
 <div class="tocify-wrapper">
-
+    
             <div class="lang-selector">
                                             <button type="button" class="lang-button" data-language-name="bash">bash</button>
                                             <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
                     </div>
-
+    
     <div class="search">
         <input type="text" class="search" id="input-search" placeholder="Search">
     </div>
@@ -66,25 +66,29 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
+                    <ul id="tocify-header-cart-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="cart-management">
+                    <a href="#cart-management">Cart Management</a>
+                </li>
+                                    <ul id="tocify-subheader-cart-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="cart-management-GETapi-cart">
+                                <a href="#cart-management-GETapi-cart">Lấy giỏ hàng của người dùng hiện tại.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-endpoints" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="endpoints">
                     <a href="#endpoints">Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-user-login">
-                                <a href="#endpoints-POSTapi-user-login">POST api/user/login</a>
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-auth-google">
+                                <a href="#endpoints-GETapi-auth-google">Create a new controller instance.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-user-register">
-                                <a href="#endpoints-POSTapi-user-register">POST api/user/register</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-auth-google-callback">
+                                <a href="#endpoints-GETapi-auth-google-callback">Create a new controller instance.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-logout">
                                 <a href="#endpoints-POSTapi-logout">POST api/logout</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-cart">
-                                <a href="#endpoints-GETapi-cart">Lấy giỏ hàng của người dùng hiện tại.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-cart-update">
-                                <a href="#endpoints-POSTapi-cart-update">Cập nhật giỏ hàng của người dùng hiện tại.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-product-detail-review">
                                 <a href="#endpoints-POSTapi-product-detail-review">Lưu đánh giá sản phẩm.</a>
@@ -96,7 +100,7 @@
                                 <a href="#endpoints-GETapi-order-detail--id-">Lấy chi tiết đơn hàng theo ID.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-order-store">
-                                <a href="#endpoints-POSTapi-order-store">Tạo đơn hàng mới.</a>
+                                <a href="#endpoints-POSTapi-order-store">Store a new order in the database.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-order-update--id-">
                                 <a href="#endpoints-POSTapi-order-update--id-">Cập nhật đơn hàng.</a>
@@ -106,6 +110,18 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-order-vnpay_payment">
                                 <a href="#endpoints-POSTapi-order-vnpay_payment">Thanh toán đơn hàng bằng VNPay.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-user-id">
+                                <a href="#endpoints-GETapi-user-id">GET api/user-id</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
+                                <a href="#endpoints-GETapi-user">GET api/user</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-send-reset-link">
+                                <a href="#endpoints-POSTapi-send-reset-link">POST api/send-reset-link</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-reset-password">
+                                <a href="#endpoints-POSTapi-reset-password">POST api/reset-password</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-category">
                                 <a href="#endpoints-GETapi-category">Lấy danh sách tất cả các hãng (categories).</a>
@@ -139,7 +155,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 12, 2024</li>
+        <li>Last updated: December 28, 2024</li>
     </ul>
 </div>
 
@@ -147,6 +163,7 @@
     <div class="dark-box"></div>
     <div class="content">
         <h1 id="introduction">Introduction</h1>
+<p>API DOCS</p>
 <aside>
     <strong>Base URL</strong>: <code>http://localhost</code>
 </aside>
@@ -157,31 +174,31 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="endpoints">Endpoints</h1>
+        <h1 id="cart-management">Cart Management</h1>
 
+    
 
-
-                                <h2 id="endpoints-POSTapi-user-login">POST api/user/login</h2>
+                                <h2 id="cart-management-GETapi-cart">Lấy giỏ hàng của người dùng hiện tại.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-POSTapi-user-login">
+<span id="example-requests-GETapi-cart">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/user/login" \
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/cart" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/user/login"
+    "http://localhost/api/cart"
 );
 
 const headers = {
@@ -190,59 +207,90 @@ const headers = {
 };
 
 fetch(url, {
-    method: "POST",
+    method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-POSTapi-user-login">
-</span>
-<span id="execution-results-POSTapi-user-login" hidden>
+<span id="example-responses-GETapi-cart">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 3,
+            &quot;product_name&quot;: &quot;Tranh treo tường tr&aacute;ng gương SET1 của REICHTUM - Decor ph&ograve;ng ngủ/ Chất vải canvas/ Độ bền cao&quot;,
+            &quot;product_id&quot;: 1,
+            &quot;product_hex_id&quot;: 1,
+            &quot;code&quot;: &quot;R287&quot;,
+            &quot;set&quot;: &quot;SET 1 C&Acirc;Y CỎ&quot;,
+            &quot;quantity&quot;: 2,
+            &quot;discount&quot;: 10,
+            &quot;size&quot;: &quot;40X60 CANVAS&quot;,
+            &quot;current_price&quot;: 22540,
+            &quot;discounted_price&quot;: 20286,
+            &quot;images&quot;: [
+                &quot;assets/img/products/btbhGacYF1_1735273573.webp&quot;,
+                &quot;assets/img/products/fzPmcN7ma8_1735273573.webp&quot;,
+                &quot;assets/img/products/pRLgncKt2K_1735273573.webp&quot;
+            ],
+            &quot;total_amount&quot;: 40572
+        }
+    ],
+    &quot;status&quot;: &quot;success&quot;,
+    &quot;message&quot;: &quot;Giỏ h&agrave;ng&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-cart" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-user-login"></span>:
+                id="execution-response-status-GETapi-cart"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-user-login"
+    <pre class="json"><code id="execution-response-content-GETapi-cart"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-user-login" hidden>
+<span id="execution-error-GETapi-cart" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-user-login">
+    <pre><code id="execution-error-message-GETapi-cart">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-user-login" data-method="POST"
-      data-path="api/user/login"
+<form id="form-GETapi-cart" data-method="GET"
+      data-path="api/cart"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-user-login', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-cart', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-user-login"
-                    onclick="tryItOut('POSTapi-user-login');">Try it out ⚡
+                    id="btn-tryout-GETapi-cart"
+                    onclick="tryItOut('GETapi-cart');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-user-login"
-                    onclick="cancelTryOut('POSTapi-user-login');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-cart"
+                    onclick="cancelTryOut('GETapi-cart');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-user-login"
+                    id="btn-executetryout-GETapi-cart"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/user/login</code></b>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/cart</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -250,7 +298,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-user-login"
+                              name="Content-Type"                data-endpoint="GETapi-cart"
                value="application/json"
                data-component="header">
     <br>
@@ -261,7 +309,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-user-login"
+                              name="Accept"                data-endpoint="GETapi-cart"
                value="application/json"
                data-component="header">
     <br>
@@ -269,27 +317,31 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-POSTapi-user-register">POST api/user/register</h2>
+                <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-GETapi-auth-google">Create a new controller instance.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-POSTapi-user-register">
+<span id="example-requests-GETapi-auth-google">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/user/register" \
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/auth/google" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/user/register"
+    "http://localhost/api/auth/google"
 );
 
 const headers = {
@@ -298,59 +350,88 @@ const headers = {
 };
 
 fetch(url, {
-    method: "POST",
+    method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-POSTapi-user-register">
-</span>
-<span id="execution-results-POSTapi-user-register" hidden>
+<span id="example-responses-GETapi-auth-google">
+            <blockquote>
+            <p>Example response (302):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+location: https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;response_type=code&amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN
+content-type: text/html; charset=utf-8
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+set-cookie: XSRF-TOKEN=eyJpdiI6IkZHSGtscmxlL3g5RGxtL1NZaFZ6YWc9PSIsInZhbHVlIjoiR1pyVnM3dVV0N1M1QU1KZkxFSlgrZERmRXdHV1FZZDBPNWM5MFRMSkRHLzhlNnFKOEd0SVFHNmIxc2I2OE41djdVS2h2aHhrUUt0L3JUT1kvYlJFVFZLb3NmV0Z0RDNRdUlUUzZsbWhaSG9QaWxHYlpON0JwczZ5Qk5GMTVuTGkiLCJtYWMiOiIxMmZlYjYzMTJjNzNiYWE3MDdhNzAxNjNkMzI5NDQ5MjBkZmY4YzhmNTIzZTI0ODFlNzc2NjBkNzBiYjAwMTgxIiwidGFnIjoiIn0%3D; expires=Sat, 28 Dec 2024 07:52:35 GMT; Max-Age=7200; path=/; samesite=lax; paint_session=eyJpdiI6IlVwbVlZWlJhRFU2SGdkYldQQ3p6R0E9PSIsInZhbHVlIjoid2hHdWhSeXBTQTBnRGlvNVI4aUxBZ2dNZG9kRFpPblFSblg2MzgxZzd6MTNaS052bFcrbHFoVVpsMFVrWDRlUldqOC9IUnJ0dGN4elA5Mzc3VG1EWlI3dDF2Sk5ydisxaXFHM1B3aCs3Rll2R1pGRWZ2ZWVqK2JIMHlaaFFQT1oiLCJtYWMiOiIxNWNkMDQwMmRhYmE0YmI1YmEyMGZhMWMwZDg5OWE2ZWYwMzdhZTcxMmI3MWY5ZDRlY2E4MDI4OTVmZThiNTBjIiwidGFnIjoiIn0%3D; expires=Sat, 28 Dec 2024 07:52:35 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=&#039;https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;amp;response_type=code&amp;amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN&#039;&quot; /&gt;
+
+        &lt;title&gt;Redirecting to https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;amp;response_type=code&amp;amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Redirecting to &lt;a href=&quot;https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;amp;response_type=code&amp;amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN&quot;&gt;https://accounts.google.com/o/oauth2/auth?scope=openid+profile+email&amp;amp;response_type=code&amp;amp;state=1wanNHyfDkWd8jmTKZpb6JGPQIl80pPh7zuxiffN&lt;/a&gt;.
+    &lt;/body&gt;
+&lt;/html&gt;</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-auth-google" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-user-register"></span>:
+                id="execution-response-status-GETapi-auth-google"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-user-register"
+    <pre class="json"><code id="execution-response-content-GETapi-auth-google"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-user-register" hidden>
+<span id="execution-error-GETapi-auth-google" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-user-register">
+    <pre><code id="execution-error-message-GETapi-auth-google">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-user-register" data-method="POST"
-      data-path="api/user/register"
+<form id="form-GETapi-auth-google" data-method="GET"
+      data-path="api/auth/google"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-user-register', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-auth-google', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-user-register"
-                    onclick="tryItOut('POSTapi-user-register');">Try it out ⚡
+                    id="btn-tryout-GETapi-auth-google"
+                    onclick="tryItOut('GETapi-auth-google');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-user-register"
-                    onclick="cancelTryOut('POSTapi-user-register');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-auth-google"
+                    onclick="cancelTryOut('GETapi-auth-google');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-user-register"
+                    id="btn-executetryout-GETapi-auth-google"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/user/register</code></b>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/auth/google</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -358,7 +439,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-user-register"
+                              name="Content-Type"                data-endpoint="GETapi-auth-google"
                value="application/json"
                data-component="header">
     <br>
@@ -369,7 +450,132 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-user-register"
+                              name="Accept"                data-endpoint="GETapi-auth-google"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-auth-google-callback">Create a new controller instance.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-auth-google-callback">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/auth/google/callback" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/auth/google/callback"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-auth-google-callback">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">content-type: text/html; charset=UTF-8
+cache-control: no-cache, private
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 58
+access-control-allow-origin: *
+set-cookie: XSRF-TOKEN=eyJpdiI6IkFYMU1LbjQ2WWdCTkRHRFdOd2dtTWc9PSIsInZhbHVlIjoibkdZdWd3T1VqQ016dFd5dUY4RVROblpVY3FxMVh0TmVRMzVyV08yM3dUVVE1VU96Q3ZzNFVobU0ybjZOSkI3SDFhaHVqKy9ud2VBNlV4VTR4aUZ6R2JnNHpqRzhTKzFRbk1qb1ZIbkdqd3RZTUVTcmNYVmFLTnhqbDdMUzB3THMiLCJtYWMiOiJiNjJmYjYwZGY1NWRhY2NlNzdhM2Q2YzgzYzI4NmQ5NTc5MzExOWMzNDllMWJlMWUwYzgzMWM2MTRhMzNiNmI4IiwidGFnIjoiIn0%3D; expires=Sat, 28 Dec 2024 07:52:35 GMT; Max-Age=7200; path=/; samesite=lax; paint_session=eyJpdiI6InFXbE9VNk1YdmdEalV4a0JoanR6YXc9PSIsInZhbHVlIjoiOWZJdDU5RFJvTVpKWW9wazhoQm5DNDFIbTE1YTRydSt3WTdWOUFmRkYxdytiWDE3RHBMcGVoaWVXYm94MjBVVnhuVm9lMnZxK3dBcm9RYW5XMXdvbGV0QkpnenY1cmZJbnpGT1dEcUxYVUpjMmx2RDVEeFVKNC9UNFZCaVA0NFciLCJtYWMiOiIwYTBkZWM3NmEyMjc0NDIzMGUyZTJiZDMwMTUyZWQzYWUyYWM4NDA1ODllOTcwNTY4ZmQ3ODBhZGVhNTk3NGNkIiwidGFnIjoiIn0%3D; expires=Sat, 28 Dec 2024 07:52:35 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;"></code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-auth-google-callback" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-auth-google-callback"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-auth-google-callback"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-auth-google-callback" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-auth-google-callback">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-auth-google-callback" data-method="GET"
+      data-path="api/auth/google/callback"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-auth-google-callback', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-auth-google-callback"
+                    onclick="tryItOut('GETapi-auth-google-callback');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-auth-google-callback"
+                    onclick="cancelTryOut('GETapi-auth-google-callback');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-auth-google-callback"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/auth/google/callback</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-auth-google-callback"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-auth-google-callback"
                value="application/json"
                data-component="header">
     <br>
@@ -485,275 +691,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-GETapi-cart">Lấy giỏ hàng của người dùng hiện tại.</h2>
-
-<p>
-</p>
-
-<p>Phương thức này sử dụng <code>cartService</code> để tìm giỏ hàng của người dùng dựa trên
-ID của người dùng hiện tại được lấy từ <code>Auth::user()</code>.</p>
-
-<span id="example-requests-GETapi-cart">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/cart" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/cart"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-cart">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-cart" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-cart"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-cart"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-cart" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-cart">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-cart" data-method="GET"
-      data-path="api/cart"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-cart', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-cart"
-                    onclick="tryItOut('GETapi-cart');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-cart"
-                    onclick="cancelTryOut('GETapi-cart');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-cart"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/cart</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-cart"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-cart"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="endpoints-POSTapi-cart-update">Cập nhật giỏ hàng của người dùng hiện tại.</h2>
-
-<p>
-</p>
-
-<p>Phương thức này nhận yêu cầu cập nhật giỏ hàng từ người dùng, xác thực dữ liệu
-đầu vào bằng <code>UpdateCartRequest</code>, sau đó sử dụng <code>cartService</code> để cập nhật giỏ hàng
-dựa trên ID người dùng.</p>
-
-<span id="example-requests-POSTapi-cart-update">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/cart/update" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"product_variant_id\": 5397659.033419205,
-    \"quantity\": 15
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/cart/update"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "product_variant_id": 5397659.033419205,
-    "quantity": 15
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-cart-update">
-</span>
-<span id="execution-results-POSTapi-cart-update" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-cart-update"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-cart-update"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-cart-update" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-cart-update">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-cart-update" data-method="POST"
-      data-path="api/cart/update"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-cart-update', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-cart-update"
-                    onclick="tryItOut('POSTapi-cart-update');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-cart-update"
-                    onclick="cancelTryOut('POSTapi-cart-update');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-cart-update"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/cart/update</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-cart-update"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-cart-update"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>product_variant_id</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="product_variant_id"                data-endpoint="POSTapi-cart-update"
-               value="5397659.0334192"
-               data-component="body">
-    <br>
-<p>Example: <code>5397659.0334192</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="quantity"                data-endpoint="POSTapi-cart-update"
-               value="15"
-               data-component="body">
-    <br>
-<p>Must be at least 0. Must not be greater than 100. Example: <code>15</code></p>
-        </div>
-        </form>
-
                     <h2 id="endpoints-POSTapi-product-detail-review">Lưu đánh giá sản phẩm.</h2>
 
 <p>
@@ -773,9 +710,9 @@ chuyển dữ liệu đã xác thực cho <code>ProductService</code> để lưu
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"product_id\": \"facilis\",
-    \"rating\": 3,
-    \"comment\": \"zxefqijq\"
+    \"product_id\": \"et\",
+    \"rating\": 1,
+    \"comment\": \"yfwsigfqyv\"
 }"
 </code></pre></div>
 
@@ -791,9 +728,9 @@ const headers = {
 };
 
 let body = {
-    "product_id": "facilis",
-    "rating": 3,
-    "comment": "zxefqijq"
+    "product_id": "et",
+    "rating": 1,
+    "comment": "yfwsigfqyv"
 };
 
 fetch(url, {
@@ -882,10 +819,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="product_id"                data-endpoint="POSTapi-product-detail-review"
-               value="facilis"
+               value="et"
                data-component="body">
     <br>
-<p>Example: <code>facilis</code></p>
+<p>The <code>id</code> of an existing record in the products table. Example: <code>et</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>rating</code></b>&nbsp;&nbsp;
@@ -893,10 +830,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="rating"                data-endpoint="POSTapi-product-detail-review"
-               value="3"
+               value="1"
                data-component="body">
     <br>
-<p>Must be at least 1. Must not be greater than 5. Example: <code>3</code></p>
+<p>Must be at least 1. Must not be greater than 5. Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>comment</code></b>&nbsp;&nbsp;
@@ -904,10 +841,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="comment"                data-endpoint="POSTapi-product-detail-review"
-               value="zxefqijq"
+               value="yfwsigfqyv"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>zxefqijq</code></p>
+<p>Must not be greater than 255 characters. Example: <code>yfwsigfqyv</code></p>
         </div>
         </form>
 
@@ -1048,14 +985,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/order/detail/doloribus" \
+    --get "http://localhost/api/order/detail/quas" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/order/detail/doloribus"
+    "http://localhost/api/order/detail/quas"
 );
 
 const headers = {
@@ -1164,20 +1101,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-order-detail--id-"
-               value="doloribus"
+               value="quas"
                data-component="url">
     <br>
-<p>The ID of the detail. Example: <code>doloribus</code></p>
+<p>The ID of the detail. Example: <code>quas</code></p>
             </div>
                     </form>
 
-                    <h2 id="endpoints-POSTapi-order-store">Tạo đơn hàng mới.</h2>
+                    <h2 id="endpoints-POSTapi-order-store">Store a new order in the database.</h2>
 
 <p>
 </p>
 
-<p>Phương thức này nhận yêu cầu từ người dùng, xác thực dữ liệu bằng <code>StoreOrderRequest</code>,
-sau đó sử dụng <code>orderService</code> để tạo đơn hàng mới.</p>
+<p>This method handles the creation of an order, including the generation of the order code,
+storing order details, updating product stock, and removing items from the cart.
+It also dispatches a job to notify the user of the order status.</p>
 
 <span id="example-requests-POSTapi-order-store">
 <blockquote>Example request:</blockquote>
@@ -1189,20 +1127,21 @@ sau đó sử dụng <code>orderService</code> để tạo đơn hàng mới.</p
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"ipsum\",
-    \"last_name\": \"officia\",
-    \"phone\": 22519.106,
-    \"address\": \"itaque\",
-    \"payment_method\": \"0\",
+    \"first_name\": \"et\",
+    \"last_name\": \"commodi\",
+    \"phone\": 0.48989003,
+    \"address\": \"omnis\",
+    \"payment_method\": \"1\",
     \"order_details\": [
         {
-            \"id\": \"ut\",
-            \"product_variant_id\": \"repudiandae\",
-            \"price\": 33191819.58842326,
-            \"quantity\": 84
+            \"id\": \"numquam\",
+            \"product_hex_id\": \"asperiores\",
+            \"size_id\": \"aliquam\",
+            \"price\": 20.03197353,
+            \"quantity\": 80
         }
     ],
-    \"total_price\": 1610.986
+    \"total_price\": 22679.068
 }"
 </code></pre></div>
 
@@ -1218,20 +1157,21 @@ const headers = {
 };
 
 let body = {
-    "first_name": "ipsum",
-    "last_name": "officia",
-    "phone": 22519.106,
-    "address": "itaque",
-    "payment_method": "0",
+    "first_name": "et",
+    "last_name": "commodi",
+    "phone": 0.48989003,
+    "address": "omnis",
+    "payment_method": "1",
     "order_details": [
         {
-            "id": "ut",
-            "product_variant_id": "repudiandae",
-            "price": 33191819.58842326,
-            "quantity": 84
+            "id": "numquam",
+            "product_hex_id": "asperiores",
+            "size_id": "aliquam",
+            "price": 20.03197353,
+            "quantity": 80
         }
     ],
-    "total_price": 1610.986
+    "total_price": 22679.068
 };
 
 fetch(url, {
@@ -1320,10 +1260,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="first_name"                data-endpoint="POSTapi-order-store"
-               value="ipsum"
+               value="et"
                data-component="body">
     <br>
-<p>Example: <code>ipsum</code></p>
+<p>Example: <code>et</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
@@ -1331,10 +1271,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="last_name"                data-endpoint="POSTapi-order-store"
-               value="officia"
+               value="commodi"
                data-component="body">
     <br>
-<p>Example: <code>officia</code></p>
+<p>Example: <code>commodi</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
@@ -1342,10 +1282,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="phone"                data-endpoint="POSTapi-order-store"
-               value="22519.106"
+               value="0.48989003"
                data-component="body">
     <br>
-<p>Example: <code>22519.106</code></p>
+<p>Example: <code>0.48989003</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -1353,10 +1293,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="address"                data-endpoint="POSTapi-order-store"
-               value="itaque"
+               value="omnis"
                data-component="body">
     <br>
-<p>Example: <code>itaque</code></p>
+<p>Example: <code>omnis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
@@ -1386,10 +1326,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="payment_method"                data-endpoint="POSTapi-order-store"
-               value="0"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>0</code></p>
+<p>Example: <code>1</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>0</code></li> <li><code>1</code></li></ul>
         </div>
@@ -1419,21 +1359,32 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="order_details.0.id"                data-endpoint="POSTapi-order-store"
-               value="ut"
+               value="numquam"
                data-component="body">
     <br>
-<p>Example: <code>ut</code></p>
+<p>Example: <code>numquam</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>product_variant_id</code></b>&nbsp;&nbsp;
+                        <b style="line-height: 2;"><code>product_hex_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="order_details.0.product_variant_id"                data-endpoint="POSTapi-order-store"
-               value="repudiandae"
+                              name="order_details.0.product_hex_id"                data-endpoint="POSTapi-order-store"
+               value="asperiores"
                data-component="body">
     <br>
-<p>Example: <code>repudiandae</code></p>
+<p>The <code>id</code> of an existing record in the product_hex table. Example: <code>asperiores</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>size_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="order_details.0.size_id"                data-endpoint="POSTapi-order-store"
+               value="aliquam"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the product_sizes table. Example: <code>aliquam</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
@@ -1441,10 +1392,10 @@ Must be one of:
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="order_details.0.price"                data-endpoint="POSTapi-order-store"
-               value="33191819.588423"
+               value="20.03197353"
                data-component="body">
     <br>
-<p>Example: <code>33191819.588423</code></p>
+<p>Example: <code>20.03197353</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
@@ -1452,10 +1403,10 @@ Must be one of:
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="order_details.0.quantity"                data-endpoint="POSTapi-order-store"
-               value="84"
+               value="80"
                data-component="body">
     <br>
-<p>Must be at least 1. Example: <code>84</code></p>
+<p>Must be at least 1. Example: <code>80</code></p>
                     </div>
                                     </details>
         </div>
@@ -1465,10 +1416,10 @@ Must be one of:
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="total_price"                data-endpoint="POSTapi-order-store"
-               value="1610.986"
+               value="22679.068"
                data-component="body">
     <br>
-<p>Example: <code>1610.986</code></p>
+<p>Example: <code>22679.068</code></p>
         </div>
         </form>
 
@@ -1486,20 +1437,20 @@ sau đó sử dụng <code>orderService</code> để cập nhật đơn hàng d�
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/order/update/quae" \
+    "http://localhost/api/order/update/fugiat" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"phone\": 0.763076691,
-    \"address\": \"et\",
-    \"name\": \"rerum\"
+    \"phone\": 12969.648,
+    \"address\": \"esse\",
+    \"name\": \"modi\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/order/update/quae"
+    "http://localhost/api/order/update/fugiat"
 );
 
 const headers = {
@@ -1508,9 +1459,9 @@ const headers = {
 };
 
 let body = {
-    "phone": 0.763076691,
-    "address": "et",
-    "name": "rerum"
+    "phone": 12969.648,
+    "address": "esse",
+    "name": "modi"
 };
 
 fetch(url, {
@@ -1599,10 +1550,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-order-update--id-"
-               value="quae"
+               value="fugiat"
                data-component="url">
     <br>
-<p>The ID of the update. Example: <code>quae</code></p>
+<p>The ID of the update. Example: <code>fugiat</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1611,10 +1562,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="phone"                data-endpoint="POSTapi-order-update--id-"
-               value="0.763076691"
+               value="12969.648"
                data-component="body">
     <br>
-<p>Example: <code>0.763076691</code></p>
+<p>Example: <code>12969.648</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -1622,10 +1573,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="address"                data-endpoint="POSTapi-order-update--id-"
-               value="et"
+               value="esse"
                data-component="body">
     <br>
-<p>Example: <code>et</code></p>
+<p>Example: <code>esse</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
@@ -1644,10 +1595,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-order-update--id-"
-               value="rerum"
+               value="modi"
                data-component="body">
     <br>
-<p>Example: <code>rerum</code></p>
+<p>Example: <code>modi</code></p>
         </div>
         </form>
 
@@ -1664,14 +1615,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/order/delete/vero" \
+    "http://localhost/api/order/delete/voluptate" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/order/delete/vero"
+    "http://localhost/api/order/delete/voluptate"
 );
 
 const headers = {
@@ -1764,10 +1715,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-order-delete--id-"
-               value="vero"
+               value="voluptate"
                data-component="url">
     <br>
-<p>The ID of the delete. Example: <code>vero</code></p>
+<p>The ID of the delete. Example: <code>voluptate</code></p>
             </div>
                     </form>
 
@@ -1789,9 +1740,9 @@ và các thông tin bảo mật từ môi trường (env).</p>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"order_id\": \"a\",
-    \"amount\": 1,
-    \"url_return\": \"https:\\/\\/nikolaus.net\\/laudantium-corrupti-ea-voluptates-omnis-debitis.html\"
+    \"order_id\": \"officiis\",
+    \"amount\": 8,
+    \"url_return\": \"http:\\/\\/eichmann.com\\/explicabo-aut-rerum-ut-omnis-ut-voluptatem-consectetur\"
 }"
 </code></pre></div>
 
@@ -1807,9 +1758,9 @@ const headers = {
 };
 
 let body = {
-    "order_id": "a",
-    "amount": 1,
-    "url_return": "https:\/\/nikolaus.net\/laudantium-corrupti-ea-voluptates-omnis-debitis.html"
+    "order_id": "officiis",
+    "amount": 8,
+    "url_return": "http:\/\/eichmann.com\/explicabo-aut-rerum-ut-omnis-ut-voluptatem-consectetur"
 };
 
 fetch(url, {
@@ -1898,10 +1849,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="order_id"                data-endpoint="POSTapi-order-vnpay_payment"
-               value="a"
+               value="officiis"
                data-component="body">
     <br>
-<p>Example: <code>a</code></p>
+<p>The <code>code</code> of an existing record in the orders table. Example: <code>officiis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
@@ -1909,10 +1860,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="amount"                data-endpoint="POSTapi-order-vnpay_payment"
-               value="1"
+               value="8"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>8</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>url_return</code></b>&nbsp;&nbsp;
@@ -1920,10 +1871,555 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="url_return"                data-endpoint="POSTapi-order-vnpay_payment"
-               value="https://nikolaus.net/laudantium-corrupti-ea-voluptates-omnis-debitis.html"
+               value="http://eichmann.com/explicabo-aut-rerum-ut-omnis-ut-voluptatem-consectetur"
                data-component="body">
     <br>
-<p>Must be a valid URL. Example: <code>https://nikolaus.net/laudantium-corrupti-ea-voluptates-omnis-debitis.html</code></p>
+<p>Must be a valid URL. Example: <code>http://eichmann.com/explicabo-aut-rerum-ut-omnis-ut-voluptatem-consectetur</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-GETapi-user-id">GET api/user-id</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-user-id">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/user-id" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/user-id"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-user-id">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-user-id" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-user-id"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-user-id"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-user-id" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-user-id">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-user-id" data-method="GET"
+      data-path="api/user-id"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-user-id', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-user-id"
+                    onclick="tryItOut('GETapi-user-id');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-user-id"
+                    onclick="cancelTryOut('GETapi-user-id');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-user-id"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/user-id</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-user-id"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-user-id"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-user">GET api/user</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-user">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/user" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/user"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-user">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-user" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-user"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-user"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-user" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-user">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-user" data-method="GET"
+      data-path="api/user"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-user', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-user"
+                    onclick="tryItOut('GETapi-user');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-user"
+                    onclick="cancelTryOut('GETapi-user');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-user"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/user</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-POSTapi-send-reset-link">POST api/send-reset-link</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-send-reset-link">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/send-reset-link" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"orion.halvorson@example.org\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/send-reset-link"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "orion.halvorson@example.org"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-send-reset-link">
+</span>
+<span id="execution-results-POSTapi-send-reset-link" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-send-reset-link"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-send-reset-link"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-send-reset-link" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-send-reset-link">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-send-reset-link" data-method="POST"
+      data-path="api/send-reset-link"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-send-reset-link', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-send-reset-link"
+                    onclick="tryItOut('POSTapi-send-reset-link');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-send-reset-link"
+                    onclick="cancelTryOut('POSTapi-send-reset-link');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-send-reset-link"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/send-reset-link</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-send-reset-link"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-send-reset-link"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-send-reset-link"
+               value="orion.halvorson@example.org"
+               data-component="body">
+    <br>
+<p>Must be a valid email address. Example: <code>orion.halvorson@example.org</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-POSTapi-reset-password">POST api/reset-password</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-reset-password">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/reset-password" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"edna85@example.net\",
+    \"password\": \"J1N_m6\",
+    \"token\": \"dolores\",
+    \"password_confirmation\": \"tglavfsmzmcycwepfhutxpvvujowhrfyefgwpmkiohnn\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/reset-password"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "edna85@example.net",
+    "password": "J1N_m6",
+    "token": "dolores",
+    "password_confirmation": "tglavfsmzmcycwepfhutxpvvujowhrfyefgwpmkiohnn"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-reset-password">
+</span>
+<span id="execution-results-POSTapi-reset-password" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-reset-password"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-reset-password"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-reset-password" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-reset-password">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-reset-password" data-method="POST"
+      data-path="api/reset-password"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-reset-password', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-reset-password"
+                    onclick="tryItOut('POSTapi-reset-password');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-reset-password"
+                    onclick="cancelTryOut('POSTapi-reset-password');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-reset-password"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/reset-password</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-reset-password"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-reset-password"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-reset-password"
+               value="edna85@example.net"
+               data-component="body">
+    <br>
+<p>Must be a valid email address. Example: <code>edna85@example.net</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password"                data-endpoint="POSTapi-reset-password"
+               value="J1N_m6"
+               data-component="body">
+    <br>
+<p>Must be at least 6 characters. Example: <code>J1N_m6</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>token</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="token"                data-endpoint="POSTapi-reset-password"
+               value="dolores"
+               data-component="body">
+    <br>
+<p>Example: <code>dolores</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password_confirmation"                data-endpoint="POSTapi-reset-password"
+               value="tglavfsmzmcycwepfhutxpvvujowhrfyefgwpmkiohnn"
+               data-component="body">
+    <br>
+<p>Must be at least 6 characters. Example: <code>tglavfsmzmcycwepfhutxpvvujowhrfyefgwpmkiohnn</code></p>
         </div>
         </form>
 
@@ -1975,7 +2471,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
+x-ratelimit-remaining: 57
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1983,39 +2479,62 @@ access-control-allow-origin: *
     &quot;data&quot;: [
         {
             &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;Apple&quot;,
-            &quot;created_at&quot;: &quot;2024-10-04T12:17:52.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-10-04T12:17:52.000000Z&quot;
+            &quot;name&quot;: &quot;SET 1&quot;,
+            &quot;created_at&quot;: null,
+            &quot;updated_at&quot;: null,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;HOA L&Aacute;&quot;,
+                    &quot;set_id&quot;: 1,
+                    &quot;created_at&quot;: null,
+                    &quot;updated_at&quot;: null
+                },
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;C&Acirc;Y CỎ&quot;,
+                    &quot;set_id&quot;: 1,
+                    &quot;created_at&quot;: null,
+                    &quot;updated_at&quot;: null
+                }
+            ]
         },
         {
             &quot;id&quot;: 2,
-            &quot;name&quot;: &quot;XiaoMi&quot;,
-            &quot;created_at&quot;: &quot;2024-10-04T12:18:01.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-10-04T12:18:01.000000Z&quot;
+            &quot;name&quot;: &quot;SET 2&quot;,
+            &quot;created_at&quot;: null,
+            &quot;updated_at&quot;: null,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;HALLOWEN&quot;,
+                    &quot;set_id&quot;: 2,
+                    &quot;created_at&quot;: null,
+                    &quot;updated_at&quot;: null
+                },
+                {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;NOEL&quot;,
+                    &quot;set_id&quot;: 2,
+                    &quot;created_at&quot;: null,
+                    &quot;updated_at&quot;: null
+                }
+            ]
         },
         {
             &quot;id&quot;: 3,
-            &quot;name&quot;: &quot;Huawei&quot;,
-            &quot;created_at&quot;: &quot;2024-10-04T12:18:07.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-10-04T12:18:07.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 4,
-            &quot;name&quot;: &quot;Nokia&quot;,
-            &quot;created_at&quot;: &quot;2024-10-04T12:18:18.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-10-04T12:18:18.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 5,
-            &quot;name&quot;: &quot;Samsung&quot;,
-            &quot;created_at&quot;: &quot;2024-10-04T12:18:23.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-10-04T12:18:23.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 6,
-            &quot;name&quot;: &quot;Pixel&quot;,
-            &quot;created_at&quot;: &quot;2024-10-04T12:18:39.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-10-04T12:18:39.000000Z&quot;
+            &quot;name&quot;: &quot;SET 3&quot;,
+            &quot;created_at&quot;: null,
+            &quot;updated_at&quot;: null,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;HOA L&Aacute;&quot;,
+                    &quot;set_id&quot;: 3,
+                    &quot;created_at&quot;: null,
+                    &quot;updated_at&quot;: null
+                }
+            ]
         }
     ],
     &quot;status&quot;: &quot;success&quot;,
@@ -2140,98 +2659,102 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
+x-ratelimit-remaining: 56
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 2,
-            &quot;category_id&quot;: 1,
-            &quot;category_name&quot;: &quot;Apple&quot;,
-            &quot;title&quot;: &quot;iPhone 11 64GB Ch&iacute;nh h&atilde;ng&quot;,
-            &quot;description&quot;: null,
-            &quot;discount&quot;: &quot;10.00&quot;,
-            &quot;info&quot;: null,
-            &quot;specifications&quot;: {
-                &quot;id&quot;: 2,
-                &quot;product_id&quot;: 2,
-                &quot;screen_size&quot;: &quot;6.1 inches&quot;,
-                &quot;screen_type&quot;: &quot;IPS LCD&quot;,
-                &quot;screen_resolution&quot;: &quot;1792 x 828 pixel&quot;,
-                &quot;ram&quot;: null,
-                &quot;memory_card_slot&quot;: null,
-                &quot;battery&quot;: null,
-                &quot;sim&quot;: null,
-                &quot;camera_front&quot;: null,
-                &quot;camera_rear&quot;: null,
-                &quot;operating_system&quot;: null,
-                &quot;chip&quot;: null,
-                &quot;pin&quot;: null,
-                &quot;connectivity&quot;: null,
-                &quot;bluetooth&quot;: null,
-                &quot;dimensions&quot;: null,
-                &quot;weight&quot;: null
-            },
-            &quot;variants&quot;: [
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Tranh treo tường tr&aacute;ng gương SET1 của REICHTUM - Decor ph&ograve;ng ngủ/ Chất vải canvas/ Độ bền cao&quot;,
+            &quot;set_category_id&quot;: 2,
+            &quot;set_category_name&quot;: &quot;SET 1 C&Acirc;Y CỎ&quot;,
+            &quot;product_hex&quot;: [
                 {
                     &quot;id&quot;: 1,
-                    &quot;product_id&quot;: 2,
-                    &quot;rom_id&quot;: 2,
-                    &quot;color&quot;: &quot;Trắng&quot;,
-                    &quot;price&quot;: &quot;7490000.00&quot;,
-                    &quot;availability&quot;: 0,
-                    &quot;stock&quot;: 0,
-                    &quot;rom&quot;: {
-                        &quot;id&quot;: 2,
-                        &quot;capacity&quot;: &quot;64 GB&quot;
-                    },
-                    &quot;images&quot;: [
+                    &quot;code&quot;: &quot;R287&quot;,
+                    &quot;sizes&quot;: [
                         {
-                            &quot;id&quot;: 1,
-                            &quot;product_variant_id&quot;: 1,
-                            &quot;image_url&quot;: &quot;assets/img/products/fM0FKmGS3a_1728045310.webp&quot;
+                            &quot;size&quot;: &quot;40X60 CANVAS&quot;,
+                            &quot;price&quot;: &quot;22540.00&quot;,
+                            &quot;stock&quot;: 5
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/btbhGacYF1_1735273573.webp&quot;
+                        },
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/fzPmcN7ma8_1735273573.webp&quot;
+                        },
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/pRLgncKt2K_1735273573.webp&quot;
                         }
                     ]
                 },
                 {
-                    &quot;id&quot;: 2,
-                    &quot;product_id&quot;: 2,
-                    &quot;rom_id&quot;: 2,
-                    &quot;color&quot;: &quot;Đỏ&quot;,
-                    &quot;price&quot;: &quot;7490000.00&quot;,
-                    &quot;availability&quot;: 1,
-                    &quot;stock&quot;: 7,
-                    &quot;rom&quot;: {
-                        &quot;id&quot;: 2,
-                        &quot;capacity&quot;: &quot;64 GB&quot;
-                    },
-                    &quot;images&quot;: [
+                    &quot;id&quot;: 3,
+                    &quot;code&quot;: &quot;R30&quot;,
+                    &quot;sizes&quot;: [
                         {
-                            &quot;id&quot;: 2,
-                            &quot;product_variant_id&quot;: 2,
-                            &quot;image_url&quot;: &quot;assets/img/products/tjhjgEcsO0_1728046277.webp&quot;
+                            &quot;size&quot;: &quot;30X40 TR&Aacute;NG GƯƠNG&quot;,
+                            &quot;price&quot;: &quot;540000.00&quot;,
+                            &quot;stock&quot;: 5
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/sHPNDvmVRE_1735273588.webp&quot;
+                        },
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/DvnBqvdPYI_1735273588.webp&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;name&quot;: &quot;Tranh treo tường canvas cao cấp SET1 của REICHTUM - Ph&ograve;ng kh&aacute;ch/ Nh&agrave; ngủ/ Decor/ Chất vải canvas&quot;,
+            &quot;set_category_id&quot;: 5,
+            &quot;set_category_name&quot;: &quot;SET 3 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 12,
+                    &quot;code&quot;: &quot;R381&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;60X80 CANVAS&quot;,
+                            &quot;price&quot;: &quot;1800000.00&quot;,
+                            &quot;stock&quot;: -4
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/2zZ6PbzlBX_1735207194.webp&quot;
+                        },
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/RbQcxj7C7D_1735207194.webp&quot;
                         }
                     ]
                 },
                 {
-                    &quot;id&quot;: 7,
-                    &quot;product_id&quot;: 2,
-                    &quot;rom_id&quot;: 2,
-                    &quot;color&quot;: &quot;T&iacute;m&quot;,
-                    &quot;price&quot;: &quot;7490000.00&quot;,
-                    &quot;availability&quot;: 1,
-                    &quot;stock&quot;: 6,
-                    &quot;rom&quot;: {
-                        &quot;id&quot;: 2,
-                        &quot;capacity&quot;: &quot;64 GB&quot;
-                    },
-                    &quot;images&quot;: [
+                    &quot;id&quot;: 13,
+                    &quot;code&quot;: &quot;R382&quot;,
+                    &quot;sizes&quot;: [
                         {
-                            &quot;id&quot;: 7,
-                            &quot;product_variant_id&quot;: 7,
-                            &quot;image_url&quot;: &quot;assets/img/products/TTdau3yC2S_1728046798.webp&quot;
+                            &quot;size&quot;: &quot;60X80 CANVAS&quot;,
+                            &quot;price&quot;: &quot;500000.00&quot;,
+                            &quot;stock&quot;: -3
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/sJFCY4Vd8Z_1735207348.webp&quot;
+                        },
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/T7QLZmwpZz_1735207348.webp&quot;
                         }
                     ]
                 }
@@ -2239,121 +2762,719 @@ access-control-allow-origin: *
         },
         {
             &quot;id&quot;: 8,
-            &quot;category_id&quot;: 1,
-            &quot;category_name&quot;: &quot;Apple&quot;,
-            &quot;title&quot;: &quot;iPhone 13 128GB&quot;,
-            &quot;description&quot;: null,
-            &quot;discount&quot;: &quot;10.00&quot;,
-            &quot;info&quot;: &quot;&lt;p&gt;M&amp;aacute;y mới 100% , ch&amp;iacute;nh h&amp;atilde;ng Apple Việt Nam.&lt;br /&gt;\r\nCellphoneS hiện l&amp;agrave; đại l&amp;yacute; b&amp;aacute;n lẻ uỷ quyền iPhone ch&amp;iacute;nh h&amp;atilde;ng VN/A của Apple Việt Nam&lt;/p&gt;\r\n\r\n&lt;p&gt;Hộp, S&amp;aacute;ch hướng dẫn, C&amp;acirc;y lấy sim, C&amp;aacute;p Lightning - Type C&lt;/p&gt;\r\n\r\n&lt;p&gt;1 ĐỔI 1 trong 30 ng&amp;agrave;y nếu c&amp;oacute; lỗi phần cứng nh&amp;agrave; sản xuất. Bảo h&amp;agrave;nh 12 th&amp;aacute;ng tại trung t&amp;acirc;m bảo h&amp;agrave;nh ch&amp;iacute;nh h&amp;atilde;ng Apple:&lt;/p&gt;&quot;,
-            &quot;specifications&quot;: {
-                &quot;id&quot;: 8,
-                &quot;product_id&quot;: 8,
-                &quot;screen_size&quot;: null,
-                &quot;screen_type&quot;: null,
-                &quot;screen_resolution&quot;: null,
-                &quot;ram&quot;: null,
-                &quot;memory_card_slot&quot;: null,
-                &quot;battery&quot;: null,
-                &quot;sim&quot;: null,
-                &quot;camera_front&quot;: null,
-                &quot;camera_rear&quot;: null,
-                &quot;operating_system&quot;: null,
-                &quot;chip&quot;: null,
-                &quot;pin&quot;: null,
-                &quot;connectivity&quot;: null,
-                &quot;bluetooth&quot;: null,
-                &quot;dimensions&quot;: null,
-                &quot;weight&quot;: null
-            },
-            &quot;variants&quot;: [
-                {
-                    &quot;id&quot;: 13,
-                    &quot;product_id&quot;: 8,
-                    &quot;rom_id&quot;: 3,
-                    &quot;color&quot;: &quot;Trắng&quot;,
-                    &quot;price&quot;: &quot;13790000.00&quot;,
-                    &quot;availability&quot;: 0,
-                    &quot;stock&quot;: 0,
-                    &quot;rom&quot;: {
-                        &quot;id&quot;: 3,
-                        &quot;capacity&quot;: &quot;128 GB&quot;
-                    },
-                    &quot;images&quot;: [
-                        {
-                            &quot;id&quot;: 13,
-                            &quot;product_variant_id&quot;: 13,
-                            &quot;image_url&quot;: &quot;assets/img/products/ZAIeDakxCr_1728047099.webp&quot;
-                        }
-                    ]
-                },
+            &quot;name&quot;: &quot;Et sunt nisi.&quot;,
+            &quot;set_category_id&quot;: 1,
+            &quot;set_category_name&quot;: &quot;SET 1 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
                 {
                     &quot;id&quot;: 14,
-                    &quot;product_id&quot;: 8,
-                    &quot;rom_id&quot;: 3,
-                    &quot;color&quot;: &quot;Đỏ&quot;,
-                    &quot;price&quot;: &quot;13790000.00&quot;,
-                    &quot;availability&quot;: 1,
-                    &quot;stock&quot;: 6,
-                    &quot;rom&quot;: {
-                        &quot;id&quot;: 3,
-                        &quot;capacity&quot;: &quot;128 GB&quot;
-                    },
-                    &quot;images&quot;: [
+                    &quot;code&quot;: &quot;VN1KDS&quot;,
+                    &quot;sizes&quot;: [
                         {
-                            &quot;id&quot;: 14,
-                            &quot;product_variant_id&quot;: 14,
-                            &quot;image_url&quot;: &quot;assets/img/products/hAy7x5hf9Z_1728047175.webp&quot;
+                            &quot;size&quot;: &quot;L&quot;,
+                            &quot;price&quot;: &quot;172.54&quot;,
+                            &quot;stock&quot;: 93
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
                         }
                     ]
                 }
             ]
         },
         {
-            &quot;id&quot;: 9,
-            &quot;category_id&quot;: 5,
-            &quot;category_name&quot;: &quot;Samsung&quot;,
-            &quot;title&quot;: &quot;Samsung Galaxy S24 Ultra 12GB 256GB&quot;,
-            &quot;description&quot;: null,
-            &quot;discount&quot;: &quot;10.00&quot;,
-            &quot;info&quot;: null,
-            &quot;specifications&quot;: {
-                &quot;id&quot;: 9,
-                &quot;product_id&quot;: 9,
-                &quot;screen_size&quot;: null,
-                &quot;screen_type&quot;: null,
-                &quot;screen_resolution&quot;: null,
-                &quot;ram&quot;: null,
-                &quot;memory_card_slot&quot;: null,
-                &quot;battery&quot;: null,
-                &quot;sim&quot;: null,
-                &quot;camera_front&quot;: null,
-                &quot;camera_rear&quot;: null,
-                &quot;operating_system&quot;: null,
-                &quot;chip&quot;: null,
-                &quot;pin&quot;: null,
-                &quot;connectivity&quot;: null,
-                &quot;bluetooth&quot;: null,
-                &quot;dimensions&quot;: null,
-                &quot;weight&quot;: null
-            },
-            &quot;variants&quot;: [
+            &quot;id&quot;: 10,
+            &quot;name&quot;: &quot;Reprehenderit eum est.&quot;,
+            &quot;set_category_id&quot;: 1,
+            &quot;set_category_name&quot;: &quot;SET 1 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
                 {
                     &quot;id&quot;: 15,
-                    &quot;product_id&quot;: 9,
-                    &quot;rom_id&quot;: 4,
-                    &quot;color&quot;: &quot;Đen&quot;,
-                    &quot;price&quot;: &quot;27990000.00&quot;,
-                    &quot;availability&quot;: 1,
-                    &quot;stock&quot;: 3,
-                    &quot;rom&quot;: {
-                        &quot;id&quot;: 4,
-                        &quot;capacity&quot;: &quot;256 GB&quot;
-                    },
-                    &quot;images&quot;: [
+                    &quot;code&quot;: &quot;1U5BTD&quot;,
+                    &quot;sizes&quot;: [
                         {
-                            &quot;id&quot;: 15,
-                            &quot;product_variant_id&quot;: 15,
-                            &quot;image_url&quot;: &quot;assets/img/products/IxYSeC6SA8_1728047292.webp&quot;
+                            &quot;size&quot;: &quot;XL&quot;,
+                            &quot;price&quot;: &quot;668.98&quot;,
+                            &quot;stock&quot;: 52
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 11,
+            &quot;name&quot;: &quot;Asperiores cupiditate ea in.&quot;,
+            &quot;set_category_id&quot;: 1,
+            &quot;set_category_name&quot;: &quot;SET 1 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 16,
+                    &quot;code&quot;: &quot;6TNMIO&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;L&quot;,
+                            &quot;price&quot;: &quot;195.82&quot;,
+                            &quot;stock&quot;: 23
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 13,
+            &quot;name&quot;: &quot;Occaecati asperiores eveniet iure.&quot;,
+            &quot;set_category_id&quot;: 5,
+            &quot;set_category_name&quot;: &quot;SET 3 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 17,
+                    &quot;code&quot;: &quot;KVRW62&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;M&quot;,
+                            &quot;price&quot;: &quot;717.89&quot;,
+                            &quot;stock&quot;: 30
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 15,
+            &quot;name&quot;: &quot;Ea blanditiis ut hic.&quot;,
+            &quot;set_category_id&quot;: 4,
+            &quot;set_category_name&quot;: &quot;SET 2 NOEL&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 18,
+                    &quot;code&quot;: &quot;P9RMVJ&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;M&quot;,
+                            &quot;price&quot;: &quot;389.91&quot;,
+                            &quot;stock&quot;: 63
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 20,
+            &quot;name&quot;: &quot;Itaque deserunt cupiditate distinctio.&quot;,
+            &quot;set_category_id&quot;: 1,
+            &quot;set_category_name&quot;: &quot;SET 1 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 19,
+                    &quot;code&quot;: &quot;JUHKOO&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;M&quot;,
+                            &quot;price&quot;: &quot;437.30&quot;,
+                            &quot;stock&quot;: 79
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 22,
+            &quot;name&quot;: &quot;Eius quos beatae.&quot;,
+            &quot;set_category_id&quot;: 3,
+            &quot;set_category_name&quot;: &quot;SET 2 HALLOWEN&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 20,
+                    &quot;code&quot;: &quot;U6GFCT&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;S&quot;,
+                            &quot;price&quot;: &quot;354.60&quot;,
+                            &quot;stock&quot;: 55
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 23,
+            &quot;name&quot;: &quot;At accusantium eveniet.&quot;,
+            &quot;set_category_id&quot;: 1,
+            &quot;set_category_name&quot;: &quot;SET 1 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 21,
+                    &quot;code&quot;: &quot;Y6IPVH&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;XL&quot;,
+                            &quot;price&quot;: &quot;630.95&quot;,
+                            &quot;stock&quot;: 78
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 24,
+            &quot;name&quot;: &quot;Facilis asperiores numquam iusto.&quot;,
+            &quot;set_category_id&quot;: 1,
+            &quot;set_category_name&quot;: &quot;SET 1 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 22,
+                    &quot;code&quot;: &quot;PR9GDZ&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;M&quot;,
+                            &quot;price&quot;: &quot;384.83&quot;,
+                            &quot;stock&quot;: 52
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 27,
+            &quot;name&quot;: &quot;Enim ut facere ratione.&quot;,
+            &quot;set_category_id&quot;: 1,
+            &quot;set_category_name&quot;: &quot;SET 1 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 23,
+                    &quot;code&quot;: &quot;H06NGK&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;S&quot;,
+                            &quot;price&quot;: &quot;614.85&quot;,
+                            &quot;stock&quot;: 92
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 28,
+            &quot;name&quot;: &quot;Ducimus adipisci minus ipsa.&quot;,
+            &quot;set_category_id&quot;: 2,
+            &quot;set_category_name&quot;: &quot;SET 1 C&Acirc;Y CỎ&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 24,
+                    &quot;code&quot;: &quot;EVEUVM&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;40 X 60&quot;,
+                            &quot;price&quot;: &quot;8148277.03&quot;,
+                            &quot;stock&quot;: 87
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 29,
+            &quot;name&quot;: &quot;Cupiditate minima qui.&quot;,
+            &quot;set_category_id&quot;: 3,
+            &quot;set_category_name&quot;: &quot;SET 2 HALLOWEN&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 25,
+                    &quot;code&quot;: &quot;Q3V7BO&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;40 X 60&quot;,
+                            &quot;price&quot;: &quot;6664667.03&quot;,
+                            &quot;stock&quot;: 34
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 30,
+            &quot;name&quot;: &quot;Totam iure labore sint.&quot;,
+            &quot;set_category_id&quot;: 2,
+            &quot;set_category_name&quot;: &quot;SET 1 C&Acirc;Y CỎ&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 26,
+                    &quot;code&quot;: &quot;RTSSIU&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;30 X 40&quot;,
+                            &quot;price&quot;: &quot;2462592.93&quot;,
+                            &quot;stock&quot;: 73
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 31,
+            &quot;name&quot;: &quot;Aliquam iure ut qui repudiandae.&quot;,
+            &quot;set_category_id&quot;: 3,
+            &quot;set_category_name&quot;: &quot;SET 2 HALLOWEN&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 27,
+                    &quot;code&quot;: &quot;DQ0BXU&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;60 X 80&quot;,
+                            &quot;price&quot;: &quot;2044729.02&quot;,
+                            &quot;stock&quot;: 76
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 32,
+            &quot;name&quot;: &quot;Nostrum neque qui laudantium.&quot;,
+            &quot;set_category_id&quot;: 3,
+            &quot;set_category_name&quot;: &quot;SET 2 HALLOWEN&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 28,
+                    &quot;code&quot;: &quot;UOPKWH&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;60 X 80&quot;,
+                            &quot;price&quot;: &quot;531509.78&quot;,
+                            &quot;stock&quot;: 72
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 33,
+            &quot;name&quot;: &quot;Quaerat doloribus dicta.&quot;,
+            &quot;set_category_id&quot;: 2,
+            &quot;set_category_name&quot;: &quot;SET 1 C&Acirc;Y CỎ&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 29,
+                    &quot;code&quot;: &quot;8WPWSO&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;40 X 60&quot;,
+                            &quot;price&quot;: &quot;3881939.46&quot;,
+                            &quot;stock&quot;: 41
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 34,
+            &quot;name&quot;: &quot;Deleniti corrupti atque consequuntur.&quot;,
+            &quot;set_category_id&quot;: 1,
+            &quot;set_category_name&quot;: &quot;SET 1 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 30,
+                    &quot;code&quot;: &quot;KTC7OZ&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;60 X 80&quot;,
+                            &quot;price&quot;: &quot;6427627.19&quot;,
+                            &quot;stock&quot;: 56
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 35,
+            &quot;name&quot;: &quot;Soluta nulla et.&quot;,
+            &quot;set_category_id&quot;: 2,
+            &quot;set_category_name&quot;: &quot;SET 1 C&Acirc;Y CỎ&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 31,
+                    &quot;code&quot;: &quot;FPBI2S&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;40 X 60&quot;,
+                            &quot;price&quot;: &quot;2068554.51&quot;,
+                            &quot;stock&quot;: 10
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 36,
+            &quot;name&quot;: &quot;Consequatur quam odio ea.&quot;,
+            &quot;set_category_id&quot;: 4,
+            &quot;set_category_name&quot;: &quot;SET 2 NOEL&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 32,
+                    &quot;code&quot;: &quot;JUYFLS&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;30 X 40&quot;,
+                            &quot;price&quot;: &quot;7297432.95&quot;,
+                            &quot;stock&quot;: 90
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 37,
+            &quot;name&quot;: &quot;Et ea aut modi.&quot;,
+            &quot;set_category_id&quot;: 5,
+            &quot;set_category_name&quot;: &quot;SET 3 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 33,
+                    &quot;code&quot;: &quot;2ZWBS5&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;20 x 30&quot;,
+                            &quot;price&quot;: &quot;2096592.74&quot;,
+                            &quot;stock&quot;: 77
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 38,
+            &quot;name&quot;: &quot;Sed quia culpa consequatur eos.&quot;,
+            &quot;set_category_id&quot;: 4,
+            &quot;set_category_name&quot;: &quot;SET 2 NOEL&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 34,
+                    &quot;code&quot;: &quot;KLUAED&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;40 X 60&quot;,
+                            &quot;price&quot;: &quot;8180436.58&quot;,
+                            &quot;stock&quot;: 28
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 39,
+            &quot;name&quot;: &quot;Pariatur itaque quod.&quot;,
+            &quot;set_category_id&quot;: 2,
+            &quot;set_category_name&quot;: &quot;SET 1 C&Acirc;Y CỎ&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 35,
+                    &quot;code&quot;: &quot;7F5ETR&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;60 X 80&quot;,
+                            &quot;price&quot;: &quot;3688672.20&quot;,
+                            &quot;stock&quot;: 83
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 40,
+            &quot;name&quot;: &quot;Voluptatum commodi repudiandae.&quot;,
+            &quot;set_category_id&quot;: 4,
+            &quot;set_category_name&quot;: &quot;SET 2 NOEL&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 36,
+                    &quot;code&quot;: &quot;NGD7FI&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;40 X 60&quot;,
+                            &quot;price&quot;: &quot;7841217.52&quot;,
+                            &quot;stock&quot;: 93
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 41,
+            &quot;name&quot;: &quot;Asperiores optio sit.&quot;,
+            &quot;set_category_id&quot;: 3,
+            &quot;set_category_name&quot;: &quot;SET 2 HALLOWEN&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 37,
+                    &quot;code&quot;: &quot;LTGANF&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;40 X 60&quot;,
+                            &quot;price&quot;: &quot;4887630.05&quot;,
+                            &quot;stock&quot;: 20
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 42,
+            &quot;name&quot;: &quot;Qui fugiat non quibusdam.&quot;,
+            &quot;set_category_id&quot;: 4,
+            &quot;set_category_name&quot;: &quot;SET 2 NOEL&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 38,
+                    &quot;code&quot;: &quot;MKWPGF&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;20 x 30&quot;,
+                            &quot;price&quot;: &quot;5691719.49&quot;,
+                            &quot;stock&quot;: 56
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 43,
+            &quot;name&quot;: &quot;Cum quibusdam voluptas.&quot;,
+            &quot;set_category_id&quot;: 2,
+            &quot;set_category_name&quot;: &quot;SET 1 C&Acirc;Y CỎ&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 39,
+                    &quot;code&quot;: &quot;PRJAUE&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;20 x 30&quot;,
+                            &quot;price&quot;: &quot;3619395.44&quot;,
+                            &quot;stock&quot;: 37
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 44,
+            &quot;name&quot;: &quot;Rem sequi nesciunt iste.&quot;,
+            &quot;set_category_id&quot;: 3,
+            &quot;set_category_name&quot;: &quot;SET 2 HALLOWEN&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 40,
+                    &quot;code&quot;: &quot;YQAVRO&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;60 X 80&quot;,
+                            &quot;price&quot;: &quot;4366933.08&quot;,
+                            &quot;stock&quot;: 24
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 45,
+            &quot;name&quot;: &quot;Voluptas quae eos vel.&quot;,
+            &quot;set_category_id&quot;: 1,
+            &quot;set_category_name&quot;: &quot;SET 1 HOA L&Aacute;&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 41,
+                    &quot;code&quot;: &quot;NP3MFU&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;60 X 80&quot;,
+                            &quot;price&quot;: &quot;2043451.23&quot;,
+                            &quot;stock&quot;: 79
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 46,
+            &quot;name&quot;: &quot;Quibusdam nesciunt.&quot;,
+            &quot;set_category_id&quot;: 2,
+            &quot;set_category_name&quot;: &quot;SET 1 C&Acirc;Y CỎ&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 42,
+                    &quot;code&quot;: &quot;N29BJW&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;20 x 30&quot;,
+                            &quot;price&quot;: &quot;376619.54&quot;,
+                            &quot;stock&quot;: 29
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 47,
+            &quot;name&quot;: &quot;Neque consequatur quia in.&quot;,
+            &quot;set_category_id&quot;: 3,
+            &quot;set_category_name&quot;: &quot;SET 2 HALLOWEN&quot;,
+            &quot;product_hex&quot;: [
+                {
+                    &quot;id&quot;: 43,
+                    &quot;code&quot;: &quot;WBYRGZ&quot;,
+                    &quot;sizes&quot;: [
+                        {
+                            &quot;size&quot;: &quot;40 X 60&quot;,
+                            &quot;price&quot;: &quot;7590687.37&quot;,
+                            &quot;stock&quot;: 82
+                        }
+                    ],
+                    &quot;galleries&quot;: [
+                        {
+                            &quot;image_path&quot;: &quot;assets/img/products/template_img.jpg&quot;
                         }
                     ]
                 }
@@ -2449,14 +3570,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/product-detail/minus" \
+    --get "http://localhost/api/product-detail/molestiae" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/product-detail/minus"
+    "http://localhost/api/product-detail/molestiae"
 );
 
 const headers = {
@@ -2482,7 +3603,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
+x-ratelimit-remaining: 55
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -2567,10 +3688,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-product-detail--id-"
-               value="minus"
+               value="molestiae"
                data-component="url">
     <br>
-<p>The ID of the product detail. Example: <code>minus</code></p>
+<p>The ID of the product detail. Example: <code>molestiae</code></p>
             </div>
                     </form>
 
@@ -2612,7 +3733,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-reviews">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -2621,51 +3742,12 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 54
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 1,
-            &quot;product_id&quot;: 2,
-            &quot;user_id&quot;: 4,
-            &quot;rating&quot;: 5,
-            &quot;comment&quot;: &quot;Sản phẩm rất tuyệt vời, m&igrave;nh rất h&agrave;i l&ograve;ng!&quot;,
-            &quot;created_at&quot;: &quot;2024-10-11T08:39:03.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-10-11T08:39:03.000000Z&quot;,
-            &quot;product&quot;: {
-                &quot;id&quot;: 2,
-                &quot;title&quot;: &quot;iPhone 11 64GB Ch&iacute;nh h&atilde;ng&quot;
-            },
-            &quot;user&quot;: {
-                &quot;id&quot;: 4,
-                &quot;name&quot;: &quot;Sep21th03&quot;,
-                &quot;avt_url&quot;: &quot;https://ui-avatars.com/api/?name=Admin&amp;background=random&quot;
-            }
-        },
-        {
-            &quot;id&quot;: 2,
-            &quot;product_id&quot;: 2,
-            &quot;user_id&quot;: 4,
-            &quot;rating&quot;: 5,
-            &quot;comment&quot;: &quot;Sản phẩm rất tuyệt vời, m&igrave;nh rất h&agrave;i l&ograve;ng!&quot;,
-            &quot;created_at&quot;: &quot;2024-10-11T08:49:20.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-10-11T08:49:20.000000Z&quot;,
-            &quot;product&quot;: {
-                &quot;id&quot;: 2,
-                &quot;title&quot;: &quot;iPhone 11 64GB Ch&iacute;nh h&atilde;ng&quot;
-            },
-            &quot;user&quot;: {
-                &quot;id&quot;: 4,
-                &quot;name&quot;: &quot;Sep21th03&quot;,
-                &quot;avt_url&quot;: &quot;https://ui-avatars.com/api/?name=Admin&amp;background=random&quot;
-            }
-        }
-    ],
-    &quot;status&quot;: &quot;success&quot;,
-    &quot;message&quot;: &quot;Lấy đ&aacute;nh gi&aacute; th&agrave;nh c&ocirc;ng!&quot;
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -2754,14 +3836,14 @@ thông qua <code>ProductService</code>.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/review/maxime" \
+    --get "http://localhost/api/review/accusamus" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/review/maxime"
+    "http://localhost/api/review/accusamus"
 );
 
 const headers = {
@@ -2787,7 +3869,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 55
+x-ratelimit-remaining: 53
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -2874,10 +3956,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-review--id-"
-               value="maxime"
+               value="accusamus"
                data-component="url">
     <br>
-<p>The ID of the review. Example: <code>maxime</code></p>
+<p>The ID of the review. Example: <code>accusamus</code></p>
             </div>
                     </form>
 
@@ -2927,144 +4009,28 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 54
+x-ratelimit-remaining: 52
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 2,
-            &quot;product_id&quot;: 2,
-            &quot;user_id&quot;: 4,
-            &quot;rating&quot;: 5,
-            &quot;comment&quot;: &quot;Sản phẩm rất tuyệt vời, m&igrave;nh rất h&agrave;i l&ograve;ng!&quot;,
-            &quot;created_at&quot;: &quot;2024-10-11T08:49:20.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-10-11T08:49:20.000000Z&quot;,
-            &quot;product&quot;: {
-                &quot;id&quot;: 2,
-                &quot;title&quot;: &quot;iPhone 11 64GB Ch&iacute;nh h&atilde;ng&quot;,
-                &quot;variants&quot;: [
-                    {
-                        &quot;id&quot;: 1,
-                        &quot;product_id&quot;: 2,
-                        &quot;rom_id&quot;: 2,
-                        &quot;color&quot;: &quot;Trắng&quot;,
-                        &quot;color_code&quot;: &quot;#FAF9F2&quot;,
-                        &quot;stock&quot;: 0,
-                        &quot;availability&quot;: 0,
-                        &quot;price&quot;: &quot;7490000.00&quot;,
-                        &quot;created_at&quot;: null,
-                        &quot;updated_at&quot;: null,
-                        &quot;images&quot;: [
-                            {
-                                &quot;id&quot;: 1,
-                                &quot;product_variant_id&quot;: 1,
-                                &quot;image_url&quot;: &quot;assets/img/products/fM0FKmGS3a_1728045310.webp&quot;,
-                                &quot;created_at&quot;: null,
-                                &quot;updated_at&quot;: null
-                            }
-                        ]
-                    },
-                    {
-                        &quot;id&quot;: 2,
-                        &quot;product_id&quot;: 2,
-                        &quot;rom_id&quot;: 2,
-                        &quot;color&quot;: &quot;Đỏ&quot;,
-                        &quot;color_code&quot;: &quot;#b4052a&quot;,
-                        &quot;stock&quot;: 7,
-                        &quot;availability&quot;: 1,
-                        &quot;price&quot;: &quot;7490000.00&quot;,
-                        &quot;created_at&quot;: null,
-                        &quot;updated_at&quot;: null,
-                        &quot;images&quot;: []
-                    },
-                    {
-                        &quot;id&quot;: 7,
-                        &quot;product_id&quot;: 2,
-                        &quot;rom_id&quot;: 2,
-                        &quot;color&quot;: &quot;T&iacute;m&quot;,
-                        &quot;color_code&quot;: &quot;#000000&quot;,
-                        &quot;stock&quot;: 6,
-                        &quot;availability&quot;: 1,
-                        &quot;price&quot;: &quot;7490000.00&quot;,
-                        &quot;created_at&quot;: null,
-                        &quot;updated_at&quot;: null,
-                        &quot;images&quot;: []
-                    }
-                ]
-            },
-            &quot;user&quot;: {
-                &quot;id&quot;: 4,
-                &quot;name&quot;: &quot;Sep21th03&quot;,
-                &quot;avt_url&quot;: &quot;https://ui-avatars.com/api/?name=Admin&amp;background=random&quot;
-            }
-        },
-        {
             &quot;id&quot;: 1,
-            &quot;product_id&quot;: 2,
-            &quot;user_id&quot;: 4,
+            &quot;product_id&quot;: 1,
+            &quot;user_id&quot;: 1,
             &quot;rating&quot;: 5,
-            &quot;comment&quot;: &quot;Sản phẩm rất tuyệt vời, m&igrave;nh rất h&agrave;i l&ograve;ng!&quot;,
-            &quot;created_at&quot;: &quot;2024-10-11T08:39:03.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-10-11T08:39:03.000000Z&quot;,
+            &quot;comment&quot;: &quot;aaaaaa&quot;,
+            &quot;created_at&quot;: &quot;2024-12-19 17:11:57&quot;,
+            &quot;updated_at&quot;: null,
             &quot;product&quot;: {
-                &quot;id&quot;: 2,
-                &quot;title&quot;: &quot;iPhone 11 64GB Ch&iacute;nh h&atilde;ng&quot;,
-                &quot;variants&quot;: [
-                    {
-                        &quot;id&quot;: 1,
-                        &quot;product_id&quot;: 2,
-                        &quot;rom_id&quot;: 2,
-                        &quot;color&quot;: &quot;Trắng&quot;,
-                        &quot;color_code&quot;: &quot;#FAF9F2&quot;,
-                        &quot;stock&quot;: 0,
-                        &quot;availability&quot;: 0,
-                        &quot;price&quot;: &quot;7490000.00&quot;,
-                        &quot;created_at&quot;: null,
-                        &quot;updated_at&quot;: null,
-                        &quot;images&quot;: [
-                            {
-                                &quot;id&quot;: 1,
-                                &quot;product_variant_id&quot;: 1,
-                                &quot;image_url&quot;: &quot;assets/img/products/fM0FKmGS3a_1728045310.webp&quot;,
-                                &quot;created_at&quot;: null,
-                                &quot;updated_at&quot;: null
-                            }
-                        ]
-                    },
-                    {
-                        &quot;id&quot;: 2,
-                        &quot;product_id&quot;: 2,
-                        &quot;rom_id&quot;: 2,
-                        &quot;color&quot;: &quot;Đỏ&quot;,
-                        &quot;color_code&quot;: &quot;#b4052a&quot;,
-                        &quot;stock&quot;: 7,
-                        &quot;availability&quot;: 1,
-                        &quot;price&quot;: &quot;7490000.00&quot;,
-                        &quot;created_at&quot;: null,
-                        &quot;updated_at&quot;: null,
-                        &quot;images&quot;: []
-                    },
-                    {
-                        &quot;id&quot;: 7,
-                        &quot;product_id&quot;: 2,
-                        &quot;rom_id&quot;: 2,
-                        &quot;color&quot;: &quot;T&iacute;m&quot;,
-                        &quot;color_code&quot;: &quot;#000000&quot;,
-                        &quot;stock&quot;: 6,
-                        &quot;availability&quot;: 1,
-                        &quot;price&quot;: &quot;7490000.00&quot;,
-                        &quot;created_at&quot;: null,
-                        &quot;updated_at&quot;: null,
-                        &quot;images&quot;: []
-                    }
-                ]
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;Tranh treo tường tr&aacute;ng gương SET1 của REICHTUM - Decor ph&ograve;ng ngủ/ Chất vải canvas/ Độ bền cao&quot;
             },
             &quot;user&quot;: {
-                &quot;id&quot;: 4,
-                &quot;name&quot;: &quot;Sep21th03&quot;,
-                &quot;avt_url&quot;: &quot;https://ui-avatars.com/api/?name=Admin&amp;background=random&quot;
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;admin&quot;,
+                &quot;avt_url&quot;: null
             }
         }
     ],
@@ -3252,9 +4218,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+            
 
-
-
+        
     </div>
     <div class="dark-box">
                     <div class="lang-selector">

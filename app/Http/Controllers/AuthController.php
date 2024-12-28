@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
-use Laravel\Sanctum\PersonalAccessToken;
 use Laravel\Sanctum\TransientToken;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Password;
@@ -17,6 +16,54 @@ use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
+     /**
+     * Handle user login.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     * 
+     * @OA\Post(
+     *     path="/api/login",
+     *     summary="User login",
+     *     tags={"Auth"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="email", type="string", example="user@example.com"),
+     *             @OA\Property(property="password", type="string", example="password123")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Login successful",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="success"),
+     *             @OA\Property(property="message", type="string", example="Đăng nhập thành công"),
+     *             @OA\Property(property="access_token", type="string"),
+     *             @OA\Property(property="token_type", type="string", example="Bearer"),
+     *             @OA\Property(property="redirect_url", type="string", example="/dashboard")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Validation error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="error"),
+     *             @OA\Property(property="message", type="string", example="Xác thực thất bại"),
+     *             @OA\Property(property="errors", type="object")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Server error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="error"),
+     *             @OA\Property(property="message", type="string", example="Đã có lỗi xảy ra"),
+     *             @OA\Property(property="errors", type="object")
+     *         )
+     *     )
+     * )
+     */
     public function login(Request $request)
     {
         if (Auth::check()) {
@@ -84,7 +131,48 @@ class AuthController extends Controller
             ], 500);
         }
     }
-
+      /**
+     * Handle user registration.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * 
+     * @OA\Post(
+     *     path="/api/register",
+     *     summary="User registration",
+     *     tags={"Auth"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="email", type="string", example="user@example.com"),
+     *             @OA\Property(property="password", type="string", example="password123"),
+     *             @OA\Property(property="repassword", type="string", example="password123"),
+     *             @OA\Property(property="name", type="string", example="John Doe"),
+     *             @OA\Property(property="phone", type="string", example="123456789"),
+     *             @OA\Property(property="address", type="string", example="123 Main St")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Registration successful",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="success"),
+     *             @OA\Property(property="message", type="string", example="Dang ky thanh cong"),
+     *             @OA\Property(property="access_token", type="string"),
+     *             @OA\Property(property="token_type", type="string", example="Bearer")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="error"),
+     *             @OA\Property(property="message", type="string", example="Co loi xay ra"),
+     *             @OA\Property(property="errors", type="object")
+     *         )
+     *     )
+     * )
+     */
     public function register(Request $request)
     {
         try {

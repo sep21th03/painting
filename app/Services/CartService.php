@@ -10,6 +10,12 @@ class CartService extends BaseService
     {
         return new Cart();
     }
+      /**
+     * Lấy giỏ hàng theo ID người dùng.
+     *
+     * @param int $userId ID người dùng.
+     * @return \Illuminate\Support\Collection
+     */
     public function findByUserId($userId)
     {
         $cart = Cart::where('user_id', $userId)
@@ -46,7 +52,13 @@ class CartService extends BaseService
             ];
         });
     }
-
+  /**
+     * Cập nhật số lượng sản phẩm trong giỏ hàng theo ID người dùng.
+     *
+     * @param int $userId ID người dùng.
+     * @param array $data Dữ liệu cập nhật.
+     * @return \Illuminate\Support\Collection|bool
+     */
     public function updateQuantityByUserId($userId, $data)
     {
         $cart = Cart::where('user_id', $userId)
@@ -70,6 +82,13 @@ class CartService extends BaseService
 
         return $this->findByUserId($userId);
     }
+     /**
+     * Thêm sản phẩm vào giỏ hàng.
+     *
+     * @param int $userId ID người dùng.
+     * @param array $data Dữ liệu sản phẩm.
+     * @return \Illuminate\Support\Collection|bool
+     */
     public function addByUserId($userId, $data)
     {
         $result = false;
@@ -108,6 +127,14 @@ class CartService extends BaseService
             return false;
         return $this->findByUserId($userId);
     }
+      /**
+     * Xóa sản phẩm khỏi giỏ hàng.
+     *
+     * @param int $userId ID người dùng.
+     * @param int $productHex ID sản phẩm.
+     * @param int $sizeId ID kích thước sản phẩm.
+     * @return bool
+     */
     public function deleteByUserId($userId, $productHex, $sizeId)
     {
         return Cart::where('user_id', $userId)->where('product_hex_id', $productHex)->where('size_id', $sizeId)->delete();

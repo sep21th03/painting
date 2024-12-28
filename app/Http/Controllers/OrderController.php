@@ -10,7 +10,17 @@ use App\Http\Requests\Api\Order\VnpayPaymentRequest;
 use App\Http\Requests\Admin\Order\UpdateOrderStatusRequest;
 use App\Services\OrderService;
 use App\Models\Order;
-
+/**
+ * Class OrderController
+ *
+ * Controller quản lý các chức năng liên quan đến đơn hàng, bao gồm:
+ * - Lấy danh sách đơn hàng
+ * - Chi tiết đơn hàng
+ * - Tạo, cập nhật, xóa đơn hàng
+ * - Thanh toán qua VNPay
+ *
+ * @package App\Http\Controllers
+ */
 class OrderController extends Controller
 {
     protected $orderService;
@@ -44,14 +54,35 @@ class OrderController extends Controller
         return jsonResponse('success', 'Chi tiết đơn hàng', $result);
     }
     /**
-     * Tạo đơn hàng mới.
+     * Store a new order in the database.
+     * 
+     * This method handles the creation of an order, including the generation of the order code,
+     * storing order details, updating product stock, and removing items from the cart.
+     * It also dispatches a job to notify the user of the order status.
      *
-     * Phương thức này nhận yêu cầu từ người dùng, xác thực dữ liệu bằng `StoreOrderRequest`,
-     * sau đó sử dụng `orderService` để tạo đơn hàng mới.
-     *
-     * @param StoreOrderRequest $request Yêu cầu chứa dữ liệu đơn hàng cần tạo.
-     * @return \Illuminate\Http\JsonResponse Trả về phản hồi dạng JSON về kết quả tạo đơn hàng.
+     * @param array $data Array containing order information, including:
+     *  - string 'first_name': First name of the user.
+     *  - string 'last_name': Last name of the user.
+     *  - string 'phone': User's phone number.
+     *  - string 'address': Delivery address.
+     *  - string|null 'note': Optional note for the order.
+     *  - string|null 'message': Optional message for the order.
+     *  - float 'total_price': Total price of the order.
+     *  - int 'payment_method': Payment method (e.g., 0 for unpaid, 1 for paid).
+     *  - float|null 'shipping_fee': Shipping fee (default: 20000).
+     *  - array 'order_details': Array of order details, each containing:
+     *      - int 'product_hex_id': ID of the product hex.
+     *      - int 'size_id': ID of the product size.
+     *      - int 'quantity': Quantity of the product.
+     *      - float 'price': Price of the product.
+     *      - int 'id': Cart ID of the product.
+     * 
+     * @return array Returns an array with either the order's code, total price, and creation time 
+     * on success, or an error message on failure.
+     * 
+     * @throws \Exception If a product hex or size is not found, or if the stock is insufficient.
      */
+
     public function store(StoreOrderRequest $request)
     {
         $data = $request->validated();
@@ -126,8 +157,8 @@ class OrderController extends Controller
 
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = route('order.vnpay_payment_complete', ['id' => $request->order_id]) . '?url_return=' . $request->url_return; // đường dẫn khi thành công
-        $vnp_TmnCode = env('VNP_TMN_CODE'); 
-        $vnp_HashSecret = env('VNP_HASH_SECRET'); 
+        $vnp_TmnCode = env('VNP_TMN_CODE');
+        $vnp_HashSecret = env('VNP_HASH_SECRET');
 
         $vnp_TxnRef = $request->order_id; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = "Thanh toán đơn hàng tại MobileSell";
@@ -173,7 +204,7 @@ class OrderController extends Controller
 
         $vnp_Url = $vnp_Url . "?" . $query;
         if (isset($vnp_HashSecret)) {
-            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); //
+            $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret); //
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
         $returnData = array(

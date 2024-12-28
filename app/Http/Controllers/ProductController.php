@@ -46,14 +46,14 @@ class ProductController extends Controller
                 'id' => $product->id,
                 'name' => $product->name,
                 'set_category_id' => $product->set_category_id,
-                'set_category_name' => 
-                ($product->categories && $product->categories->set ? $product->categories->set->name : '') 
-                . ' ' . 
-                ($product->categories ? $product->categories->name : ''),
+                'set_category_name' =>
+                    ($product->categories && $product->categories->set ? $product->categories->set->name : '')
+                    . ' ' .
+                    ($product->categories ? $product->categories->name : ''),
                 'product_hex' => $product->productHex->map(function ($productHex) {
                     return [
                         'id' => $productHex->id,
-                        'code' => $productHex->hex_code, 
+                        'code' => $productHex->hex_code,
                         'sizes' => $productHex->sizes->map(function ($size) {
                             return [
                                 'size' => $size->size,
@@ -61,7 +61,7 @@ class ProductController extends Controller
                                 'stock' => $size->stock,
                             ];
                         }),
-                        'galleries' =>  $productHex->galleries->map(function ($gallery) {
+                        'galleries' => $productHex->galleries->map(function ($gallery) {
                             return [
                                 'image_path' => $gallery->image_path,
                             ];
@@ -73,7 +73,7 @@ class ProductController extends Controller
     }
 
     public function store(StoreProductRequest $request)
-    {    
+    {
         $data = $request->validated();
         $galleryImages = $request->file('gallery');
         $result = $this->productService->store($data, $galleryImages);
@@ -111,7 +111,11 @@ class ProductController extends Controller
     }
 
 
-
+    /**
+     * Xóa sản phẩm theo ID.
+     * @param string $id
+     * @return JSON thông tin sản phẩm hoặc lỗi nếu không tìm thấy.
+     */
     public function destroy(DeleteProductRequest $request)
     {
         $data = $request->validated();
@@ -121,7 +125,6 @@ class ProductController extends Controller
             ? jsonResponse('success', 'Xóa sản phẩm thành công!')
             : jsonResponse('error', 'Xóa sản phẩm thất bại!');
     }
-
 
     public function addHex(StoreProductHexRequest $request)
     {
@@ -181,19 +184,19 @@ class ProductController extends Controller
             ? jsonResponse('success', $result['message'])
             : jsonResponse('error', $result['message']);
     }
-    public function getProductsByCategory()
-    {
-        $categoryName = request()->query('category');
+    // public function getProductsByCategory()
+    // {
+    //     $categoryName = request()->query('category');
 
-        if (!$categoryName) {
-            return response()->json(['message' => 'Vui lòng cung cấp tên danh mục'], 400);
-        }
+    //     if (!$categoryName) {
+    //         return response()->json(['message' => 'Vui lòng cung cấp tên danh mục'], 400);
+    //     }
 
-        $result = $this->productService->getProductsByCategory($categoryName);
-        return $result
-            ? jsonResponse('success', 'Danh sách sản phẩm theo danh mục', $result)
-            : jsonResponse('error', 'Không tìm thấy sản phẩm nào trong danh mục: ' . $categoryName, []);
-    }
+    //     $result = $this->productService->getProductsByCategory($categoryName);
+    //     return $result
+    //         ? jsonResponse('success', 'Danh sách sản phẩm theo danh mục', $result)
+    //         : jsonResponse('error', 'Không tìm thấy sản phẩm nào trong danh mục: ' . $categoryName, []);
+    // }
 
     // Review
     /**
